@@ -49,21 +49,21 @@
 # 该程序将查找“发件人”行，并将这些行的第二个单词作为发送邮件的人。
 # 该程序创建一个Python字典，该字典将发件人的邮件地址映射到它们出现在文件中的次数计数。
 # 生成字典后，程序将使用最大循环遍历字典以查找最多产的提交者。
-name = input('Enter file name:')
-if len(name) < 1: name = 'mbos-short.txt'
-names = open(name)
-count = dict()
-for line in names:
-    line = line.rstrip()
-    if not line.startswith('From'):
-        continue
-    line = line.split()
-    line = line[1]
-    count[line] = count.get(line, 0) + 1
-largest = None
-new_words = None
-for words, count in count.items():
-    if largest == None or count > largest:
-        largest = count
-        new_words = words
-print(new_words, largest)
+# name = input('Enter file name:')
+# if len(name) < 1: name = 'mbos-short.txt'
+# names = open(name)
+# count = dict()
+# for line in names:
+#     line = line.rstrip()
+#     if not line.startswith('From'):
+#         continue
+#     line = line.split()
+#     line = line[1]
+#     count[line] = count.get(line, 0) + 1
+# largest = None
+# new_words = None
+# for words, count in count.items():
+#     if largest == None or count > largest:
+#         largest = count
+#         new_words = words
+# print(new_words, largest)
