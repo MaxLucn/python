@@ -40,23 +40,23 @@
 # http://www.py4e.com/code3/bs4.zip
 # and unzip it in the same directory as this file
 
-# import urllib.request, urllib.parse, urllib.error
-# from bs4 import BeautifulSoup
-# import ssl
-#
-# # Ignore SSL certificate errors
-# ctx = ssl.create_default_context()
-# ctx.check_hostname = False
-# ctx.verify_mode = ssl.CERT_NONE
-#
-# url = input('Enter - ')
-# html = urllib.request.urlopen(url, context=ctx).read()
-# soup = BeautifulSoup(html, 'html.parser')
-#
-# # Retrieve all of the anchor tags
-# tags = soup('a')
-# for tag in tags:
-#     print(tag.get('href', None))
+import urllib.request, urllib.parse, urllib.error
+from bs4 import BeautifulSoup
+import ssl
+
+# Ignore SSL certificate errors
+ctx = ssl.create_default_context()
+ctx.check_hostname = False
+ctx.verify_mode = ssl.CERT_NONE
+
+url = input('Enter - ')
+html = urllib.request.urlopen(url, context=ctx).read()
+soup = BeautifulSoup(html, 'html.parser')
+
+# Retrieve all of the anchor tags
+tags = soup('a')
+for tag in tags:
+    print(tag.get('href', None))
 
 
 # To run this, download the BeautifulSoup zip file
@@ -90,24 +90,24 @@
 # http://www.py4e.com/code3/bs4.zip
 # and unzip it in the same directory as this file
 
-import urllib.request, urllib.parse, urllib.error
-from bs4 import BeautifulSoup
-import ssl
+# import urllib.request, urllib.parse, urllib.error
+# from bs4 import BeautifulSoup
+# import ssl
 
 # Ignore SSl certificate errors
-cts = ssl.create_default_context()
-cts.check_hostname = False
-cts.verify_mode = ssl.CERT_NONE
-
-# url = input('Enter - ')
-url = 'http://py4e-data.dr-chuck.net/known_by_Fikret.html'
-html = urllib.request.urlopen(url, context=cts).read()
-soup = BeautifulSoup(html, 'html.parser')
-
-# Retrieve all of the anchor tags
-tags = soup('3')
-for tag in tags:
-    print(tag.get('href', None))
+# cts = ssl.create_default_context()
+# cts.check_hostname = False
+# cts.verify_mode = ssl.CERT_NONE
+#
+# # url = input('Enter - ')
+# url = 'http://py4e-data.dr-chuck.net/known_by_Fikret.html'
+# html = urllib.request.urlopen(url, context=cts).read()
+# soup = BeautifulSoup(html, 'html.parser')
+#
+# # Retrieve all of the anchor tags
+# tags = soup('3')
+# for tag in tags:
+#     print(tag.get('href', None))
 
 
 # urllib.quote(string[,safe])对字符串进行编码。参数safe指定了不需要编码的字符
