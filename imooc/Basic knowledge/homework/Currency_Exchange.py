@@ -5,7 +5,7 @@ while True:
     print("**********欢迎使用货币转换服务系统**********")
     # 遍历字典，输出四种服务
     for k, v in service_menu.items():
-        print(k, v)
+        print('{}.{}'.format(k, v))
     your_choice = int(input("请您选择需要的服务："))
     print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
 
@@ -18,6 +18,7 @@ while True:
         # 定义人民币与美元的汇率
         RMB_to_US = float(your_money/6.78)
         print('兑换成美元为：{: 0.2f}$'.format(RMB_to_US))
+        print('=========================================')
         continue
 
     # 当选择 2 时，进行美元与人民币的转换
@@ -28,6 +29,7 @@ while True:
         # 定义美元与人民币的汇率
         US_to_RMB = float(your_money * 6.72)
         print('兑换成人民币为：{: 0.2f}¥'.format(US_to_RMB))
+        print('=========================================')
         continue
 
     # 当选择 3 时，进行人民币与欧元的转换
@@ -38,6 +40,7 @@ while True:
         # 定义人民币与欧元的汇率
         RMB_to_EUR = float(your_money * 0.13)
         print('兑换成人民币为:{:0.2f}¥'.format(RMB_to_EUR))
+        print('=========================================')
         continue
     # 当选择 0 时退出转换系统
     elif your_choice == 0:
