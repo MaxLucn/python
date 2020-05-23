@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b90b1890-d0ef-449d-bb23-383d2c5d9301" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/$CACHE_FILE$" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mooc_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/record.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/作业要求.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../learning python/ test automation.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../learning python/app.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../learning python/app1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../learning python/converters.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../learning python/ecommerce/__init--.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../learning python/ecommerce/shapping.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../learning python/find.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../learning python/utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../myblog/blog/templates/edit_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../myblog/blog/templates/edit_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../myblog/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/../../../myblog/db.sqlite3" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectId" id="1cIZBbIe3dkDs2eN6POr7ZatGwS" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings is-module-sdk="true">
+        <option name="myUseModuleSdk" value="true" />
+      </console-settings>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="mooc_test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="homework2" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mooc_test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.mooc_test" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration>$USER_HOME$/.subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b90b1890-d0ef-449d-bb23-383d2c5d9301" name="Default Changelist" comment="" />
+      <created>1590217933776</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1590217933776</updated>
+      <workItem from="1590217935358" duration="15109000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2192" y="235" key="#Python" timestamp="1590225138319">
+      <screen x="1440" y="23" width="1920" height="993" />
+    </state>
+    <state x="2192" y="235" key="#Python/1440.23.1920.993/0.23.1440.877@1440.23.1920.993" timestamp="1590225138319" />
+    <state x="451" y="270" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1590218005542">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="451" y="270" key="#com.intellij.fileTypes.FileTypeChooser/1440.23.1920.993/0.23.1440.877@0.23.1440.877" timestamp="1590218005542" />
+    <state width="1878" height="212" key="GridCell.Tab.0.bottom" timestamp="1590245634095">
+      <screen x="1440" y="23" width="1920" height="993" />
+    </state>
+    <state width="1398" height="231" key="GridCell.Tab.0.bottom/1440.23.1920.993/0.23.1440.877@0.23.1440.877" timestamp="1590224509047" />
+    <state width="1878" height="212" key="GridCell.Tab.0.bottom/1440.23.1920.993/0.23.1440.877@1440.23.1920.993" timestamp="1590245634095" />
+    <state width="1878" height="212" key="GridCell.Tab.0.center" timestamp="1590245634094">
+      <screen x="1440" y="23" width="1920" height="993" />
+    </state>
+    <state width="1398" height="231" key="GridCell.Tab.0.center/1440.23.1920.993/0.23.1440.877@0.23.1440.877" timestamp="1590224509046" />
+    <state width="1878" height="212" key="GridCell.Tab.0.center/1440.23.1920.993/0.23.1440.877@1440.23.1920.993" timestamp="1590245634094" />
+    <state width="1878" height="212" key="GridCell.Tab.0.left" timestamp="1590245634094">
+      <screen x="1440" y="23" width="1920" height="993" />
+    </state>
+    <state width="1398" height="231" key="GridCell.Tab.0.left/1440.23.1920.993/0.23.1440.877@0.23.1440.877" timestamp="1590224509045" />
+    <state width="1878" height="212" key="GridCell.Tab.0.left/1440.23.1920.993/0.23.1440.877@1440.23.1920.993" timestamp="1590245634094" />
+    <state width="1878" height="212" key="GridCell.Tab.0.right" timestamp="1590245634095">
+      <screen x="1440" y="23" width="1920" height="993" />
+    </state>
+    <state width="1398" height="231" key="GridCell.Tab.0.right/1440.23.1920.993/0.23.1440.877@0.23.1440.877" timestamp="1590224509046" />
+    <state width="1878" height="212" key="GridCell.Tab.0.right/1440.23.1920.993/0.23.1440.877@1440.23.1920.993" timestamp="1590245634095" />
+    <state width="1878" height="212" key="GridCell.Tab.1.bottom" timestamp="1590245634096">
+      <screen x="1440" y="23" width="1920" height="993" />
+    </state>
+    <state width="1398" height="286" key="GridCell.Tab.1.bottom/1440.23.1920.993/0.23.1440.877@0.23.1440.877" timestamp="1590224037400" />
+    <state width="1878" height="212" key="GridCell.Tab.1.bottom/1440.23.1920.993/0.23.1440.877@1440.23.1920.993" timestamp="1590245634096" />
+    <state width="1878" height="212" key="GridCell.Tab.1.center" timestamp="1590245634096">
+      <screen x="1440" y="23" width="1920" height="993" />
+    </state>
+    <state width="1398" height="286" key="GridCell.Tab.1.center/1440.23.1920.993/0.23.1440.877@0.23.1440.877" timestamp="1590224037398" />
+    <state width="1878" height="212" key="GridCell.Tab.1.center/1440.23.1920.993/0.23.1440.877@1440.23.1920.993" timestamp="1590245634096" />
+    <state width="1878" height="212" key="GridCell.Tab.1.left" timestamp="1590245634095">
+      <screen x="1440" y="23" width="1920" height="993" />
+    </state>
+    <state width="1398" height="286" key="GridCell.Tab.1.left/1440.23.1920.993/0.23.1440.877@0.23.1440.877" timestamp="1590224037398" />
+    <state width="1878" height="212" key="GridCell.Tab.1.left/1440.23.1920.993/0.23.1440.877@1440.23.1920.993" timestamp="1590245634095" />
+    <state width="1878" height="212" key="GridCell.Tab.1.right" timestamp="1590245634096">
+      <screen x="1440" y="23" width="1920" height="993" />
+    </state>
+    <state width="1398" height="286" key="GridCell.Tab.1.right/1440.23.1920.993/0.23.1440.877@0.23.1440.877" timestamp="1590224037399" />
+    <state width="1878" height="212" key="GridCell.Tab.1.right/1440.23.1920.993/0.23.1440.877@1440.23.1920.993" timestamp="1590245634096" />
+    <state x="1909" y="158" key="SettingsEditor" timestamp="1590225174042">
+      <screen x="1440" y="23" width="1920" height="993" />
+    </state>
+    <state x="1909" y="158" key="SettingsEditor/1440.23.1920.993/0.23.1440.877@1440.23.1920.993" timestamp="1590225174042" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/homework2$mooc_test.coverage" NAME="mooc_test Coverage Results" MODIFIED="1590244570717" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>
