@@ -5,3 +5,5 @@ jacklu/.DS_Store
 .idea/$CACHE_FILE$
 imooc/venv/*
 .idea
+imooc/idea
+
