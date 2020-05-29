@@ -6,3 +6,4 @@ jacklu/.DS_Store
 imooc/venv/*
 .idea
 imooc/idea/*
+imooc/.idea/imooc.iml
