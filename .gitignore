@@ -2,3 +2,6 @@ jacklu/python-data-structure/.DS_Store
 jacklu/.DS_Store
 .DS_Store
 .DS_Store
+.idea/$CACHE_FILE$
+imooc/venv/*
+.idea
