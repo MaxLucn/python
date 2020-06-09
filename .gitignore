@@ -7,3 +7,4 @@ imooc/venv/*
 .idea
 imooc/idea/*
 imooc/.idea/imooc.iml
+imooc/基础部分/venv/*
