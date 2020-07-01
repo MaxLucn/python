@@ -1,0 +1,139 @@
+redis 是单线程模型的 非关系型（NoSQL）数据库
+
+为了防止意外丢失数据， redis 提供了两种持久化的方式：
+        RDB： 定期把内存中的数据保存在硬盘里面
+        AOF： 用日志的方式记录 redis 的记录
+
+redis 常用参数：
+        port： 端口号，默认为 6379
+        bind ： 允许的 IP， 默认只允许访问本机
+        time： client 空闲多少秒后关闭连接，默认 0 代表无限制
+        loglevel： 日志级别，分为 debug \ verbose \ notice \ warning , 默认为 notice
+        logfile： 日志文件地址
+        syslog-enabled： 把日志记录到系统日志，默认为yes
+        databases： 逻辑库数量，默认为16
+        save： RDB文件同步的频率
+        rdbcompression: 同步 RDB文件的时候是否采用压缩，默认为yes
+        dbfilename: 镜像文件名称，默认 dump.rab
+        dir： rdb 文件的目录，默认 redis 目录
+        requirepass： 访问密码，默认无需密码
+        maxckiebts: 最大连接数，默认为无限制
+        maxmemory: 占用内存的大小，默认无限制
+        appendonly: 开启 AOF 备份
+        appendfsync: AOF 同步的频率，分为 no：只把数据写到硬盘的缓冲区，什么时候同步到硬盘上由系统决定
+                                       everysec：每秒钟把数据写入硬盘中，如果恰好在某一秒宕机这一秒的数据会丢失
+                                       always：每次有数据写入马上就会写入到硬盘中，是最稳妥的方法
+
+flushdb： 清理当前逻辑库
+flushall：清理所有逻辑库的数据
+
+
+
+redis 的五种数据类型：
+    字符串：最大可以保存 512m 数据，既可以保存普通文字也可以保存序列化的二进制数据
+        getrange： 获得截取字符串内容
+        strlen： 获得字符串长度
+        setex：设置带有过期时间（秒）的 KEY-VALUE， SETEX city 5 Beijing
+        mset: 一次可以设置多个 KEY-VALUE 数据
+        mget：获得多个 value
+        append: 用于在字符串结尾追加内容
+
+        incr: 数字自动加1 --->incr num
+        incrby：数字加上指定的整数值  -----> incrby num 25(任意整数)
+        incrbyfloat： 数字加上指定的浮点数 -----> incrbyfloat num 0.56(任意浮点数)
+
+        decr：数字自动减1
+        decrby： 数字减去指定的整数值
+    哈希：
+        hset：设置哈希表字段
+        hmset：设置哈希表多个字段
+        hget：获取哈希表的字段值（一次一个）
+        hmget：获取哈希表中的多个字段值
+        hgetall：获取哈希表中所有的字段值
+        hkeys：获取所有哈希表字段名
+        hlen： 哈希表中的字段数量
+        hexists：判断哈希表中是否存在某一字断
+        hvals：获取哈希表的所有字段值
+        hdel： 删除哈希表的字段
+        hincrby：让哈希表某个字段值加上指定的整数值（在哈希表中只有加法运算，想象做减法的时候加负数即可）
+        hincrbyfloat：让哈希表某个字段值加上指定的浮点数
+    列表：（当我们需要向 value 保存序列化的数据，可以使用列表类型,添加的数据可以重复）
+        rpush：往列表最右侧保存数据
+        lpush：往列表最左侧添加数据
+        lset：修改某一个元素的值  -----> lset dname 2(索引序号) xxx（修改后的内容）
+        lrange：输出列表中的元素，可以自定义输出区间
+        添加：
+        llen：获取列表长度
+        lindex：获取列表某个元素
+        linsert：在某个位置插入元素
+        删除：
+        lpop：删除列表最左边的元素
+        rpop：删除列表最右边的元素
+        lrem：删除列表某个元素
+
+    集合：（如果需要列表中的元素不可以重复，可以使用集合类型。 集合中元素没有索引序号，根据哈希值大小进行排序）
+        sadd：向集合中添加元素
+        smembers：获取集合中的所有元素
+
+        scard：获取集合长度
+        sismember：判断是否含有某个元素
+        srem：删除元素
+        spop：随即删除集合中的某一元素并返回这个元素
+        srandmember：随机返回集合中的元素
+
+    有序集合：有序集合是带有排序功能的集合，redis 会按照元素分数值排序
+        zadd：定义一个有序集合，并给其中添加一些有序数据
+        zincrby：对分数值进行加法运算，加多少可以自己定义
+        zrevrange：按照降序获取有序集合的内容
+
+        zcard：获取有序集合的长度
+        zcount：查询某个分数值区间内的元素数量
+        zscore：返回元素的分数值
+
+        zrange：按照升序获取有序集合的内容
+
+        zrangebyscore：按照升序获取分数值区间内的集合内容
+        zrevrangebyscore：按照降序获取区间内的集合内容
+
+        zrank：从 0 开始，获取元素的生序排名
+        zrevrank：从0 开始，获取元素的降序排名
+
+        删除：
+        zrem：删除有序集合中的元素
+        zremrangebyrank：删除排名区间内的元素
+        zremrangebyscore：删除分数值区间内的元素
+
+redis 的操作 key 的命令：
+    del：删除记录
+    exists：判断是否存在某个 key，存在的话返回 1 ， 不存在的话返回 0
+    expire：设置记录过期时间
+
+    expireat：设置记录的过期时间（ unix 时间戳）
+    move：把记录迁移其他的逻辑库
+    rename：修改 key 名称
+
+    persist：移除过期时间
+    type：判断 value 数据类型
+
+
+redis 的事务机制
+    为了保证事务机制的一致性，在开启事务之前必须用 watch 命令监视要操作的记录
+    用 multi 命令开启一个事务。开启事务后的所有操作都不会立即执行，只有执行 EXEC 命令的时候才会批处理执行
+    取消事务：discard
+        在没有执行 exec 的前提下可以取消事务、在监视的事务没有发生变化的前提下也是可以取消事务的
+        redis 并没有事务的回滚机制，所以并不能保证原子性
+        事务在没有提交执行前，是可以取消事务的。如果事务已经提交执行，就无法取消了。
+
+redis 的事务函数
+    redis 模块用 pipeline 的方式向 redis 服务器传递批处理命令和执行事务
+    创建 pipeline 连接
+        pipeline = con.pipeline()
+    监视数据
+        pipeline.watch(...)
+    开启事务
+        pipeline.multi()
+    提交事务
+        pipeline.execute()
+    关闭 pipeline
+        pipeline.reset()
+

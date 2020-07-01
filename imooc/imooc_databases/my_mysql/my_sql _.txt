@@ -1,0 +1,250 @@
+关系型数据库：关系型数据库中，数据分类存放，但是之间是相互联系的
+        DB2  Oracle    MySQL    SQL Server
+
+NoSQL 数据库指的是数据分类存放，但是数据之间没有关联联系的数据库系统
+        Redis：抢购信息    MemCache    MongoDB:新闻内容        Neo4J
+
+
+
+show datebases 查看数据库里的数据
+
+
+MySQL的用户管理：自带的用户管理员账户 root    默认端口： 3306
+
+
+#  网页设计语言：  HTML   CSS   JavaScript
+#  ios开发： Swift
+#  桌面程序的开发：C++等
+#  数据库语言
+#  数据约束：主键约束：字段值唯一，且不能为 NULL
+            非空约束：字段值不能为 NULL
+            唯一约束：字段值唯一，且可以为NULL
+            外键约束(写在子表上)： 保持关联数据的逻辑性
+
+
+MySQl 配制文件：在my.ini文件中， 我们可以设置各种 MySQL 的配制，
+              [client]、 [mysql]  客户端配制信息
+              [mysqld]  数据库配制信息
+
+
+SQL语言：DML（操作语言)：增删改查
+        DCL（控制语言）：用户、权限、事物管理
+        DDl（定义语言）：逻辑库、数据表、视图、索引
+
+SQL 创建逻辑库：CREATE DATABASES  逻辑库名称;
+         显示： SHOW DATABASES;
+         删除： DROP DATABASE  逻辑库名称;
+
+
+创建索引：
+    CREATE TABLE  表名(
+    ...,
+    INDEX  [索引名称],
+    ....;
+
+索引的使用：数据量很大，经常被查询的数据表
+          被经常用作检索条件的字段上使用
+          索引不建议在长度较长的字段上设置
+
+查：
+    数据操作语言的基本操作：FROM   >  WHERE  >  SELECT  >  ORDER BY   >  LIMIT
+        基本查询：由 SELECT 和 FROM 关键字组成
+                SELECT 语句，用户不必关心数据的真是存储。交由数据库高效的查找数据
+        数据分页显示：SELECT。。。FROM。。。LIMIT  起始位置，偏移量；    可以限制结果集的数量
+        对查询结果集进行排序：SELECT。。。FROM。。。ORDER BY 列名 [ASC(升序）\  DESC (降序）]；
+                            不写的时候默认升序
+        去除结果集中的充分记录：SELECT  DISTINCT 字段 FROM .....;
+                            DISTINCT  只能查询一列数据而且只能使用一次，还需要写在字段的前面
+        条件查询：按用户要求提取数据
+                SELECT ....FROM....WHERE 条件  [AND \ OR]  条件 ....;
+
+
+    高级查询：聚合函数（SUM、MAX、MIN、AVG、COUNT) 聚合函数出现在 WHERE 语句里会出错
+                    SUM 函数 用于求和，只能用于数字求和，字符类型的统计结果为0，日期类型统计结果是毫秒数相加
+                    MAX 函数用于获得非空值的最大值
+                    MIN 函数用于获得非空值的最小值
+                    AVG 函数用于获得非空值的平均值，非空字符串统计结果为0
+                    COUNT(*)用于获得包含空值的记录数， COUNT(列名）用于获得包含非空值的记录数
+            分组查询：默认情况下汇总函数是对全表范围内的数据做统计
+                    GROUP BY 子句通过一定的规则将一个数据集划分成若干小的区域，然后针对每个小区域分别进行数据汇总处理
+                    数据库支持多列分组条件，执行的时候逐级分组
+                        ###  查询语句中如果含有 GROUP BY 子句，那么 SELECT 子句中可以包含聚合函数或者 GROUP BY 子句的
+                        分组列，其余内容均不可出现在 SELECT 子句中。(跟非分组字段无法匹配）
+                    GROUP_COUNT 函数可以把分组查询中的某个字段拼接成一个字符串
+            HAVING 子句不能独立存在，写在 GROUP BY 子句后面
+                   在这个子句里如果有聚合函数跟字段比较的时候会报错，跟表连接就可以跟字段比较，但是可以直接跟具体数据进行比较
+
+
+    表的内外连接：从多张表中提取数据，必须指定关联的条件。如果不定义关联条件就会出现无条件连接，两张表的数据会交叉连接，产生笛卡尔积
+                内链接：结果集中只保留符合连接条件的记录    ##  表1  JOIN 表2 ON  连接条件
+                       内连接的数据表之间不一定必须有同名字段，只要字段之间符合逻辑关系就行
+                       相同的数据表也是可以做表连接的
+                外链接：不管符不符合连接条件，记录都保留在结果集中   ##  表1  LEFT JOIN 表2 ON  连接条件
+                       分左连接跟右连接      左连接：保留左表数据跟右表连接
+                       UNION 关键字可以将多个查询语句的结果集进行合并
+                            查询语句   UNION   查询语句   UNION  查询语句 ······
+                            在使用 UNION 合并结果集的时候：查询语句的字段个数和结果集里面的字段名称要想同
+
+
+    子查询：在查询中嵌套查询
+            子查询可以写在：WHERE 子句 、FROM 子句、 SELECT 子句，但是只有 FROM 子句子查询是最可取的
+                WHERE 子句、SELECT 子句每查询一次就要执行一次，所以效率较低不推荐使用
+            单行、多行子查询语法规则：
+                多行子查询只能出现在 WHERE、FROM 子句中
+                WHERE 子句中，可以使用 IN、 ALL、 ANY、EXISTS 关键字来处理多行表达式结果集的条件判断
+                        in( )表示对符合( )里面的条件进行匹配
+                        all(  ) 表示对符合子查询( )里面所有的条件进行匹配
+                        any(  )表示符合子查询( )里面任何一个条件进行匹配
+                        exists( )表示把原来在子查询之外的条件判断，写到了子查询( )里面
+
+增：
+    INSERT 语句可以向数据表中写入记录，可以是一条记录也可以是多条记录
+        INSERT INTO 表名（字段1，字段2，···）
+            VALUES（值1，值2，····），（值1，值2，····）；
+    INSERT 方言（限于 MySQL）
+        INSERT INTO 表名 SET 字段1 = 值1， 字段2 = 值2······；
+
+
+    IGNORE关键字：会让 INSERT 只插入数据库不存在的记录
+        INSERT [IGNORE] INTO 表名·····；
+
+改：
+    UPDATE 语句用于修改表的记录（现排序再修改）update > where > order by(如果存在的话) > limit (如果存在的话) > set
+        UPDATE [IGNORE] 表名
+        SET 字段1 = 值1，字段2 = 值2，··
+        [WHERE 条件1，···]
+        [ORDER BY]      # 排序
+        [LIMIT....];    # 取排好序的记录
+
+    表连接的 UPDATE 语句可以修改多张表的记录
+        内链接
+            UPDATE 表1 JOIN 表2 ON 条件
+            SET 字段1 = 值1， 字段2 = 值2，....;
+            或者
+            UPDATE 表1，表2
+            SET 字段1 = 值1， 字段2 = 值2，....
+            WHERE 连接条件；
+        外链接
+            UPDATE 表1 [LEFT | RIGHT] JOIN 表2 ON 条件
+            SET 字段1 = 值1， 字段2 = 值2，...;
+
+
+删：
+       DELETE 语句，只能用于删除记录不能用来删除数据表
+       FROM > WHERE > ORDER By  > LIMIT  > DELETE
+            DELETE [IGNORE] FROM 条件
+            [WHERE 条件1， 条件2，...]      # 不写条件的话整张表的所有记录都会被删除
+            [ORDER BY]                    # 排序
+            [LIMIT...];                    # 取排好序的记录
+       DELETE 子句的表连接语法
+            内连接
+                DELETE 表1，··· FROM 表1 JOIN 表2 ON 条件
+                [WHERE 条件1， 条件2，...]
+                [ORDER BY]
+                [LIMIT...];
+            外连接
+                DELETE 表1，··· FROM 表1 [LEFT | RIGHT] JOIN 表2
+                ON 条件·····；
+
+       DELETE 语句是在事物机制下删除记录，删除之前先把将要删除的记录保存到日志文件中，然后在删除
+
+       TRUNCATE 语句在事物机制之外删除记录，速度超过 DELETE 语句
+            TRUNCATE TABLE 表名；
+
+
+MYSQL 的基本函数：
+    数字函数：FORMAT, ABS(绝对值), MOD, CEIL(强制进位到最近的整数), FLOOR(强制舍位到最近的函数),
+            ROUND(四舍五入), POWER(幂函数), LOG、LN（对数函数), EXP, SORT(开平方), PI(圆周率),
+            SQRT(开平方), PI(圆周率), SIN、 COS、 TAN、 COT(三角函数), RADIANS(角度转弧度), DEGREES(弧度转角度)
+
+    字符函数：UPPER(转换小写字符), LOWER(转换大写字符), COUNT(字符数量),
+            INSTR(字符出现的位置), INSERT(插入/替换字符), REPLACE(替换字符)
+            SUBSTR(截取字符串), SUBSTRING(截取字符串), LPAD(左侧填充字符), RPAD(右侧填充字符), TRIM(去除首尾空格)
+            CONCAT( )函数用于连接字符串， REPLACE（）函数用于替换字符
+
+    日期函数：NOW(返回系统日期和时间  年份 - 月份 - 日期  时 - 分 - 秒),
+            CURDATE(返回当前系统日期   年份 - 月份 - 日期 ),
+            CURTIME(返回当前系统时间    时 - 分 - 秒),
+            DATE_FORMAT(用于格式化日期，返回用户想要的格式    DATE_FORMAT(日期，表达式)),
+            DATE_ADD(日期的加减      DATE_ADD（日期， INTERVAL 偏移量 时间单位)),
+            DATEDIFF(用来计算两个日期之间相差的天数       DATEDIFF (日期， 日期))
+    条件函数:
+            IFNULL( 表达式， 值)
+            IF(表达式， 值1， 值2)         ## 表达式为真，返回值1，否则返回值2
+
+            复杂的判断可以用条件语句来判断
+            CASE
+                WHEN 表达式 THEN 值1
+                WHEN 表达式 THEN 值2
+                ...
+                ELSE 值N
+            END
+
+
+数据库事务机制：undo 和 redo 日志，开启事务、提交事务、回滚事务
+       MySQL 拷贝数据到 undo 日志, redo日志记录修改然后同步到 MySQl 完成增删改查
+
+       RDBMS = SQL 语句 + 事务（ACID）
+
+       默认情况下，MySQl 执行每条SQL语句都会自动开启和提交事务
+
+       为了让多条 SQL 语句纳入到下一个事务，可以手动管理事务
+            START TRANSACTION；
+            SQL 语句
+            [COMMIT(提交) \ ROLLBACK(回滚)];
+
+       事务的 ACID 属性：原子性， 一致性， 隔离性， 持久性
+                原子性：一个事务的所有操作要么全部完成，要么全部失败。事务执行后，不允许停留在中间某个状态
+                一致性：不管在任何给定的时间，并发事务有多少，事务必须保证运行结果的一致性
+                隔离性：要求事务不受其他并发事务的影响，如同在给定的时间内，该事务是数据库唯一运行的事务
+                       四个隔离级别：
+                            read uncommitted  读取未提交数据
+                                SET SESSION TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+                            read committed    读取已经提交的数据
+                                SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED;
+                      （默认）repeatable read   事务在执行中重复读取，得到的结果是一致的，不会受其他事务影响（重复读取）
+                                 SET SESSION TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+                            serializable  由于事务并发执行所带来的各种问题，前三种隔离级别只使用在某些业务场景中，
+                                            但是序列化的隔离性，让事务逐一执行，就不会产生上述问题 (序列化)
+                                 SET SESSION TRANSACTION ISOLATION LEVEL SERIALIZABLE;
+                持久性：事务一旦提交，结果便是永久性的。即便发生死机，仍然可以依靠事务日志完成数据的持久化
+
+
+
+
+数据导出和导入：导出的只是数据文件
+        SQL 文件的导出和导入
+            mysqldump 用来把业务数据导出成 sql 文件， 其中包括了表结构
+                mysqldump -uroot -p [no-data] 逻辑库 > 路径
+        TXT 文档的导入和导出
+        数据不多的情况下优先选择导出为 SQL 文件，如果数据较多时优先选择导出为 TXT 文件
+数据备份：备份的是数据文件、日志文件、索引文件···
+        全量备份（所有内容）--->增量备份（变动过的）
+
+数据加密：
+    对称加密：DES 、 AES 加密
+            AES：数据库提供了AES加密和解密的函数；用AES 解密的时候需要用与加密时一样的密钥
+                AES_ENCRYPT(原始数据， 密钥字符串)
+                SELECT HEX(AES_ENCRYPT("你好啊","123"));
+                ##  加 HEX 为了避免执行结果之后报乱码（二进制转化成 16 进制）
+
+                AES_DECRYPT（加密结果， 密钥字符串）
+                ## 加密的时候把二进制转化成 16 进制，解密的时候需要转化成二进制再解密
+                SELECT AES_DECRYPT(UNHEX("2A7464339F2931CFA46CE8CBE49795D6"), "123");
+    非对称加密：RSA、DSA、 ECC 加密
+
+
+
+MySQL 与 Python 交互：
+    MYSQL -- Connector 模块： 数据库连接池、预编译SQL、CRUD（增、删、改、查）操作、事务管理、异常处理
+
+    mysql connector 里面的游标用来执行 sql 语句，而且查询的结果集也会保存在游标之中
+        cursor = 变量名.cursor()
+        cursor.execute( sql 语句)
+
+    预编译 sql 就是数据库提前把sql语句编译成二进制，这样反复执行同一条 sql 与语句的效率就会提升
+    sql 语句变异的过程中，关键字已经被解析过了，所以像编译后的 sql 语句传入参数，都被当作字符串处理，
+    数据库不会解析其中注入的 sql 语句。 所以说 预编译可以有效的防止被外部注入攻击
+
+    游标对象中的 executemany() 函数可以反复执行一条 sql 语句
+
