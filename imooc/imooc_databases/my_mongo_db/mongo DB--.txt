@@ -1,0 +1,115 @@
+mongodb 内置了很多种用户角色，创建用户的时候要分配角色
+下面四个角色的权限仅限于某个逻辑库，不能管理其他逻辑库
+    Read：允许用户读取指定逻辑库
+    readWrite：允许用户读写指定逻辑库
+    abAdmin：可以管理指定的逻辑库
+    userAdmin：可以管理指定逻辑库的用户
+
+以下四个角色只能创建在 admin 逻辑库中，可以管理其他逻辑库
+    readAnyDatabase：允许读取任何逻辑库
+    readWriteAnyDatabase：允许读写任何逻辑库
+    dbAdminAnyDatabase：允许管理任何逻辑库
+    userAdminAnyDatabase：允许管理任何逻辑库用户
+
+以下两种角色也是必须创建在 admin 逻辑库中， root 角色的权限最大
+    clusterAdmin：允许管理 MongoDB 集群
+    root：超级管理员，拥有最高权限
+
+
+mongoDB 用 BSON（二进制 JSON ）来保存数据，一条记录就是一个 BSON ，被称为文档(document)
+某些 BSON 聚集在一起，就形成了集合(collection)
+
+
+管理逻辑库：
+    创建/切换逻辑库：use / test
+    查看逻辑库：show dbs
+    删除逻辑库：db.dropDatabase()
+管理集合：
+    创建集合：db.createCollection("student")
+    查看集合：show collections
+    删除集合：db.student.drop()
+    查看集合记录数量：db.student.count()
+    查看数据空间容量：db.student.dataSize()
+    重命名集合：db.student.renameCollection("stu")
+    往集合中添加数据：save
+    查询记录：find / find_one(只会返回一条记录)
+    分页查询： skip()  从()条记录开始 &  limit() 取()条记录
+    数据排序：sort() 1 代表升序， -1 代表降序
+    排除重复：distinct()函数替代 find() 函数查找不重复的记录
+    修改记录：update() & updateMany()
+    删除记录：remove()
+
+
+表达式： MongoDB 的表达式必须写成 JSON 格式
+    $lt   小于
+    $gt   大于
+    $lte  小于等于
+    $gte  大于等于
+    $in   包括
+    $nin  不包括
+    $ne   不等于
+    $all  全部
+    $not  全部
+    $or   或关系
+    $exists   含有字段
+
+修改记录：
+    $unset 删除记录中的字段
+    $inc 对某个字段值作加法运算
+    $push: 向数组属性添加元素
+    $pull: 删除数组属性的元素
+
+主键值：在集合中，文档之间都是松散的，没有统一的字段约束，为了标识文档的唯一性，MongoDB 为每个文档添加了主键字段( _id )
+    OBjectId 是一个 12 字节的 BSON 类型字符串
+    getTimestamp 提取时间戳，MongoDB 中的时间戳都是格林尼治时间
+
+索引：
+    创建索引的原则：
+        数据量很大的时候
+        当集合中的数据读取操作多过写入操作时，就需要创建索引
+            db.collection.createIndex({keys:1}, options)
+            索引字段按照升序排列，属性值为 1 ；降序排列属性值为 -1
+        给经常被当作查询条件的字段创建索引
+    创建索引的过程会阻塞 MongoDB ，影响其他增删改查操作，所以以 background 参数代表在空闲的时候创建索引
+        db.collection.createIndex({keys:1}, {background: true})
+    删除索引： db.student.dropIndexes()
+    查看是否是唯一性的索引： db.student.getindexes()
+    唯一性索引：
+        唯一性索引只能创建在每个记录都含有的公共字段上
+
+
+数据的导出导入：
+    mongodb 的数据导入导出：
+        mongoexport 命令可以把一个集合的数据导出成 JSON 或者 CSV 格式的文件
+        mongoimport 导入集合数据
+        mongodump 导出逻辑库数据
+        mongorestore 导入逻辑库的数据
+        --dumpDbUsersAndRoles 参数可以备份隶属于逻辑库的用户
+
+mongodb 的操作函数：
+    skip 用于数据分页查询
+    limit 用于数据分页查询
+    count 查询记录总数
+    distinct 查询不重复的字段值
+    sort 对记录排序
+
+
+文件存储：
+    搭建一套程序系统，其中一项重要的功能就是文件存储
+    把文件直接保存到硬盘上，这种方式最简单，但不适用于分布式部署环境
+    把文件存储在文件服务器上。NAS 可以存放大量的文件，也能应对分布式环境，但是对文件的管理不方便
+    把文件存储在 NOSQL 数据库中，这里介绍存储在 mongodb 中
+    把文件存储在 mongodb 中：
+        GridFS 使用两个集合来存储文件，一个是 chunks 集合，用来存储文件，另一个是 files 集合，用于存储文件的元数据
+        grids 会把文件分割成若干 chunks(256kb)，然后在 files 记录
+        put 函数可以把文件存储到 GirdFS 中
+        find 和 find_one 函数可以查询 Girdfs 中存储的文件
+        exists 函数可以判断 Girdfs 是否存储某个文件
+        get 函数从 GridFS 中读取文件，并且只能通过主键查找文件
+        delete 函数从 GridFS 中删除文件，并且只能通过主键查找记录
+
+
+
+        GridFS 引擎：
+            GridFS 存储机制，文件的保存、查询、提取、删除
+    

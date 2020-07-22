@@ -191,3 +191,20 @@ class NewsDao:
         finally:
             if "con" in dir():
                 con.close()
+
+    # 在新闻表查找内容 ID
+    def search_content_id(self, id):
+        try:
+            con = pool.get_connection()
+            cursor = con.cursor()
+            sql = "SELECT content_id FROM t_news " \
+                  "WHERE id = %s"
+            cursor.execute(sql, [id])
+            content_id = cursor.fetchone()[0]
+            return content_id
+        except Exception as e:
+            print(e)
+
+        finally:
+            if "con" in dir():
+                con.close()
