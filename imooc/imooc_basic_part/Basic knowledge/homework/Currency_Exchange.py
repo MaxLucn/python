@@ -16,7 +16,7 @@ while True:
         your_money = int(input('请输入您要兑换的人民币：'))
         print('您需要转换的人民币为：', your_money, '元')
         # 定义人民币与美元的汇率
-        RMB_to_US = float(your_money/6.78)
+        RMB_to_US = float(your_money/7.06)
         print('兑换成美元为：{: 0.2f}$'.format(RMB_to_US))
         print('=========================================')
         continue
