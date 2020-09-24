@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+    <style type="text/css">
+        p::before{
+            content:"《";
+        }
+        p::after{
+            content:"》";
+        }
+        *::selection{
+            background-color:yellow;
+        }
+    </style>
+</head>
+<body>
+<h3>图书名称</h3>
+<p>Java程序设计</p>
+<p>Java编程思想</p>
+<p>Java核心技术</p>
+</body>
+</html>
+<!--伪元素选择器的应用： 为书名添加书名号；当文字被选中之后背景色变为黄色--->
