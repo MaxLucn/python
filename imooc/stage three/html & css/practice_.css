@@ -1,0 +1,14 @@
+body{
+	font: 微软雅黑
+}
+.list{
+	font-size: 20px;
+
+}
+
+ul{
+	color:green;
+}
+ol{
+	color:blue;
+}
