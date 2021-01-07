@@ -1,0 +1,36 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>表单元素设置1、2</title>
+	<script type="text/javascript" src="form_.js"></script>
+</head>
+<body
+	<form>
+		<label>用户名</label>
+		<input type="text" id="UserName" name="UserName" value="请输入您的用户名"/><br>
+		<input type="radio" name="xb" value="1" checked="checked">男
+		<input type="radio" name="xb" value="0">女<br>
+		<input type="button" id="btn" onclick="show1()" value="button"/>
+	</form>
+
+</body>
+</html> -->
+
+
+<!-- 对表单元素设置3、4、5 -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>对表单元素设置</title>
+	<script type="text/javascript" src="form_.js"></script>
+</head>
+<body onload="ymd()">
+	<form>
+		<select name="yyyy" id="yyyy" onchange="selectYmd()"></select>年
+		<select name="mm" id="mm" onchange="selectYmd()"></select>月
+		<select name="dd" id="dd"></select>日
+		<input type="button" value="删除列表框条目" onclick="deleteSelect()">	
+	</form>
+</body>
+</html>

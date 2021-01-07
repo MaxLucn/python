@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>崩溃、崩塌、破坏</title>
+	<link rel="stylesheet" type="text/css" href="collapse.css">
+</head>
+<body>
+	<!--父级的块级元素的高度发生破坏-->
+	<!--块级元素的宽度默认为所在的父级(body)的宽度-->
+	<div id="div1">
+		<div id="div2"></div>
+		<div id="div3"></div>
+	</div>
+</body>
+</html>
+<!--将子元素设置浮动之后，父元素在没有设置指定高度的情况下，
+父元素的高度将不存在，即为崩溃、崩塌、破坏。-->

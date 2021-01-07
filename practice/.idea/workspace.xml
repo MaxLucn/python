@@ -1,25 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BranchesTreeState">
-    <expand>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </expand>
-    <select />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="15449c25-1d6b-4644-b712-204e8ca1e847" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../imooc/imooc_basic_part/Functions and modules/homework2/record.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../imooc/imooc_basic_part/Functions and modules/homework2/record.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../imooc/imooc_databases/my_mongo_db/vega_2/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/../imooc/imooc_databases/my_mongo_db/vega_2/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../imooc/imooc_databases/my_mongo_db/vega_2/db/mongo_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/../imooc/imooc_databases/my_mongo_db/vega_2/db/mongo_db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../imooc/imooc_databases/my_redis/vega_2.zip" beforeDir="false" afterPath="$PROJECT_DIR$/../imooc/imooc_databases/my_redis/vega_2.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,7 +16,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -44,7 +30,6 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -56,7 +41,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.func_">
     <configuration name="Currency_Exchange" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="practice" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -71,6 +56,72 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../imooc/imooc_basic_part/Basic knowledge/homework/Currency_Exchange.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="example" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="practice" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../imooc/imooc_basic_part/Object-oriented /homework3" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../imooc/imooc_basic_part/Object-oriented /homework3/example.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="file_exe" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="practice" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../imooc/imooc_basic_part/Object-oriented /homework3" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../imooc/imooc_basic_part/Object-oriented /homework3/file_exe.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="func_" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="practice" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/func_.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -101,6 +152,15 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.func_" />
+        <item itemvalue="Python.example" />
+        <item itemvalue="Python.file_exe" />
+        <item itemvalue="Python.prac" />
+        <item itemvalue="Python.Currency_Exchange" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -120,45 +180,53 @@
       <workItem from="1599845541255" duration="406000" />
       <workItem from="1599891846784" duration="60000" />
       <workItem from="1599891981073" duration="8000" />
-      <workItem from="1599896601757" duration="14534000" />
-      <workItem from="1600965831579" duration="247000" />
+      <workItem from="1599896601757" duration="14799000" />
+      <workItem from="1602497648040" duration="6591000" />
+      <workItem from="1603052224195" duration="513000" />
+      <workItem from="1603067202836" duration="635000" />
+      <workItem from="1603159478216" duration="639000" />
+      <workItem from="1604738559359" duration="158000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
   <component name="WindowStateProjectService">
-    <state width="1398" height="230" key="GridCell.Tab.0.bottom" timestamp="1600606579329">
-      <screen x="0" y="23" width="1440" height="822" />
+    <state width="1878" height="318" key="GridCell.Tab.0.bottom" timestamp="1604738717798">
+      <screen x="1440" y="23" width="1920" height="1057" />
     </state>
-    <state width="1398" height="230" key="GridCell.Tab.0.bottom/1440.23.1920.1057/0.23.1440.822@0.23.1440.822" timestamp="1600606579329" />
+    <state width="1398" height="234" key="GridCell.Tab.0.bottom/1440.23.1920.1057/0.23.1440.822@0.23.1440.822" timestamp="1603066298650" />
+    <state width="1398" height="234" key="GridCell.Tab.0.bottom/1440.23.1920.1057/0.23.1440.822@1440.23.1920.1057" timestamp="1603066055147" />
+    <state width="1878" height="318" key="GridCell.Tab.0.bottom/1440.23.1920.1057/0.23.1440.823@1440.23.1920.1057" timestamp="1604738717798" />
     <state width="1398" height="230" key="GridCell.Tab.0.bottom/1440.23.1920.1057/0.23.1440.877@0.23.1440.877" timestamp="1600272599880" />
-    <state width="1398" height="230" key="GridCell.Tab.0.center" timestamp="1600606579327">
-      <screen x="0" y="23" width="1440" height="822" />
+    <state width="1878" height="318" key="GridCell.Tab.0.center" timestamp="1604738717797">
+      <screen x="1440" y="23" width="1920" height="1057" />
     </state>
-    <state width="1398" height="230" key="GridCell.Tab.0.center/1440.23.1920.1057/0.23.1440.822@0.23.1440.822" timestamp="1600606579327" />
+    <state width="1398" height="234" key="GridCell.Tab.0.center/1440.23.1920.1057/0.23.1440.822@0.23.1440.822" timestamp="1603066298649" />
+    <state width="1398" height="234" key="GridCell.Tab.0.center/1440.23.1920.1057/0.23.1440.822@1440.23.1920.1057" timestamp="1603066055146" />
+    <state width="1878" height="318" key="GridCell.Tab.0.center/1440.23.1920.1057/0.23.1440.823@1440.23.1920.1057" timestamp="1604738717797" />
     <state width="1398" height="230" key="GridCell.Tab.0.center/1440.23.1920.1057/0.23.1440.877@0.23.1440.877" timestamp="1600272599879" />
-    <state width="1398" height="230" key="GridCell.Tab.0.left" timestamp="1600606579326">
-      <screen x="0" y="23" width="1440" height="822" />
+    <state width="1878" height="318" key="GridCell.Tab.0.left" timestamp="1604738717796">
+      <screen x="1440" y="23" width="1920" height="1057" />
     </state>
-    <state width="1398" height="230" key="GridCell.Tab.0.left/1440.23.1920.1057/0.23.1440.822@0.23.1440.822" timestamp="1600606579326" />
+    <state width="1398" height="234" key="GridCell.Tab.0.left/1440.23.1920.1057/0.23.1440.822@0.23.1440.822" timestamp="1603066298649" />
+    <state width="1398" height="234" key="GridCell.Tab.0.left/1440.23.1920.1057/0.23.1440.822@1440.23.1920.1057" timestamp="1603066055146" />
+    <state width="1878" height="318" key="GridCell.Tab.0.left/1440.23.1920.1057/0.23.1440.823@1440.23.1920.1057" timestamp="1604738717796" />
     <state width="1398" height="230" key="GridCell.Tab.0.left/1440.23.1920.1057/0.23.1440.877@0.23.1440.877" timestamp="1600272599878" />
-    <state width="1398" height="230" key="GridCell.Tab.0.right" timestamp="1600606579328">
-      <screen x="0" y="23" width="1440" height="822" />
+    <state width="1878" height="318" key="GridCell.Tab.0.right" timestamp="1604738717798">
+      <screen x="1440" y="23" width="1920" height="1057" />
     </state>
-    <state width="1398" height="230" key="GridCell.Tab.0.right/1440.23.1920.1057/0.23.1440.822@0.23.1440.822" timestamp="1600606579328" />
+    <state width="1398" height="234" key="GridCell.Tab.0.right/1440.23.1920.1057/0.23.1440.822@0.23.1440.822" timestamp="1603066298650" />
+    <state width="1398" height="234" key="GridCell.Tab.0.right/1440.23.1920.1057/0.23.1440.822@1440.23.1920.1057" timestamp="1603066055147" />
+    <state width="1878" height="318" key="GridCell.Tab.0.right/1440.23.1920.1057/0.23.1440.823@1440.23.1920.1057" timestamp="1604738717798" />
     <state width="1398" height="230" key="GridCell.Tab.0.right/1440.23.1920.1057/0.23.1440.877@0.23.1440.877" timestamp="1600272599879" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/practice$file_exe.coverage" NAME="file_exe Coverage Results" MODIFIED="1602590859865" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../imooc/imooc_basic_part/Object-oriented /homework3" />
+    <SUITE FILE_PATH="coverage/practice$Currency_Exchange.coverage" NAME="Currency_Exchange Coverage Results" MODIFIED="1599845808617" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../imooc/imooc_basic_part/Basic knowledge/homework" />
+    <SUITE FILE_PATH="coverage/practice$prac.coverage" NAME="prac Coverage Results" MODIFIED="1600606579276" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/practice$func_.coverage" NAME="func_ Coverage Results" MODIFIED="1604738564884" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/practice$example.coverage" NAME="example Coverage Results" MODIFIED="1602590881118" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../imooc/imooc_basic_part/Object-oriented /homework3" />
   </component>
 </project>

@@ -35,90 +35,94 @@ while True:
             while True:
                 os.system("clear")
                 if role == "新闻编辑":
-                    print(Fore.LIGHTGREEN_EX, "\n\t1.发表新闻")
-                    print(Fore.LIGHTGREEN_EX, "\n\t2.编辑新闻")
-                    print(Fore.LIGHTRED_EX, "\n\tback. 退出登录")
-                    print(Fore.LIGHTRED_EX, "\n\texit.退出系统")
-                    print(Style.RESET_ALL)
-                    opt = input("\n\t输入操作编号：")
-                    if opt == "1":
-                        os.system("clear")
-                        title = input("\n\t新闻标题：")
-                        userid = __user_service.search_userid(username)
-                        result = __type_service.search_list()
-                        for index in range(len(result)):
-                            one = result[index]
-                            print(Fore.LIGHTBLUE_EX, "\n\t%d.%s" % (index + 1, one[1]))
-                        print(Style.RESET_ALL)
-                        opt = input("\n\t类型编号：")
-                        type_id = result[int(opt) - 1][0]
-                        # TODO 新闻正文内容
-                        path = input("\n\t输入文件路径:")
-                        file = open(path, "r")
-                        content = file.read()
-                        file.close()
-                        is_top = input("\n\t置顶级别(0-5):")
-                        is_commite = input("\n\t是否提交(Y/N):")
-                        if is_commite == "Y" or is_commite == "y":
-                            __news_service.insert(title, userid, type_id, content, is_top)
-                            print("\n\t保存成功(3秒自动返回)")
-                            time.sleep(3)
-                    elif opt == "2":
-                        page = 1
-                        while True:
-                            os.system("clear")
-                            count_page = __news_service.search_count_page()
-                            result = __news_service.search_list(page)
-                            for index in range(len(result)):
-                                one = result[index]
-                                print(Fore.LIGHTBLUE_EX, "\n\t%d\t%s\t%s\t%s" % (index + 1, one[1], one[2], one[3]))
-                            print(Fore.LIGHTBLUE_EX, "\n\t-------------------")
-                            print(Fore.LIGHTBLUE_EX, "\n\t%d/%d" % (page, count_page))
-                            print(Fore.LIGHTBLUE_EX, "\n\t-------------------")
-                            print(Fore.LIGHTRED_EX, "\n\tback. 返回上一层")
-                            print(Fore.LIGHTRED_EX, "\n\tprev. 返回上一页")
-                            print(Fore.LIGHTRED_EX, "\n\tnext. 返回下一页")
-                            print(Style.RESET_ALL)
-                            opt = input("\n\t输入操作编号：")
-                            if opt == "back":
-                                break
-                            elif opt == "prev" and page > 1:
-                                page -= 1
-                            elif opt == "next" and page < count_page:
-                                page += 1
-                            elif int(opt) >= 1 and int(opt) <= 10:
-                                os.system("clear")
-                                news_id = result[int(opt) - 1][0]
-                                result = __news_service.search_by_id(news_id)
-                                title = result[0]
-                                type = result[1]
-                                is_top = result[2]
-                                print("\n\t新闻原标题:%s" % (title))
-                                new_title = input("\n\t新标题:")
-                                print("\n\t原类型:%s" % (type))
-                                result = __type_service.search_list()
-                                for index in range(len(result)):
-                                    one = result[index]
-                                    print(Fore.LIGHTBLUE_EX, "\n\t%d.%s" % (index + 1, one[1]))
-                                print(Style.RESET_ALL)
-                                opt = input("\n\t类型编号:")
-                                type_id = result[int(opt) - 1][0]
-                                # TODO 输入新闻内容
-                                path = input("\n\t输入内容路径：")
-                                file = open(path, "r")
-                                content = file.read()
-                                file.close()
-                                print("\n\t原置顶级别：%s" % (is_top))
-                                new_is_top = input("\n\t置顶级别(0-5):")
-                                is_commite = input("\n\t是否提交？(Y/N):")
-                                if is_commite == "Y" or is_commite == "y":
-                                    __news_service.update(news_id, new_title, type_id, content, new_is_top)
-                                    print("\n\t保存成功(3秒自动返回)")
-                                    time.sleep(3)
-                    elif opt == "back":
-                        break
-                    elif opt == "exit":
-                        sys.exit(0)
+                    print(Fore.LIGHTRED_EX, "\n\t新闻编辑模块正在开发中_ _ _ _")
+                    time.sleep(3)
+                    break
+                    # print(Fore.LIGHTGREEN_EX, "\n\t1.发表新闻")
+                    # print(Fore.LIGHTGREEN_EX, "\n\t2.编辑新闻")
+                    # print(Fore.LIGHTRED_EX, "\n\tback. 退出登录")
+                    # print(Fore.LIGHTRED_EX, "\n\texit.退出系统")
+                    # print(Style.RESET_ALL)
+                    # opt = input("\n\t输入操作编号：")
+                    # if opt == "1":
+                    #     os.system("clear")
+                    #     title = input("\n\t新闻标题：")
+                    #     userid = __user_service.search_userid(username)
+                    #     result = __type_service.search_list()
+                    #     for index in range(len(result)):
+                    #         one = result[index]
+                    #         print(Fore.LIGHTBLUE_EX, "\n\t%d.%s" % (index + 1, one[1]))
+                    #     print(Style.RESET_ALL)
+                    #     opt = input("\n\t类型编号：")
+                    #     type_id = result[int(opt) - 1][0]
+                    #     # TODO 新闻正文内容
+                    #     path = input("\n\t输入文件路径:")
+                    #     file = open(path, "r")
+                    #     content = file.read()
+                    #     file.close()
+                    #     is_top = input("\n\t置顶级别(0-5):")
+                    #     is_commite = input("\n\t是否提交(Y/N):")
+                    #     if is_commite == "Y" or is_commite == "y":
+                    #         __news_service.insert(title, userid, type_id, content, is_top)
+                    #         print("\n\t保存成功(3秒自动返回)")
+                    #         time.sleep(3)
+                    # elif opt == "2":
+                    #     page = 1
+                    #     while True:
+                    #         os.system("clear")
+                    #         count_page = __news_service.search_count_page()
+                    #         result = __news_service.search_list(page)
+                    #         for index in range(len(result)):
+                    #             one = result[index]
+                    #             print(Fore.LIGHTBLUE_EX, "\n\t%d\t%s\t%s\t%s" % (index + 1, one[1], one[2], one[3]))
+                    #         print(Fore.LIGHTBLUE_EX, "\n\t-------------------")
+                    #         print(Fore.LIGHTBLUE_EX, "\n\t%d/%d" % (page, count_page))
+                    #         print(Fore.LIGHTBLUE_EX, "\n\t-------------------")
+                    #         print(Fore.LIGHTRED_EX, "\n\tback. 返回上一层")
+                    #         print(Fore.LIGHTRED_EX, "\n\tprev. 返回上一页")
+                    #         print(Fore.LIGHTRED_EX, "\n\tnext. 返回下一页")
+                    #         print(Style.RESET_ALL)
+                    #         opt = input("\n\t输入操作编号：")
+                    #         if opt == "back":
+                    #             break
+                    #         elif opt == "prev" and page > 1:
+                    #             page -= 1
+                    #         elif opt == "next" and page < count_page:
+                    #             page += 1
+                    #         elif int(opt) >= 1 and int(opt) <= 10:
+                    #             os.system("clear")
+                    #             news_id = result[int(opt) - 1][0]
+                    #             result = __news_service.search_by_id(news_id)
+                    #             title = result[0]
+                    #             type = result[1]
+                    #             is_top = result[2]
+                    #             print("\n\t新闻原标题:%s" % (title))
+                    #             new_title = input("\n\t新标题:")
+                    #             print("\n\t原类型:%s" % (type))
+                    #             result = __type_service.search_list()
+                    #             for index in range(len(result)):
+                    #                 one = result[index]
+                    #                 print(Fore.LIGHTBLUE_EX, "\n\t%d.%s" % (index + 1, one[1]))
+                    #             print(Style.RESET_ALL)
+                    #             opt = input("\n\t类型编号:")
+                    #             type_id = result[int(opt) - 1][0]
+                    #             # TODO 输入新闻内容
+                    #             path = input("\n\t输入内容路径：")
+                    #             file = open(path, "r")
+                    #             content = file.read()
+                    #             file.close()
+                    #             print("\n\t原置顶级别：%s" % (is_top))
+                    #             new_is_top = input("\n\t置顶级别(0-5):")
+                    #             is_commite = input("\n\t是否提交？(Y/N):")
+                    #             if is_commite == "Y" or is_commite == "y":
+                    #                 __news_service.update(news_id, new_title, type_id, content, new_is_top)
+                    #                 print("\n\t保存成功(3秒自动返回)")
+                    #                 time.sleep(3)
+                    # elif opt == "back":
+                    #     break
+                    # elif opt == "exit":
+                    #     sys.exit(0)
+
                 elif role == "管理员":
                     print(Fore.LIGHTGREEN_EX, "\n\t1.审批新闻")
                     print(Fore.LIGHTGREEN_EX, "\n\t2.删除新闻")

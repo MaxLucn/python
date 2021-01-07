@@ -1,0 +1,196 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+.header{
+    background-color: #07cbc9;
+    position: fixed;
+    top: 0px;
+    z-index: 100;
+    margin: 0px auto;
+    width:100%;
+    height:60px;
+}
+.logo{
+    float: left;
+    position: relative;
+    left: 80px;
+    top: 2px;
+}
+.header .menu{
+    color: #f0ffff;
+    float: right;
+    position: relative;
+    right: 30px;
+    top: 15px;
+}
+
+.header .menu label:hover{
+    background-color: #000000;
+}
+
+.banner{
+    margin: 60px auto;
+    width: 100%;
+    height: 600px;
+    /*margin-top: 60px;*/
+    text-align: center;
+}
+
+.banner_images img{
+    width: 100%;
+    height: 600px;
+}
+
+.banner .banner_images{
+    margin: 0px auto;
+    width: 100%;
+    height: 600px;
+    position: relative;
+    float: left;
+    background-color: black;
+    z-index: 1;
+}
+
+.input_span{
+    opacity: 0.4;
+    position:absolute;
+    top:200px;
+    width: 100%;
+    height: 600px;
+    margin: 0 auto;
+    float: left;
+    z-index: 2;
+    text-align: center;
+}
+
+
+.banner .input_span ul>li{
+    list-style: none;
+    margin-top: 10px;
+    background-color: transparent;
+}
+
+.inlist{
+    color: #e1fffd;
+    border: 1px solid white;
+    background-color: transparent;
+}
+.inlist:hover{
+    border-color: #07cbc9;
+}
+
+.submitin:hover{
+    background-color:#07cbc9;
+    color: #fff;
+    border:1px solid #07cbc9;
+}
+
+.submitin{
+    border: 1px solid white;
+    background-color: transparent;
+}
+
+.banner *::after{
+    content: '';
+    display: block;
+    clear: both;
+}
+
+
+
+
+.ABout{
+    margin: 20px auto;
+    width: 100%;
+    height: 500px;
+    /*margin-top: 30px;*/
+    text-align: center;
+    position:relative;
+}
+
+.ABout .ABtitle{
+    font-size: 40PX;
+    font-weight: 700 ;
+}
+
+.dunderline{
+    margin: 3px auto;
+    background-color:#07cbc9;
+    display: block;
+    width: 50px;
+    height: 2px;
+    text-align: center;
+}
+
+.ABout .ABconent{
+    width: 440px;
+    height: 100px;
+    margin: auto;
+    position: relative;
+    top: 20px; left: 0; bottom: 0; right: 0;
+}
+
+.ABout .ABmiddle{
+    /*width: 60%;*/
+    margin: 0 auto;
+    width: 1000px;
+    position: relative;
+}
+
+.ABmiddle .ABmleft .lefttitle{
+    width: 150px;
+    height: 100px;
+    font-size: 20PX;
+    font-weight: 700 ;
+    position: absolute;
+    float: left;
+}
+
+.ABmiddle .ABmleft .midconent{
+    /*margin: 300;*/
+    width: 240px;
+    height: 100px;
+    margin: auto;
+    padding: 20px 15px 40px;
+    position: absolute;
+    float: left;
+    top: 50px;
+    border: 1px solid whitesmoke;
+    background-color: white;
+    opacity: 0.8;
+}
+
+
+.ABmiddle .ABmleft .midconent .leftsub{
+    margin: 10px auto;
+}
+
+
+.ABmiddle .ABmleft .miding{
+    margin: 0px auto;
+    width: 200px;
+    height: 100px;
+    position: absolute;
+    float: left;
+}
+
+.ABmiddle .ABmright{
+     margin: 0px auto;
+    width: 200px;
+    height: 50px;
+    position: relative;
+    float: right;
+}
+.pspan{
+    margin: 20px;
+    padding: 10px;
+    font-size: 18px;
+    text-align: center;
+    border: 1px solid #07cbc9;
+}
+
+.underline{
+    color: #07cbc9;
+}
