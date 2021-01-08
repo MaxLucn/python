@@ -3,6 +3,11 @@
     margin: 0px;
 }
 
+body {
+    font-size: 14px;
+    font-family: "microsoft yahei";
+}
+
 .header{
     background-color: #07cbc9;
     position: fixed;
@@ -22,8 +27,12 @@
     color: #f0ffff;
     float: right;
     position: relative;
-    right: 30px;
-    top: 15px;
+    margin-right: 30px;
+    margin-top: 20px;
+}
+
+.header .menu lable{
+
 }
 
 .header .menu label:hover{
@@ -76,6 +85,7 @@
     color: #e1fffd;
     border: 1px solid white;
     background-color: transparent;
+    text-indent: 5px;
 }
 .inlist:hover{
     border-color: #07cbc9;
@@ -101,7 +111,7 @@
 
 
 
-.ABout{
+.About{
     margin: 20px auto;
     width: 100%;
     height: 500px;
@@ -110,12 +120,12 @@
     position:relative;
 }
 
-.ABout .ABtitle{
+.About .About_title{
     font-size: 40PX;
     font-weight: 700 ;
 }
 
-.dunderline{
+.About_underline{
     margin: 3px auto;
     background-color:#07cbc9;
     display: block;
@@ -124,31 +134,31 @@
     text-align: center;
 }
 
-.ABout .ABconent{
+.About .About_content{
     width: 440px;
     height: 100px;
     margin: auto;
     position: relative;
-    top: 20px; left: 0; bottom: 0; right: 0;
+    top: 10px; left: 0; bottom: 0; right: 0;
 }
 
-.ABout .ABmiddle{
+.About .About_middle{
     /*width: 60%;*/
     margin: 0 auto;
     width: 1000px;
     position: relative;
 }
 
-.ABmiddle .ABmleft .lefttitle{
+.About_middle .About_middle_left .left_title{
     width: 150px;
     height: 100px;
     font-size: 20PX;
     font-weight: 700 ;
-    position: absolute;
+    /*position: absolute;*/
     float: left;
 }
 
-.ABmiddle .ABmleft .midconent{
+.About_middle .About_middle_left .middle_content{
     /*margin: 300;*/
     width: 240px;
     height: 100px;
@@ -162,28 +172,38 @@
     opacity: 0.8;
 }
 
-
-.ABmiddle .ABmleft .midconent .leftsub{
-    margin: 10px auto;
+.About_middle .About_middle_left .middle_content .left_submit{
+    /*margin: 10px auto;*/
+    /*background: #000000;*/
+    margin: 7px 80px 0px 80px;
+    border: 1px solid #000000;
+    background-color: black;
+    color: #ffffff;
 }
 
 
-.ABmiddle .ABmleft .miding{
+.About_middle .About_middle_left .middle_content .left_submit:hover{
+    background-color: rgba(255, 255, 255, 0.4);
+    color: #000000;
+}
+
+
+.About_middle .About_middle_left .middle_img{
     margin: 0px auto;
-    width: 200px;
-    height: 100px;
-    position: absolute;
+    width: 400px;
+    height: 300px;
+    /*position: absolute;*/
     float: left;
 }
 
-.ABmiddle .ABmright{
-     margin: 0px auto;
+.About_middle .About_middle_right{
+     /*margin: 0px auto;*/
     width: 200px;
-    height: 50px;
+    height: 150px;
     position: relative;
     float: right;
 }
-.pspan{
+.p_span{
     margin: 20px;
     padding: 10px;
     font-size: 18px;
@@ -193,4 +213,42 @@
 
 .underline{
     color: #07cbc9;
+}
+
+
+.About_lower .About_lower_img{
+    width: 25%;
+    height: 210px;
+    margin-top: 500px;
+    margin-left: 0px;
+    /*float: left;*/
+    /*position: relative;*/
+}
+
+.About_lower .About_lower_text{
+    background-color: #07cbc9;
+    width:260px;
+    height:230px;
+    float: right;
+    color: #ffffff;
+}
+
+.About_lower .About_lower_text .About_lower_text_title{
+    /*float: left;*/
+    /*position: relative;*/
+    font-size: 20px;
+}
+
+.About_lower .About_lower_text .About_lower_text_p1{
+    font-size: 16px;
+}
+
+.About_lower .About_lower_text .explore{
+    margin: 7px 90px 0px 90px;
+    border: 1px solid #000000;
+    background-color: black;
+}
+
+.About_lower .About_lower_text .explore:hover{
+    background-color: rgba(255, 255, 255, 0.4);
 }
