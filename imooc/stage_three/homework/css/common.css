@@ -47,12 +47,12 @@ body {
     text-align: center;
 }
 
-.banner_images img{
+.banner-images img{
     width: 100%;
     height: 600px;
 }
 
-.banner .banner_images{
+.banner .banner-images{
     margin: 0px auto;
     width: 100%;
     height: 600px;
@@ -62,7 +62,7 @@ body {
     z-index: 1;
 }
 
-.input_span{
+.input-span{
     opacity: 0.4;
     position:absolute;
     top:200px;
@@ -75,7 +75,7 @@ body {
 }
 
 
-.banner .input_span ul>li{
+.banner .input-span ul>li{
     list-style: none;
     margin-top: 10px;
     background-color: transparent;
@@ -111,21 +111,24 @@ body {
 
 
 
-.About{
+.about{
     margin: 20px auto;
     width: 100%;
     height: 500px;
     /*margin-top: 30px;*/
-    text-align: center;
     position:relative;
 }
 
-.About .About_title{
+.about-upper{
+    text-align: center;
+}
+
+.about .about-title{
     font-size: 40PX;
     font-weight: 700 ;
 }
 
-.About_underline{
+.about-underline{
     margin: 3px auto;
     background-color:#07cbc9;
     display: block;
@@ -134,7 +137,7 @@ body {
     text-align: center;
 }
 
-.About .About_content{
+.about .about-content{
     width: 440px;
     height: 100px;
     margin: auto;
@@ -142,14 +145,14 @@ body {
     top: 10px; left: 0; bottom: 0; right: 0;
 }
 
-.About .About_middle{
+.about .about-middle{
     /*width: 60%;*/
     margin: 0 auto;
     width: 1000px;
     position: relative;
 }
 
-.About_middle .About_middle_left .left_title{
+.about-middle .about-middle-left .left-title{
     width: 150px;
     height: 100px;
     font-size: 20PX;
@@ -158,7 +161,7 @@ body {
     float: left;
 }
 
-.About_middle .About_middle_left .middle_content{
+.about-middle .about-middle-left .middle-content{
     /*margin: 300;*/
     width: 240px;
     height: 100px;
@@ -172,7 +175,7 @@ body {
     opacity: 0.8;
 }
 
-.About_middle .About_middle_left .middle_content .left_submit{
+.about-middle .about-middle-left .middle-content .left-submit{
     /*margin: 10px auto;*/
     /*background: #000000;*/
     margin: 7px 80px 0px 80px;
@@ -182,13 +185,13 @@ body {
 }
 
 
-.About_middle .About_middle_left .middle_content .left_submit:hover{
+.about-middle .about-middle-left .middle-content .left-submit:hover{
     background-color: rgba(255, 255, 255, 0.4);
     color: #000000;
 }
 
 
-.About_middle .About_middle_left .middle_img{
+.about-middle .about-middle-left .middle-img{
     margin: 0px auto;
     width: 400px;
     height: 300px;
@@ -196,14 +199,14 @@ body {
     float: left;
 }
 
-.About_middle .About_middle_right{
+.about-middle .about-middle-right{
      /*margin: 0px auto;*/
     width: 200px;
     height: 150px;
     position: relative;
     float: right;
 }
-.p_span{
+.p-span{
     margin: 20px;
     padding: 10px;
     font-size: 18px;
@@ -215,40 +218,55 @@ body {
     color: #07cbc9;
 }
 
+.about-lower{
+    margin-top: 200px;
+    width: 100%;
+}
 
-.About_lower .About_lower_img{
+.about-lower .about-lower-child{
+    /*margin: 350px;*/
     width: 25%;
-    height: 210px;
-    margin-top: 500px;
+    height: 25vw;
+    float: left;
+    /*position: relative;*/
+}
+
+.about-lower .about-lower-img img{
+    /*width:274px;*/
+    /*height:274px;*/
+    width:100%;
+    height:25vw;
+    /*margin-top: 350px;*/
     margin-left: 0px;
     /*float: left;*/
     /*position: relative;*/
 }
 
-.About_lower .About_lower_text{
+.about-lower .about-lower-text{
     background-color: #07cbc9;
-    width:260px;
-    height:230px;
-    float: right;
+    width:25%;
+    height:25vw;
+    /*margin-top: 350px;*/
+    /*float: left;*/
     color: #ffffff;
 }
 
-.About_lower .About_lower_text .About_lower_text_title{
-    /*float: left;*/
-    /*position: relative;*/
+
+.about-lower .about-lower-text .about-lower-text-title{
+    margin-left: 5%;
     font-size: 20px;
 }
 
-.About_lower .About_lower_text .About_lower_text_p1{
+.about-lower .about-lower-text .about-lower-text-p1{
     font-size: 16px;
 }
 
-.About_lower .About_lower_text .explore{
-    margin: 7px 90px 0px 90px;
+.about-lower .about-lower-text .explore{
+    margin: 30px 100px 0px 90px;
     border: 1px solid #000000;
     background-color: black;
 }
 
-.About_lower .About_lower_text .explore:hover{
+.about-lower .about-lower-text .explore:hover{
     background-color: rgba(255, 255, 255, 0.4);
 }
