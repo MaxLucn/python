@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原生 JS 查询</title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    <label for="username">
+        <input type="text" name="username" id="username">
+    </label>
+    <p class="area">广州</p>
+    <p class="area">成都</p>
+    <p class="area">重庆</p>
+    <p>北京</p>
+    <script type="text/javascript">
+        // 根据 ID 查询
+        let username = document.getElementById('username');
+        console.log(username);
+        // 根据 class 查询
+        let areaList = document.getElementsByClassName('area')
+        console.log(areaList)
+        // 根据 标签查询
+        let pList = document.getElementsByTagName('p')
+        console.log(pList)
+        // 自己实现 jQuery 中的 ID 选择器
+        let $ = function(id){
+            return document.getElementById(id)
+        }
+        console.log($('username'))
+    </script>
+</body>
+</html>

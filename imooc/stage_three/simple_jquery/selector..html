@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery 选择器的使用</title>
+    <link rel="stylesheet" href="">
+    <script src="./jquery_library/jquery-3.4.1.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        // jQuery 代码的内容
+        // $(document).ready(function(){
+        $(function(){
+            // ID 选择器
+            let username = $('#username');
+            console.log(username);
+            // .class 选择器
+            let areaList = $('.class');
+            console.log(areaList);
+            // 元素标签选择器
+            let pList = $('p');
+            console.log(pList);
+            // 层级选择器
+            // body 下所有的元素
+            // let bodyList = $('body *');
+            // body 下所有的后代元素 p
+            let p_List = $('body p');
+            console.log(p_List);
+
+            // 直接的子元素
+            p_List = $('body > p');
+            console.log(p_List);
+
+            //紧贴之后的元素
+            let input = $("label + input");
+            console.log(input);
+
+            // 伪类选择器
+            let pFirst = $('p:first');
+            console.log(pFirst);
+
+            //第二个 p 标签
+            let p2 = $('p:eq(1)');
+            console.log(p2);
+
+            // 属性选择器
+            let password = $('input[name = "password"]');
+            console.log(password);
+
+            let name = $('input[name]');
+            console.log(name);
+        })
+    </script>
+</head>
+<body>
+    <label for="username">用户名</label>
+    <input type="text" name="username" id="username">
+    <input type="password" name="password" >
+
+    <p class="area">广州</p>
+    <p class="area">成都</p>
+    <p class="area" id="city">重庆</p>
+    <p>北京</p>
+    <div>
+        <p>53231323</p>
+    </div>
+
+</body>
+</html>
