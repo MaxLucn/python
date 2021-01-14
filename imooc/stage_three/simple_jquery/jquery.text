@@ -5,7 +5,7 @@
 4、封装、使用 jQuery 插件
 5、使用 AJAX 发送异步请求
 
-常用的选择器
+常用的选择器(总共有三种选择器：层级选择器、属性选择器、伪类选择器)
 1、#id 选择器
 2、类选择器  .class
 3、element（元素）选择器
@@ -22,3 +22,69 @@
 = ：等于
 ^= : 以**开始
 $= : 以 ** 结束
+
+
+查询 DOM 信息：
+1、访问 HTML 属性（id/ class / style,自定义属性）
+    .attr('class')
+2、查看 HTML/文本信息
+    .html()/text()
+3、查看表单值信息
+    .val()
+4、jQuery 对象与原生 DOM 对象互换
+    $('#id').get(0)
+
+jQuery 遍历：
+    length:通过对象的长度遍历
+    for 循环遍历
+    .each() 循环遍历
+    .find()/.children() 等筛选操作
+        .find() 作用：在当前的元素集合中进行搜索
+            .find(selector)
+            .find(element)
+
+
+修改 DOM 信息
+    使用 jQuery 构建 DOM
+        $('<p/>')
+        .append()/appendTo() 添加到 DOM
+    修改已经有的 DOM 信息
+        .html()/.text()/.val()/.attr() 修改已有的 DOM 信息
+    css() 添加 css
+        .addClass() \ .removeClass() 类操作
+        .show()/.hide()控制显示和隐藏
+
+
+jQuery 常用事件：
+    文档加载
+        当 DOM 准备就绪时，指定一个函数来执行
+            $(document).ready(function(){})
+            $(function(){})
+    鼠标事件
+        点击事件
+            .click()/.dblclick()  单击 / 双击
+            .mousedown()/.mouseup()  按下 / 抬起
+        移动事件
+            .mouseenter()/.mouseleave()   进入 / 离开(hover)
+        语法：
+            1、on('click', function(){})
+            2、click(function(){})
+            3、bind('click', function(){})
+    键盘事件
+        按下按键
+            .keydown()
+        抬起按键
+            .keyup()
+    表单事件
+        焦点
+            .focus()/.blur()  获得 / 失去焦点
+        值发生改变
+            .change()
+        表单提交
+            .submit()
+        阻止 a 标签的默认行为
+            event.preventDefault()
+        阻止多个事件冒泡
+            event.stopPropagation()
+
+
