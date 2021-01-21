@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex 布局</title>
+    <style type="text/css">
+        .container{
+            width: 600px;
+            height: 600px;
+            margin: 0 auto;
+            background-color: antiquewhite;
+            display: flex;
+            /* 元素的排列方式 */
+            /* flex-direction: row; */
+            /* 内容是否换行 */
+            /* flex-wrap: wrap; */
+            /* 水平居中对齐 */
+            /* justify-content: center; */
+        }
+
+        .container div{
+            width: 250px;
+            height: 100px;
+        }
+        .first{
+            order: 3;
+            background-color: #f00;
+        }
+        .second{
+            order: 1;
+            background-color: #ff0;
+        }
+        .third{
+            order: 2;
+            background-color: #00f;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="first">1</div>
+        <div class="second">2</div>
+        <div class="third">3</div>
+    </div>
+    
+</body>
+</html>

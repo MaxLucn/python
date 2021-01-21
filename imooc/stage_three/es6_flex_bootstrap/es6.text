@@ -53,3 +53,17 @@ ES6 的继承
         3、注意 import 顺序
             let b = 1;
             import b from './b.js'   // 报错 
+
+
+
+兼容问题的解决
+    1、shim 将不同的 API 封装成一种
+        比如：$.ajax 封装了 XMLHttpRequest 和 IE 用
+         ActiveXObjest 方式创建 xhr 对象
+    2、polyfill
+        比如：部分浏览器不支持箭头函数，可以把箭头函数换成普通函数
+
+babel 功能
+    1、语法转换，将 ES6+ 的语法转换为向后兼容的 js语法
+    2、通过 Polyfill 方式在目标环境中添加确实4的特性（通过 @babel/polyfill模块）
+    3、可转换 JSX 语法

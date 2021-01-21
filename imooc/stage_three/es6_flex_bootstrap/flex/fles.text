@@ -1,0 +1,29 @@
+flex 布局
+基本概念
+    1、容器（Flex Container）
+        felx-direction  指定容器内元素的排列方向
+            主轴为水平方向
+                row： 从左到右（默认值）
+                row-revers: 从右到左
+            主轴为垂直方向
+                column：  从上到下
+                column-revers：  从下到上
+        felx-wrap    容器内元素的换行行为
+            nowrap: 不换行（默认）
+            wrap： 换行，首行在上方
+            wrap-revers: 换行，首行在底部 
+        felx-flow    direction 和 wrap 的复合属性
+
+        justify-content   元素在横轴上的对齐方式
+        align-items   元素在纵轴上的对齐方式
+        align-content   多行元素的对齐方向
+    2、元素项（Flex Item）
+        order    排序规则，越小越靠前排列
+        flex-grow    放大（撑开）比例
+        flex-shrink    收缩比例
+        flex-basis      水平方向的大小
+        flex--grow、 shrink、 basis  的符合属性
+        align-self      元素在纵轴上的对齐方式
+    3、水平轴、横轴、主轴（main axis）
+    4、垂直轴、纵轴、交叉轴（cross axis）
+
