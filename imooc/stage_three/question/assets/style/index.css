@@ -1,108 +1,143 @@
 /* 首页样式 */
 .layout {
     padding-top: 70px;
-    background-color: #f6f6f6;
-}
-.navbar {
-    background-color: #fff;
-}
-.navbar .navbar-brand {
-    color: #0084ff;
-    font-size: 26px;
-    font-weight: bold;
 }
 
 /* 右侧菜单*/
-.right-menu-box{
+.right-menu-box {
     margin-top: 10px;
-    background-color: #ffffff;
     padding: 10px;
     display: flex;
     flex-wrap: wrap;
-    border: 1px solid #f0f2f7;
 }
 
 /* 把 a 标签分布成 2行3列， 并把文字在图标下方显示*/
-.right-menu-box .menu-item{
+.right-menu-box .menu-item {
     /* 两行三列*/
     flex: 1 1 33.33%;
     display: flex;
     flex-direction: column;
     text-align: center;
 }
+
 /* 去除 a 标签下固定的下划线*/
-.right-menu-box .menu-item:hover{
+.right-menu-box .menu-item:hover {
     text-decoration: none;
 }
 
-.right-menu-box .menu-item i{
+.right-menu-box .menu-item i {
     padding: 10px;
     color: #8590a6;
 }
 
-.right-menu-box .menu-item span{
+.right-menu-box .menu-item span {
     color: #444444;
 }
 
 .right-menu-box .menu-live span:hover,
-.right-menu-box .menu-live .glyphicon{
+.right-menu-box .menu-live .glyphicon {
     color: #ffcf00;
 }
 
 
 .right-menu-box .menu-store span:hover,
-.right-menu-box .menu-store .glyphicon{
+.right-menu-box .menu-store .glyphicon {
     color: #348523;
 }
 
 .right-menu-box .menu-mark span:hover,
-.right-menu-box .menu-mark .glyphicon{
+.right-menu-box .menu-mark .glyphicon {
     color: #124493;
 }
 
 .right-menu-box .menu-column span:hover,
-.right-menu-box .menu-column .glyphicon{
+.right-menu-box .menu-column .glyphicon {
     color: #2aabd2;
 }
 
 .right-menu-box .menu-pay span:hover,
-.right-menu-box .menu-pay .glyphicon{
+.right-menu-box .menu-pay .glyphicon {
     color: #eb9316;
 }
 
 .right-menu-box .menu-enc span:hover,
-.right-menu-box .menu-enc .glyphicon{
-    color: #f398;
+.right-menu-box .menu-enc .glyphicon {
+    color: #e27790;
 }
 
-.right-creater-box{
+.right-creater-box {
     padding: 15px;
     margin-top: 10px;
-    background-color: #ffffff;
-    border: 1px solid #f0f2f7;
 }
 
-.right-creater-box a{
+.right-creater-box a {
     display: flex;
     justify-content: space-between;
 }
 
-.right-creater-box a:hover{
+.right-creater-box a:hover {
     text-decoration: none;
 }
 
-.right-creater-box a .left span{
+.right-creater-box a .left span {
     color: #8590a6;
 }
 
-.right-creater-box .glyphicon{
+.right-creater-box .glyphicon {
     color: #8590a6;
 
 }
+
+/*创作者菜单入口*/
+.right-creater-menu {
+    margin-top: 15px;
+}
+
+.right-creater-menu .menu-item {
+    flex: 1 50%;
+    display: flex;
+    flex-direction: row;
+    color: #8590a6;
+    margin-top: 15px;
+    justify-content: space-between;
+    padding: 10px;
+    font-size: 17px;
+}
+
+.right-creater-menu .menu-item:hover {
+    text-decoration: none;
+    background-color: #f6f6f6;
+}
+
+.label{
+    color: #a9a7a7;
+}
+.label-default{
+    background-color: #f6f6f6;
+    padding: 5px;
+}
+/* // 创作者菜单入口*/
+
+/*版权信息*/
+.right-copyright {
+    margin-top: 20px;
+    color: #8590a6;
+    font-size: 1px;
+}
+
+.right-copyright ul {
+    list-style-type: none;
+}
+
+.copyright-list > li {
+    font-size: xx-small;
+}
+/*//版权信息*/
+
 /* // 右侧菜单*/
 
 /* 左侧分类菜单*/
-.cls-menu-ls{
+.cls-menu-ls {
     margin-top: 10px;
     padding: 10px;
 }
@@ -114,35 +149,36 @@
 }
 
 .cls-menu-ls a:hover,
-.cls-menu-ls a.active{
+.cls-menu-ls a.active {
     color: #0084ff;
     text-decoration: none;
 }
+
 /* // 左侧分类菜单*/
 
 /* 问题列表*/
-.qa-ls{
+.qa-ls {
     background-color: #ffffff;
 }
 
-.qa-item{
+.qa-item {
     margin-top: 1px;
     padding: 15px;
     border: 1px solid #f0f2f7;
 }
 
-.qa-ls .qa-item .title{
+.qa-ls .qa-item .title {
     font-size: 18px;
     font-weight: bold;
     padding: 10px 0;
     text-decoration: none;
 }
 
-.qa-ls .qa-item .desc{
+.qa-ls .qa-item .desc {
     display: flex;
 }
 
-.qa-ls .qa-item .desc .left{
+.qa-ls .qa-item .desc .left {
     width: 200px;
     height: 100px;
     margin-right: 10px;
@@ -150,62 +186,36 @@
     flex: none;
 }
 
-.qa-ls .qa-item .desc .left img{
+.qa-ls .qa-item .desc .left img {
     width: 200px;
     height: auto;
 }
 
-.qa-ls .qa-item .desc .right .more{
+.qa-ls .qa-item .desc .right .more {
     color: #175199;
     font-size: 13px;
     cursor: pointer;
 }
 
-.qa-ls .qa-item .desc .right .more:hover{
+.qa-ls .qa-item .desc .right .more:hover {
     color: #76839b;
 }
+
 /* // 问题列表*/
 
-/* 问题列表底部的菜单 */
-.qa-footer{
-    margin-top: 10px;
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
+@media (max-width: 767px) {
+    .qa-ls .qa-item .desc {
+        flex-wrap: wrap;
+        overflow: hidden;
+    }
+
+    .qa-ls .qa-item .desc .left {
+        width: 100%;
+    }
+
+    .qa-ls .qa-item .desc .left img {
+        width: 100%;
+    }
 }
 
-.qa-footer > div{
-    margin-right: 10px;
-}
 
-.qa-footer .text-menu{
-    color: #8590a6;
-}
-
-.qa-footer .text-menu .glyphicon{
-    margin-right: 3px;
-}
-
-.qa-footer .text-menu .dropdown-menu{
-    transform: translateX(-40%);
-}
-/* //问题列表底部的菜单 */
-
-
-/* 右下角的菜单*/
-.layout-footer{
-    position: fixed;
-    right: 15px;
-    bottom: 15px;
-    display: flex;
-    flex-direction: column;
-}
-
-.layout-footer i{
-    padding: 10px;
-    display: block;
-    background-color: #ffffff;
-    color: #8590a6;
-    border: 1px solid #f0f2f7;
-}
-/* // 右下角的菜单*/
