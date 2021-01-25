@@ -463,8 +463,9 @@
             $(this).addClass('hidden');
             $(this).prev().removeClass('hidden');
         })
-
+        // 阻止 a 标签自动跳转到顶部
         $("a").attr('href', 'javascript:void(0)')
+        // 实现自动跳转到顶部的效果
         $(".top").attr('href', '#top')
     })
 </script>
