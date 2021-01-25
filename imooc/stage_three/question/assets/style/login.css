@@ -1,0 +1,65 @@
+.container{
+    margin-top: 40px;
+}
+
+.login-header .title{
+    color: #0084ff;
+}
+
+.login-header .slogan{
+    padding-bottom: 20px;
+}
+
+.login-form{
+    padding: 30px;
+}
+
+.login-form .control-label{
+    padding-right: 0;
+}
+
+.login-form .desc{
+    margin-top: 10px;
+    background-color: #f6f6f6;
+    padding: 10px;
+    color: gray;
+}
+
+/*社交账号登录*/
+.login-social{
+    display: flex;
+    margin-top: 20px;
+    padding: 15px 20px;
+    justify-content: space-between;
+    font-size: 15px;
+}
+
+.login-social .login-social-right span{
+    padding: 0 10px;
+}
+.login-social .iconfont{
+    font-size: 18px;
+}
+
+.login-social .icon-weixin{
+    color: #45c45d;
+}
+.login-social .icon-QQ{
+    color: red;
+}
+.login-social .icon-weibo{
+    color: #0084ff;
+}
+/* //社交账号登录*/
+
+/*页脚*/
+.login-footer{
+    margin-top: 30px;
+    text-align: center;
+}
+.login-footer a{
+    padding: 10px;
+    text-decoration: none;
+    color: #8590a6;
+}
+/* //页脚*/
