@@ -1,61 +1,88 @@
-/* 首页样式 */
 .layout {
     background-color: #f6f6f6;
+    padding-top: 70px;
 }
-.navbar {
+.navbar{
     background-color: #fff;
 }
-.navbar .navbar-brand {
+.navbar .navbar-brand{
     color: #0084ff;
     font-size: 26px;
     font-weight: bold;
 }
-/*盒子的模型*/
-.wrap-box{
-    background-color: #ffffff;
-    border: 1px solid #f0f2f7;
+.navbar .navbar-brand:active,
+.navbar .navbar-brand:hover{
+    color: #0084ff;
 }
-/*// 盒子的模型*/
-/* 右下角的菜单*/
-.layout-footer{
+/* ******文章/问题的底部菜单******* */
+.qa-footer{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.qa-footer > div {
+    margin-right: 10px;
+    padding: 5px 0;  /**兼容移动端**/
+}
+.qa-footer .txt-menu {
+    color: #8590a6;
+}
+.qa-footer .txt-menu .glyphicon {
+    margin-right: 3px;
+}
+/* 下拉菜单居中对齐 */
+.qa-footer .txt-menu .dropdown-menu {
+    transform: translateX(-50%);
+}
+
+/***** 右下角的 意见反馈返回顶部 */
+.layout-footer {
     position: fixed;
     right: 15px;
     bottom: 15px;
     display: flex;
     flex-direction: column;
 }
-
 .layout-footer i{
     padding: 10px;
     display: block;
-    background-color: #ffffff;
+    background-color: #fff;
     color: #8590a6;
     border: 1px solid #f0f2f7;
 }
-/* // 右下角的菜单*/
 
-/* 问题列表底部的菜单 */
-.qa-footer{
-    margin-top: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-}
-
-.qa-footer > div{
-    margin-right: 10px;
-    margin-top: 5px;
-}
-
-.qa-footer .text-menu{
+/* 灰色按钮 */
+.btn-grey {
     color: #8590a6;
 }
-
-.qa-footer .text-menu .glyphicon{
-    margin-right: 3px;
+.btn-grey:hover {
+    color: #8590a6;
+}
+.btn-grey .glyphicon{
+    margin-right: 5px;
 }
 
-.qa-footer .text-menu .dropdown-menu{
-    transform: translateX(-40%);
+/* 盒子包裹，1px边框，白色背景 */
+.wrap-box {
+    background-color: #fff;
+    border: 1px solid #f0f2f7;
 }
-/* //问题列表底部的菜单 */
+
+/* 右侧底部 */
+.right-footer {
+    margin-top: 10px;
+}
+.right-footer .dot {
+    color: #8590a6;
+}
+.right-footer a {
+    color: #8590a6;
+    font-size: 13px;
+    line-height: 2.0;
+}
+.right-footer a,
+.right-footer a:hover {
+    text-decoration: none;
+}
+
