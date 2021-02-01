@@ -1,0 +1,52 @@
+MTV 模型：在一个项目中，这三部分内容不需要同时存在
+模型 Model:与数据库相关
+    与模型相关的扩展：
+        Flask-PyMongo/Flask-MongoKit
+        Flask-SQLAlchemy
+视图  View:负责业务逻辑对应项目中的视图函数
+    与视图相关的扩展
+        Flask-WTF/bootstrap-flask/Flask-Uploads
+模版  Template：负责如何把页面展示给用户（HTML）
+    jinja2
+
+
+启动服务器
+第一步、设置环境变量
+    Windows: set FLASK_APP=app.py
+    linux & mac :export FLASK_APP=app.py
+
+第二步、 flask run  启动内置 web 服务器
+    也可以指定 IP 及端口
+    flask run --host=0.0.0.0  --port=8001
+    或者 flask run -h 0.0.0.0 -p 8001
+
+
+开启调试模式
+    代码修改后服务器自动重启
+    第一步：设置环境变量
+        Windows: set FLASK_ENV=development
+        Linux & Mac: export FLASK_ENV=development
+    第二步： flask run 启动内置 web 服务器
+
+
+flask 的扩展
+    pypi.org
+
+
+URL 及 HTTP
+1、什么是 URL
+    统一资源定位符
+    每一个文件都有唯一的URL（地址）
+2、常见的网络协议有哪些
+    http：超文本传输协议
+    https：用安全套接字层传输的超文本传输协议
+    ftp：文件传输协议
+3、常见的HTTP 请求方式有哪些
+4、GET 请求与 POST 请求有什么区别
+    GET 可以用浏览器直接访问
+        请求可以携带参数，但是有长度限制
+        请求参数可以放在 URL 后面
+    POST 不能用浏览器直接访问
+         对请求参数没有长度限制
+         可以用来上传文件等需求
+5、不同的 HTTP相应状态码有什么含义
