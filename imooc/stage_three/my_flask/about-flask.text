@@ -88,3 +88,22 @@ url 逆向解析
     url 中的值为可选
         @app.route('/page/<page>')
         def list_user(page=None):
+
+
+应用上下文对象
+    current_app
+        当前应用的实例
+    g
+        处理请求时的临时存储对象，每次请求都会重设这个变量
+
+请求上下文对象
+    request
+        请求对象，封装了客户端发出的 HTTP 请求中的内容
+    session
+        用户会话（dict），各请求之间的数据共享
+
+请求报文常用参数
+    method：请求的类型
+    form：post 请求数据 dict
+    args： get 请求数据 dict
+    values： post 请求和 get 请求数据集合 dict
