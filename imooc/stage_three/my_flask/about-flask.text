@@ -107,3 +107,13 @@ url 逆向解析
     form：post 请求数据 dict
     args： get 请求数据 dict
     values： post 请求和 get 请求数据集合 dict
+
+请求钩子
+    before_first_request
+        服务器初始化后第一个请求到达之前执行
+    before_request
+        每一个请求到达之前执行
+    after_request
+        每次请求处理完成后执行，如果请求过程中产生了异常就不执行
+    teardown_request
+        每次请求处理完成之后执行，如果请求过程中产生了异常会继续执行
