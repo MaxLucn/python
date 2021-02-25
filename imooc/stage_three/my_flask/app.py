@@ -1,4 +1,7 @@
-from flask import Flask, current_app, render_template, request, make_response
+import os
+from datetime import datetime
+
+from flask import Flask, current_app, render_template, request, make_response, redirect, abort
 
 app = Flask(__name__)
 
@@ -14,7 +17,20 @@ def index():
 @app.route('/')
 def hello_world():
     """视图函数"""
-    return 'hello world,success'
+    # 访问 / 时重定向到 /index
+    # return redirect('/index')
+
+    # 处理错误
+    # abort(403)
+
+    # ip 拦截
+    ip_list = ['127.0.0.1']
+    ip = request.remote_addr
+    if ip in ip_list:
+        abort(403)
+    return 'request, success'
+
+    # return 'hello world,success'
 
 
 @app.route('/hello')
@@ -86,3 +102,26 @@ def test_html():
     """ 响应 HTML 文件 """
     html = render_template('index.html')
     return html
+
+
+@app.errorhandler(403)
+def forbidden_page(err):
+    """ 没有权限访问的页面 """
+    print(err)
+    return '请注册/登录之后再浏览该页面'
+
+
+@app.route('/show/html')
+def html_show():
+    """ 理解渲染机制 """
+    # 1、找到磁盘上的 html 文件地址（全路径）
+    file_name = os.path.join(os.path.dirname(__file__), 'templates', 'index.html')
+    print(file_name)
+    # 2、读取 html 文件的内容
+    now_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    with open(file_name, 'r', encoding='utf-8') as f:
+        html = f.read()
+        # 3、替换 html 中的特殊字符（{{time}}）
+        html = html.replace('{{time}}', now_time)
+        # 4、将 html 的内容发送给浏览器
+        return html

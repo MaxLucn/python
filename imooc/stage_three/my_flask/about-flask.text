@@ -117,3 +117,18 @@ url 逆向解析
         每次请求处理完成后执行，如果请求过程中产生了异常就不执行
     teardown_request
         每次请求处理完成之后执行，如果请求过程中产生了异常会继续执行
+
+
+重定向等内部视图
+    redirect()  实现重定向
+    abort()  处理错误
+
+
+
+Flask 模版语法与继承
+    flask 模版默认配置
+        template_folder = 'templates' --- 模版的默认目录
+        render_template()----(x)html自动转义
+        render_template_string()----字符串自动转义
+        {%autoescape%}----手动设置是否转义
+        全局函数和辅助对象----增强模版的功能
