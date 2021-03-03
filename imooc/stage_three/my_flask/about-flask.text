@@ -132,3 +132,15 @@ Flask 模版语法与继承
         render_template_string()----字符串自动转义
         {%autoescape%}----手动设置是否转义
         全局函数和辅助对象----增强模版的功能
+
+
+    全局对象
+        config --- Flask 的配置信息
+        request --- 请求对象
+        session --- 会话对象
+        g --- 请求相关的全局变量（如：g.user）
+
+
+    全局函数
+        url_for()  URL解析函数（如：静态文件地址解析，链接跳转地址解析）
+        get_flashed_messages()  会话消息

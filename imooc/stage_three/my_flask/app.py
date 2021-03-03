@@ -1,7 +1,7 @@
 import os
 from datetime import datetime
 
-from flask import Flask, current_app, render_template, request, make_response, redirect, abort
+from flask import Flask, current_app, render_template, request, make_response, redirect, abort, g, url_for
 
 app = Flask(__name__)
 
@@ -10,7 +10,44 @@ app = Flask(__name__)
 def index():
     print(app)
     print(current_app)
-    return 'index'
+    # 1、简单数据类型的渲染
+    age = 26
+    money = 102
+    name = 'Tom'
+    # 2、用户信息，字典的渲染
+    user_info = {
+        'username': 'Jerry',
+        'pattern': 'Tom',
+        'address.city': '洛杉矶',
+        'address.area': '好莱坞'
+    }
+    # 3、元组和列表
+    tuple_city = ('北京', '成都', '兰州', '广州')
+    list_city = ('北京', '成都', '兰州', '广州')
+    # 4、复杂的数据结构
+    user = [
+        {
+            'username': 'Vetter',
+            'address': {
+                'city': '慕尼黑'
+            }
+        },
+        {
+            'username': 'Max',
+            'address': {
+                'city': '马德里'
+            }
+        }
+    ]
+    return render_template('index.html',
+                           age=age,
+                           money=money,
+                           name=name,
+                           user_info=user_info,
+                           tuple_city=tuple_city,
+                           list_city=list_city,
+                           user=user
+                           )
 
 
 # 装饰器： 表示一个路由配置：用户在浏览器输入 URL ，使用对应的函数处理其中的业务逻辑（可有多个）
@@ -76,6 +113,18 @@ def first_request():
 def per_request():
     """每一个请求到达前"""
     print('before request')
+    # 全局变量
+    g.user = 'Tom'
+
+
+@app.route('/mine')
+def mine():
+    """ 全局变量 g.user 的演示"""
+    # url_for  url 解析函数，_external=True 显示全路径
+    print(url_for('index', _external=True))
+    print(url_for('mine', _external=True))
+
+    return render_template('mine.html')
 
 
 @app.route('/test/response')
@@ -125,3 +174,9 @@ def html_show():
         html = html.replace('{{time}}', now_time)
         # 4、将 html 的内容发送给浏览器
         return html
+
+
+@app.context_processor
+def inject_user():
+    """ 上下文处理器 """
+    return dict(user=g.user)
