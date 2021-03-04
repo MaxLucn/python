@@ -144,3 +144,31 @@ Flask 模版语法与继承
     全局函数
         url_for()  URL解析函数（如：静态文件地址解析，链接跳转地址解析）
         get_flashed_messages()  会话消息
+
+
+模版标签
+    条件表达式
+        {% if condition_a %}
+            满足了 a 条件
+        {% elif condition_b %}
+            满足了 b 条件
+        {% else %}
+            都不满足
+        {% endif %}     结束标签
+
+
+    去除 HTML 中多余的空白（在网页查看源代码时）
+        在块的开始或者结束加一  '-'，不能用空格。比如：
+            {%- if condition_a %} 或者 {% if condition_a -%}
+
+
+    设置变量，赋值操作
+        先设置，后使用，可以通过 import 导入
+            {% set key, value = (1, 2) %}
+
+    使用 with 代码块，实现块级作用域
+        {% with %}
+            {% set value = 42 %}
+            {{ value }}  只在代码块中有效
+        {% endwith %}
+

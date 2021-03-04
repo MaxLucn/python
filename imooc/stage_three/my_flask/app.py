@@ -4,7 +4,8 @@ from datetime import datetime
 from flask import Flask, current_app, render_template, request, make_response, redirect, abort, g, url_for
 
 app = Flask(__name__)
-
+# 为模版引擎添加扩展，支持 break/continue
+app.jinja_env.add_extension('jinja2.ext.loopcontrols')
 
 @app.route('/index')
 def index():
@@ -180,3 +181,41 @@ def html_show():
 def inject_user():
     """ 上下文处理器 """
     return dict(user=g.user)
+
+
+@app.route('/tag')
+def tag():
+    """ 模版标签的使用 """
+    var = 1
+    my_list = [
+        {
+            'username': 'Jerry',
+            'age': 8,
+            'address': 'beijing'
+         },
+        {
+            'username': 'Tom',
+            'age': 6
+        },
+        {
+            'username': 'Vetter',
+            'age': 34,
+            'address': '慕尼黑'
+        },
+        {
+            'username': 'Max',
+            'age': 24
+        }
+    ]
+    return render_template('tag.html',
+                           var=var,
+                           my_list=my_list)
+
+
+@app.route('/year')
+def year():
+    """ 判断2010年到2020年之间所有年份是否是闰年 """
+    year_list = (2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020)
+    return render_template('year.html',
+                           year_list=year_list
+                           )
