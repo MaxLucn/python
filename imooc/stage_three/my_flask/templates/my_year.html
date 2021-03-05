@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>判断2010年到2020年之间所有年份是否是闰年</title>
+    <style type="text/css">
+        .years{
+            font-size: 20px;
+        }
+        .odd{
+            color: orangered;
+        }
+        .even{
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <ol class='years'>
+        {% for item in year_list -%}
+            {% if (item % 4 == 0 and item % 100 != 0) or (item % 400 == 0) -%}
+            <li class="{{ loop.cycle('odd', 'even')}}">{{ item }} 是闰年 </li>
+            {% else -%}
+            <li class="{{ loop.cycle('odd', 'even')}}">{{ item }} 不是闰年</li>
+            {% endif -%}
+        {%- endfor %}
+    </ol>
+</body>
+</html>

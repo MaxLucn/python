@@ -216,6 +216,6 @@ def tag():
 def year():
     """ 判断2010年到2020年之间所有年份是否是闰年 """
     year_list = (2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020)
-    return render_template('year.html',
+    return render_template('my_year.html',
                            year_list=year_list
                            )
