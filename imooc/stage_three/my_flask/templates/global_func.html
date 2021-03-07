@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模版全局函数的使用</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style type="text/css">
+        .row1{
+            color: orangered;
+        }
+        .row2{
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <h3>range 函数的使用</h3>
+    {% for i in range(5) -%}
+    <p>{{ i }}</p>
+    {%- endfor %}
+
+    <h3>cycler 函数的使用</h3>
+    {% set class_name = cycler('row1', 'row2') -%}
+    {% for i in range(10) -%}
+    <p class="{{ class_name.next() }}">{{ i }}</p>
+    {%- endfor %}
+
+    <h3>url_for 的使用</h3>
+    <a href="{{ url_for('index') }}">回到首页</a>
+</body>
+</html>

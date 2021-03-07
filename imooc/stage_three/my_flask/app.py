@@ -7,6 +7,7 @@ app = Flask(__name__)
 # 为模版引擎添加扩展，支持 break/continue
 app.jinja_env.add_extension('jinja2.ext.loopcontrols')
 
+
 @app.route('/index')
 def index():
     print(app)
@@ -192,7 +193,7 @@ def tag():
             'username': 'Jerry',
             'age': 8,
             'address': 'beijing'
-         },
+        },
         {
             'username': 'Tom',
             'age': 6
@@ -219,3 +220,31 @@ def year():
     return render_template('my_year.html',
                            year_list=year_list
                            )
+
+
+@app.route('/use_filter')
+def use_filter():
+    """ 过滤气的使用 """
+    welcome = 'hello, jerry'
+    var = 3.1425926
+    name = None
+    my_html = '<h2>标题的使用</h2>'
+    phone_num = '15212345678'
+    return render_template('use_filter.html',
+                           welcome=welcome,
+                           var=var,
+                           name=name,
+                           my_html=my_html,
+                           phone_num=phone_num)
+
+
+@app.template_filter('phone_format')
+def phone_format(phone_num):
+    """ 电话号码的脱敏处理，自定义过滤器 """
+    return phone_num[0:3] + '****' + phone_num[7:]
+
+
+@app.route('/gf')
+def global_func():
+    """ 模版全局函数的使用 """
+    return render_template('global_func.html')
