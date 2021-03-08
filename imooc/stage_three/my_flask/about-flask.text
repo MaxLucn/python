@@ -213,3 +213,15 @@ Flask 模版语法与继承
     用于字符串的拼接
         joiner(sep=',')
 
+
+模版的继承
+    实现继承
+        1、把可变的部分圈出来（base.html）
+            {% block content -%}
+                <!-- 内容区域 -->
+            {%- endblock %}
+        2、继承父模版
+            {% extends 'base.html' -%}
+
+
+

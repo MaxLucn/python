@@ -248,3 +248,40 @@ def phone_format(phone_num):
 def global_func():
     """ 模版全局函数的使用 """
     return render_template('global_func.html')
+
+
+@app.route('/macro')
+def macro():
+    """ 模版中宏的使用 """
+    return render_template('macro.html')
+
+
+@app.route('/imooc-index')
+def imooc_index():
+    """ 首页 """
+    return render_template('imooc_index.html')
+
+
+@app.route('/course')
+def course():
+    """ 免费课程 """
+    return render_template('course.html')
+
+
+@app.route('/coding')
+def coding():
+    """ 实战课程 """
+    return render_template('coding.html')
+
+
+@app.route('/article')
+def article():
+    """ 手记 """
+    return render_template('article.html')
+
+
+@app.route('/wenda')
+def wenda():
+    """  实战课程 """
+    return render_template('wenda.html')
+

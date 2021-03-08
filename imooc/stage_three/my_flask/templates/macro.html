@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模版中宏的使用</title>
+    <style type="text/css">
+        .input-control{
+            border: 1px solid orangered;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <!-- 用写函数的方式写模版中的宏，用 宏 来实现下面好几个 div 的页面   -->
+        {% macro input(name, type='text', value='') -%}
+        <div>
+            <input class="input-control" type="{{ type }}" name="{{ name }}" value="{{ value }}">
+        </div>
+        {%- endmacro%}
+        <!-- 宏的调用类似函数的调用，下面是宏的调用 -->
+        {# 用户名: username #}
+        {{ input('username', value='admin') }}
+        {# 密码: password #}
+        {{ input('password', type='password') }}
+        {# 年龄: age #}
+        {{ input('age', type='number') }}
+        <!--
+        <div>
+            <input class="input-control" type="text" name="username">
+        </div>
+        <div>
+            <input class="input-control" type="password" name="password">
+        </div>
+        <div>
+            <input class="input-control" type="number" name="age">
+        </div>
+        -->
+        <h3>把写好的宏拿出来单独保存，使用的时候通过 import 导入宏</h3>
+        {% from 'forms.html' import input -%}
+        <p>
+            {{ input('code') }}
+        </p>
+    </form>
+</body>
+</html>
