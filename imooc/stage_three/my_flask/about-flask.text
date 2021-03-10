@@ -223,5 +223,43 @@ Flask 模版语法与继承
         2、继承父模版
             {% extends 'base.html' -%}
 
+    包含的实现  -----  只有部分页面使用到的 导航条的设计就需要用到包含
+        1、把可变的部分拆除来，（sidebar.html）
+            <div>
+            这是右侧公共部分
+            </div>
+        2、把拆出来的部分包进来(index.html)
+        {% extends 'base.html' -%}
+        {% block content -%}
+        <!-- 页面主要内容区域 -->
+
+        {# 公用的区域 #}
+        {% include 'sidebar.html' -%}
+        {%- endblock %}
+
+        #  include 标签
+        ignore missing
+            如果模版不存在， Jinja2 会忽略这条语句
+
+        with context / without context
+            是否携带当前页面的上下文
 
 
+    继承与包含的区别：
+        相关模版标签
+            {% block sidebar %}  {% endblock %}   命名代码块都可以用到，即用于将可变的部分圈出来
+
+            {% extends 'base.html' %}   继承模版代码
+
+            {% include 'deader.html' %}   包含代码块
+
+
+
+消息闪现
+    1、在视图中产生一个消息（提示/警告/错误）
+        flash(msg_content, msg_type)
+        参数 msg_content: 消息内容
+        参数 msg_type: 消息类型
+    2、在模版中展示出来
+        get_flashed_messages(category_filter=['error'])
+        参数 category_filter: 对产生的消息按类别查询

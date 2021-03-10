@@ -1,11 +1,13 @@
 import os
 from datetime import datetime
 
-from flask import Flask, current_app, render_template, request, make_response, redirect, abort, g, url_for
+from flask import Flask, current_app, render_template, request, make_response, redirect, abort, g, url_for, flash
 
 app = Flask(__name__)
 # 为模版引擎添加扩展，支持 break/continue
 app.jinja_env.add_extension('jinja2.ext.loopcontrols')
+# 消息展示里使用 flash 时需要设置该随机串，这是因为 session 的安全机制
+app.secret_key = 'secret_key'
 
 
 @app.route('/index')
@@ -256,6 +258,7 @@ def macro():
     return render_template('macro.html')
 
 
+# 模版继承部分演示
 @app.route('/imooc-index')
 def imooc_index():
     """ 首页 """
@@ -285,3 +288,21 @@ def wenda():
     """  实战课程 """
     return render_template('wenda.html')
 
+
+# 消息展示:用户登陆之后，跳转到个人中心页面，并在个人中心页面展示提示：登录成功
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    """ 用户登录 """
+    if request.method == 'POST':
+        print('处理了登录的逻辑')
+        flash('登录成功', 'success')
+        flash('欢迎回来', 'success')
+        flash('错误提示', 'error')
+        return redirect('/my-course')
+    return render_template('login.html')
+
+
+@app.route('/my-course')
+def my_course():
+    """ 个人中心 """
+    return render_template('my_course.html')
