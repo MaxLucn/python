@@ -1,5 +1,7 @@
 import os
 from datetime import datetime
+from flask_sqlalchemy import SQlAlchemy
+
 
 from flask import Flask, current_app, render_template, request, make_response, redirect, abort, g, url_for, flash
 
@@ -8,6 +10,41 @@ app = Flask(__name__)
 app.jinja_env.add_extension('jinja2.ext.loopcontrols')
 # 消息展示里使用 flash 时需要设置该随机串，这是因为 session 的安全机制
 app.secret_key = 'secret_key'
+# 配置数据库的连接参数
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:835895023@127.0.0.1/test_flask'
+
+db = SQLAlchemy(app)
+
+
+class User(db.Model):
+    __tablename__ = 'weibo_user'
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(64), nullable=False)
+    password = db.Column(db.String(256), nullable=False)
+    birthday = db.Column(db.Date, nullable=True)
+    age = db.Column(db.Integer, default=0)
+
+
+class UserAddress(db.Model):
+    """ 用户的地址 """
+    __tablename__ = 'weibo_user_address'
+    id = db.Column(db.Integer, primary_key=True)
+    addr = db.Column(db.String(256), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('weibo_user.id'), nullable=False)
+    user = db.relationship('User', backref=db.backref('address', lazy=True))
+
+
+@app.route('/user/<int:page>/')
+def list_user(page):
+    """ 用户分页 """
+    # 每一页的数据大小
+    per_page = 10
+    # 1、查询用户信息
+    user_ls = User.query
+    # 2、准备分页的数据
+    user_page_data = user_ls.paginate(page, per_page=per_page)
+    return render_template('list_user.html', user_page_data=user_page_data)
+
 
 
 @app.route('/index')
