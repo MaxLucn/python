@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用 FileField 上传文件/图片并添加类型验证</title>
+</head>
+<body>
+    <form action="{{ url_for('avatar_upload') }}" method="post" enctype="multipart/form-data">
+        {{ form.csrf_token }}
+        <p>
+            {{ form.avatar.label }}
+            {{ form.avatar }}
+        </p>
+        <p>
+            <input type="submit" value="开始上传">
+        </p>
+    </form>
+</body>
+</html>

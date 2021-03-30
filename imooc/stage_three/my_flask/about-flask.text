@@ -344,5 +344,40 @@ flask 中的 ORM 使用
                         pages     总页数
 
 
+falsk 表单的实现
+    通过表单保存数据
+        1、检测表单是否已经通过验证
+            form.validate_on_submit()
+        2、获取表单中传递过来的值
+            form.field_name.data
+        3、业务逻辑代码编写（可结合 ORM ）
+    CSRF 表单保护
+        默认开启 CSRF 保护
+        关闭单个表单 CSRF 保护
+            form = LoginForm(csrf_enabled=False)
+        全局关闭（不推荐）
+            WTF_CSRF_ENABLED = False
+
+    表单验证
+        1、导入内置的表单验证器（或自定义)
+            form.wtforms.validators import DataRequired
+        2、配置到表单字段
+            username = StringField('用户名'，validators=[InputRequired(), my_validator])
+
+    图片/文件上传
+        1、不使用 wtf 实现
+            1、设置 <form> 的 enctype
+                enctype = 'multipart/form-data'
+            2、在视图函数中获取文件对象
+                request.files
+            3、保存文件
+                f.save(file_path)
+        2、使用 FileField 上传文件/图片并添加类型验证
+            FileRequired
+                文件必须上传验证
+            FileAllowed
+                文件类型验证
+        3、文件名称格式化
+            werkzeug.utils.secure_filename
 
 

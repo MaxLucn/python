@@ -1,9 +1,16 @@
 import os
+# 因用的 Python 版本为 python3.9，python3.9 不支持 MySQLdb,可用 pymysql 代替
+import pymysql
+
 from datetime import datetime
-from flask_sqlalchemy import SQlAlchemy
-
-
+from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, current_app, render_template, request, make_response, redirect, abort, g, url_for, flash
+from werkzeug.utils import secure_filename
+
+
+from my_forms import LoginForm, RegisterForm, UserAvatarForm
+
+pymysql.install_as_MySQLdb()
 
 app = Flask(__name__)
 # 为模版引擎添加扩展，支持 break/continue
@@ -11,7 +18,14 @@ app.jinja_env.add_extension('jinja2.ext.loopcontrols')
 # 消息展示里使用 flash 时需要设置该随机串，这是因为 session 的安全机制
 app.secret_key = 'secret_key'
 # 配置数据库的连接参数
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:835895023@127.0.0.1/test_flask'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:123456@127.0.0.1/test_flask'
+# wtf 表单配置
+app.config['WTF-CSRF-SECRET-KEY'] = 'abc1234abc'
+# 不加这句话运行的时候 MySQL 要抛出警告
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# 自定义的配置扩展，表示文件/图片上传的路径
+app.config['UPLOAD_PATH'] = os.path.join(os.path.dirname(__file__), 'medias')
+
 
 db = SQLAlchemy(app)
 
@@ -35,7 +49,7 @@ class UserAddress(db.Model):
 
 
 @app.route('/user/<int:page>/')
-def list_user(page):
+def ls_user(page):
     """ 用户分页 """
     # 每一页的数据大小
     per_page = 10
@@ -44,6 +58,85 @@ def list_user(page):
     # 2、准备分页的数据
     user_page_data = user_ls.paginate(page, per_page=per_page)
     return render_template('list_user.html', user_page_data=user_page_data)
+
+
+@app.route('/form', methods=['GET', 'POST'])
+def page_form():
+    """ form 表单练习 """
+    form = LoginForm()
+    if form.validate_on_submit():
+        print('登陆成功')
+    else:
+        print(form.errors)
+    return render_template('page_form.html', form=form)
+
+
+@app.route('/user/register', methods=['GET', 'POST'])
+def page_register():
+    """ 新用户注册 """
+    # csrf_enabled=False标售不做 CSRF 校验
+    # form = RegisterForm(csrf_enabled=False)
+    form = RegisterForm()
+    # 用户在提交表单的时候，会触发 validate_on_submit
+    if form.validate_on_submit():
+        # 表单验证通过，接下来处理业务逻辑
+        # 1、获取表单数据
+        username = form.username.data
+        password = form.password.data
+        birthday = form.birthday.data
+        age = form.age.data
+        # 2、构建用户对象
+        user = User(
+            username=username,
+            password=password,
+            birthday=birthday,
+            age=age
+        )
+        # 3、提交到数据库
+        db.session.add(user)
+        db.session.commit()
+        # 4、跳转到登陆页面
+        return redirect(url_for('page_form'))
+    else:
+        # 打印错误信息
+        print(form.errors)
+    return render_template('page_register.html', form=form)
+
+
+@app.route('/img/upload', methods=['GET', 'POST'])
+def img_upload():
+    """ 不实用 wtf 实现的图片/文件上传 """
+    # 保存文件的全路径
+    if request.method == 'POST':
+        # 获取文件列表
+        files = request.files
+        file1 = files.get('file1', None)
+        if file1:
+            # 保存文件
+            f_name = secure_filename(file1.filename)
+            print('filename', f_name)
+            file_name = os.path.join(app.config['UPLOAD_PATH'], f_name)
+            file1.save(file_name)
+            print('保存成功')
+        return redirect(url_for('img_upload'))
+    return render_template('img_upload.html')
+
+
+@app.route('/avatar/upload', methods=['GET', 'POST'])
+def avatar_upload():
+    """ 使用 FileField 上传文件/图片并添加类型验证 """
+    form = UserAvatarForm()
+    if form.validate_on_submit():
+        # 获取图片对象
+        img = form.avatar.data
+        f_name = secure_filename(img.filename)
+        file_name = os.path.join(app.config['UPLOAD_PATH'], f_name)
+        img.save(file_name)
+        print('保存成功')
+        return redirect('/')
+    else:
+        print(form.errors)
+    return render_template('avatar_upload.html', form=form)
 
 
 
