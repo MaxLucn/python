@@ -7,7 +7,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, current_app, render_template, request, make_response, redirect, abort, g, url_for, flash
 from werkzeug.utils import secure_filename
 
-
 from my_forms import LoginForm, RegisterForm, UserAvatarForm
 
 pymysql.install_as_MySQLdb()
@@ -25,7 +24,6 @@ app.config['WTF-CSRF-SECRET-KEY'] = 'abc1234abc'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # 自定义的配置扩展，表示文件/图片上传的路径
 app.config['UPLOAD_PATH'] = os.path.join(os.path.dirname(__file__), 'medias')
-
 
 db = SQLAlchemy(app)
 
@@ -137,7 +135,6 @@ def avatar_upload():
     else:
         print(form.errors)
     return render_template('avatar_upload.html', form=form)
-
 
 
 @app.route('/index')
@@ -436,3 +433,4 @@ def login():
 def my_course():
     """ 个人中心 """
     return render_template('my_course.html')
+
