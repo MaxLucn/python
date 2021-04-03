@@ -18,10 +18,16 @@
             },
             {
               "name": "username",
-              "type": "DefaultString",
-              "remark": "",
+              "type": "ShortString",
+              "remark": "唯一",
               "chnname": "用户名",
               "notNull": true
+            },
+            {
+              "name": "nickname",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "用户昵称"
             },
             {
               "name": "password",
@@ -31,30 +37,31 @@
               "notNull": true
             },
             {
-              "name": "nickname",
-              "type": "DefaultString",
+              "name": "avatar",
+              "type": "LongKey",
+              "remark": "头像地址",
+              "chnname": "用户头像"
+            },
+            {
+              "name": "status",
+              "type": "YesNo",
               "remark": "",
-              "chnname": "昵称",
-              "notNull": true
+              "chnname": "用户状态",
+              "notNull": true,
+              "defaultValue": "1"
+            },
+            {
+              "name": "is_super",
+              "type": "YesNo",
+              "remark": "",
+              "chnname": "是否为超级状态",
+              "defaultValue": "0"
             },
             {
               "name": "created_at",
               "type": "DateTime",
               "remark": "",
-              "chnname": "创建时间"
-            },
-            {
-              "name": "status",
-              "type": "Integer",
-              "remark": "",
-              "chnname": "状态",
-              "defaultValue": "1"
-            },
-            {
-              "name": "in_super",
-              "type": "Integer",
-              "remark": "",
-              "chnname": "是否为管理员"
+              "chnname": "注册时间"
             },
             {
               "name": "updated_at",
@@ -134,21 +141,45 @@
             {
               "name": "username",
               "type": "DefaultString",
-              "remark": "",
+              "remark": "冗余字段",
               "chnname": "用户名",
               "notNull": true
             },
             {
-              "name": "UPDATED_BY",
+              "name": "real_name",
               "type": "IdOrKey",
               "remark": "",
-              "chnname": "更新人"
+              "chnname": "真实姓名"
             },
             {
-              "name": "UPDATED_TIME",
+              "name": "created_at",
               "type": "DateTime",
               "remark": "",
               "chnname": "更新时间"
+            },
+            {
+              "name": "sex",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "用户性别"
+            },
+            {
+              "name": "maxim",
+              "type": "ShortString",
+              "remark": "",
+              "chnname": "用户格言"
+            },
+            {
+              "name": "address",
+              "type": "ShortString",
+              "remark": "",
+              "chnname": "用户地址"
+            },
+            {
+              "name": "updated_at",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "修改时间"
             }
           ],
           "indexs": [],
@@ -306,36 +337,102 @@
           "title": "accounts_third",
           "fields": [
             {
-              "name": "REVISION",
+              "name": "id",
               "type": "Integer",
               "remark": "",
-              "chnname": "乐观锁"
+              "chnname": "id",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
             },
             {
-              "name": "CREATED_BY",
+              "name": "user_id",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "关联用户",
+              "notNull": true
+            },
+            {
+              "name": "types",
               "type": "IdOrKey",
               "remark": "",
-              "chnname": "创建人"
+              "chnname": "平台类型",
+              "notNull": true
             },
             {
-              "name": "CREATED_TIME",
+              "name": "login_name",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "登录名",
+              "notNull": true
+            },
+            {
+              "name": "is_valid",
+              "type": "YesNo",
+              "remark": "",
+              "chnname": "是否有效"
+            },
+            {
+              "name": "created_at",
               "type": "DateTime",
               "remark": "",
               "chnname": "创建时间"
             },
             {
-              "name": "UPDATED_BY",
-              "type": "IdOrKey",
-              "remark": "",
-              "chnname": "更新人"
-            },
-            {
-              "name": "UPDATED_TIME",
+              "name": "updated_At",
               "type": "DateTime",
               "remark": "",
               "chnname": "更新时间"
             }
-          ]
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "第三方账号登录绑定"
         }
       ],
       "graphCanvas": {
@@ -344,37 +441,91 @@
             "shape": "table",
             "title": "accounts_user",
             "moduleName": false,
-            "x": 415.40625,
-            "y": 135,
-            "id": "ad2fd016"
+            "x": 570,
+            "y": 310,
+            "id": "33620f72"
           },
           {
             "shape": "table",
             "title": "accounts_user_profile",
             "moduleName": false,
-            "x": 840.40625,
-            "y": 105,
-            "id": "d228a6d7"
+            "x": 980,
+            "y": 140,
+            "id": "45d9da92"
+          },
+          {
+            "shape": "table",
+            "title": "accounts_login_history",
+            "moduleName": false,
+            "x": 150,
+            "y": 340,
+            "id": "346cfaf0"
+          },
+          {
+            "shape": "table",
+            "title": "accounts_third",
+            "moduleName": false,
+            "x": 1000,
+            "y": 460,
+            "id": "df4b321a"
           }
         ],
         "edges": [
           {
             "shape": "erdRelation",
             "relation": "0,n:1",
-            "source": "d228a6d7",
-            "target": "ad2fd016",
-            "id": "73aed59d",
+            "source": "346cfaf0",
+            "target": "33620f72",
+            "id": "9b423502",
             "controlPoints": [
               {
-                "x": 692.4169921875,
-                "y": 77.28846153846153
+                "x": 271.115234375,
+                "y": 312.3382352941177
               },
               {
-                "x": 550.197265625,
-                "y": 77.19736842105263
+                "x": 427.2109375,
+                "y": 242.17857142857144
               }
             ],
-            "sourceAnchor": 0,
+            "sourceAnchor": 3,
+            "targetAnchor": 0
+          },
+          {
+            "shape": "erdRelation",
+            "relation": "0,n:1",
+            "source": "df4b321a",
+            "target": "33620f72",
+            "id": "c2e2bb99",
+            "controlPoints": [
+              {
+                "x": 876.2158203125,
+                "y": 432.3382352941177
+              },
+              {
+                "x": 712.7890625,
+                "y": 242.17857142857144
+              }
+            ],
+            "sourceAnchor": 2,
+            "targetAnchor": 1
+          },
+          {
+            "shape": "erdRelation",
+            "relation": "0,n:1",
+            "source": "45d9da92",
+            "target": "33620f72",
+            "id": "fff40616",
+            "controlPoints": [
+              {
+                "x": 857.208984375,
+                "y": 92.27380952380953
+              },
+              {
+                "x": 712.7890625,
+                "y": 242.17857142857144
+              }
+            ],
+            "sourceAnchor": 2,
             "targetAnchor": 1
           }
         ]
@@ -383,8 +534,30 @@
         {
           "relation": "0,n:1",
           "from": {
-            "entity": "accounts_user_profile",
+            "entity": "accounts_login_history",
+            "field": "user_id"
+          },
+          "to": {
+            "entity": "accounts_user",
             "field": "id"
+          }
+        },
+        {
+          "relation": "0,n:1",
+          "from": {
+            "entity": "accounts_third",
+            "field": "user_id"
+          },
+          "to": {
+            "entity": "accounts_user",
+            "field": "id"
+          }
+        },
+        {
+          "relation": "0,n:1",
+          "from": {
+            "entity": "accounts_user_profile",
+            "field": "user_id"
           },
           "to": {
             "entity": "accounts_user",
@@ -396,10 +569,1261 @@
     {
       "name": "qa",
       "chnname": "问答",
-      "entities": [],
+      "entities": [
+        {
+          "title": "qa_question",
+          "fields": [
+            {
+              "name": "id",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "ID",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "user_id",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "用户",
+              "notNull": true
+            },
+            {
+              "name": "title",
+              "type": "ShortString",
+              "remark": "",
+              "chnname": "标题",
+              "notNull": true
+            },
+            {
+              "name": "desc",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "描述"
+            },
+            {
+              "name": "img",
+              "type": "ShortString",
+              "remark": "",
+              "chnname": "图片"
+            },
+            {
+              "name": "content",
+              "type": "LongString",
+              "remark": "",
+              "chnname": "问题内容",
+              "notNull": true,
+              "defaultValue": ""
+            },
+            {
+              "name": "reorder",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "排序",
+              "defaultValue": "1"
+            },
+            {
+              "name": "is_valid",
+              "type": "YesNo",
+              "remark": "",
+              "chnname": "是否有效",
+              "defaultValue": "1"
+            },
+            {
+              "name": "view_count",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "浏览次数",
+              "defaultValue": "0"
+            },
+            {
+              "name": "created_at",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间"
+            },
+            {
+              "name": "updated_at",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "更新时间"
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "问题"
+        },
+        {
+          "title": "qa_answer",
+          "fields": [
+            {
+              "name": "id",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "ID",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "user_id",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "关联用户",
+              "notNull": true
+            },
+            {
+              "name": "q_id",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "关联问题"
+            },
+            {
+              "name": "content",
+              "type": "MiddleString",
+              "remark": "",
+              "chnname": "内容",
+              "notNull": true
+            },
+            {
+              "name": "is_valid",
+              "type": "YesNo",
+              "remark": "",
+              "chnname": "是否有效",
+              "defaultValue": "1"
+            },
+            {
+              "name": "creted_At",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间"
+            },
+            {
+              "name": "updated_at",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "更新时间"
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "回答"
+        },
+        {
+          "title": "qa_comment",
+          "fields": [
+            {
+              "name": "id",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "ID",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "user_id",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "关联用户",
+              "notNull": true
+            },
+            {
+              "name": "replay_id",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "关联评论",
+              "notNull": true
+            },
+            {
+              "name": "q_id",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "关联问题",
+              "notNull": true
+            },
+            {
+              "name": "answer_id",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "关联回答",
+              "notNull": true
+            },
+            {
+              "name": "content",
+              "type": "MiddleString",
+              "remark": "",
+              "chnname": "评论内容",
+              "notNull": true
+            },
+            {
+              "name": "love_count",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "点赞人数",
+              "notNull": true,
+              "defaultValue": "0"
+            },
+            {
+              "name": "is_valid",
+              "type": "YesNo",
+              "remark": "",
+              "chnname": "是否有效",
+              "notNull": true,
+              "defaultValue": "1"
+            },
+            {
+              "name": "is_public",
+              "type": "YesNo",
+              "remark": "",
+              "chnname": "是否公开",
+              "notNull": true,
+              "defaultValue": "1"
+            },
+            {
+              "name": "created_at",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间"
+            },
+            {
+              "name": "updated_at",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "更新时间"
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "评论"
+        },
+        {
+          "title": "qa_answer_love",
+          "fields": [
+            {
+              "name": "id",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "ID",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "user_id",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "关联用户",
+              "notNull": true
+            },
+            {
+              "name": "answer_id",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "关联回答",
+              "notNull": true
+            },
+            {
+              "name": "q_id",
+              "type": "ShortString",
+              "remark": "",
+              "chnname": "关联问题",
+              "notNull": true
+            },
+            {
+              "name": "created_at",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "点赞时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "回答点赞"
+        },
+        {
+          "title": "qa_answer_collect",
+          "fields": [
+            {
+              "name": "id",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "ID",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "user_id",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "关联用户",
+              "notNull": true
+            },
+            {
+              "name": "q_id",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "关联问题",
+              "notNull": true
+            },
+            {
+              "name": "answer_id",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "关联答案",
+              "notNull": true
+            },
+            {
+              "name": "is_valid",
+              "type": "YesNo",
+              "remark": "",
+              "chnname": "是否有效",
+              "notNull": true
+            },
+            {
+              "name": "created_at",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "收藏时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "我收藏的回答"
+        },
+        {
+          "title": "qa_question_follow",
+          "fields": [
+            {
+              "name": "id",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "ID",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "user_id",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "关联用户",
+              "notNull": true
+            },
+            {
+              "name": "q_id",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "关联问题",
+              "notNull": true
+            },
+            {
+              "name": "is_valid",
+              "type": "YesNo",
+              "remark": "",
+              "chnname": "是否有效",
+              "notNull": true,
+              "defaultValue": "1"
+            },
+            {
+              "name": "created_at",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "收藏时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "我关注的问题"
+        },
+        {
+          "title": "qa_question_tags",
+          "fields": [
+            {
+              "name": "id",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "ID",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "q_id",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "关联问题",
+              "notNull": true
+            },
+            {
+              "name": "tag_name",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "标签名称",
+              "notNull": true
+            },
+            {
+              "name": "is_valid",
+              "type": "YesNo",
+              "remark": "",
+              "chnname": "逻辑删除",
+              "notNull": true,
+              "defaultValue": "1"
+            },
+            {
+              "name": "created_at",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间"
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "问题的标签"
+        }
+      ],
       "graphCanvas": {
-        "edges": []
-      }
+        "nodes": [
+          {
+            "shape": "table",
+            "title": "accounts_user",
+            "moduleName": "accounts",
+            "x": 690,
+            "y": 140,
+            "id": "f2b66e78"
+          },
+          {
+            "shape": "table",
+            "title": "qa_question_follow",
+            "moduleName": false,
+            "x": 150,
+            "y": 170,
+            "id": "6ebe57ec"
+          },
+          {
+            "shape": "table",
+            "title": "qa_answer_love",
+            "moduleName": false,
+            "x": 1250,
+            "y": 410,
+            "id": "6045ff0c"
+          },
+          {
+            "shape": "table",
+            "title": "qa_question_tags",
+            "moduleName": false,
+            "x": 220,
+            "y": 760,
+            "id": "e3db1c56"
+          },
+          {
+            "shape": "table",
+            "title": "qa_answer_collect",
+            "moduleName": false,
+            "x": 160,
+            "y": 540,
+            "id": "38a38ea6"
+          },
+          {
+            "shape": "table",
+            "title": "qa_comment",
+            "moduleName": false,
+            "x": 1230,
+            "y": 140,
+            "id": "151b9fdb"
+          },
+          {
+            "shape": "table",
+            "title": "qa_answer",
+            "moduleName": false,
+            "x": 1050,
+            "y": 760,
+            "id": "ab2bb12a"
+          },
+          {
+            "shape": "table",
+            "title": "qa_question",
+            "moduleName": false,
+            "x": 640,
+            "y": 450,
+            "id": "fef27aaf"
+          }
+        ],
+        "edges": [
+          {
+            "shape": "erdRelation",
+            "relation": "0,n:1",
+            "source": "151b9fdb",
+            "target": "fef27aaf",
+            "id": "bfc6a885",
+            "controlPoints": [
+              {
+                "x": 1107.208984375,
+                "y": 112.39
+              },
+              {
+                "x": 762.791015625,
+                "y": 362.15
+              }
+            ],
+            "sourceAnchor": 6,
+            "targetAnchor": 1
+          },
+          {
+            "shape": "erdRelation",
+            "relation": "0,n:1",
+            "source": "151b9fdb",
+            "target": "f2b66e78",
+            "id": "a0472da4",
+            "controlPoints": [
+              {
+                "x": 1107.208984375,
+                "y": 72.23
+              },
+              {
+                "x": 824.791015625,
+                "y": 82.19736842105263
+              }
+            ],
+            "sourceAnchor": 2,
+            "targetAnchor": 1
+          },
+          {
+            "shape": "erdRelation",
+            "relation": "0,n:1",
+            "source": "151b9fdb",
+            "target": "ab2bb12a",
+            "id": "092839b4",
+            "controlPoints": [
+              {
+                "x": 1107.208984375,
+                "y": 132.47
+              },
+              {
+                "x": 1172.791015625,
+                "y": 752.4558823529412
+              }
+            ],
+            "sourceAnchor": 8,
+            "targetAnchor": 5
+          },
+          {
+            "shape": "erdRelation",
+            "relation": "0,n:1",
+            "source": "6045ff0c",
+            "target": "f2b66e78",
+            "id": "8a5ad57e",
+            "controlPoints": [
+              {
+                "x": 1128.884765625,
+                "y": 402.4423076923077
+              },
+              {
+                "x": 824.791015625,
+                "y": 82.19736842105263
+              }
+            ],
+            "sourceAnchor": 2,
+            "targetAnchor": 1
+          },
+          {
+            "shape": "erdRelation",
+            "relation": "0,n:1",
+            "source": "6045ff0c",
+            "target": "ab2bb12a",
+            "id": "a8e8095e",
+            "controlPoints": [
+              {
+                "x": 1128.884765625,
+                "y": 422.5961538461538
+              },
+              {
+                "x": 1172.791015625,
+                "y": 712.2205882352941
+              }
+            ],
+            "sourceAnchor": 4,
+            "targetAnchor": 1
+          },
+          {
+            "shape": "erdRelation",
+            "relation": "0,n:1",
+            "source": "6045ff0c",
+            "target": "fef27aaf",
+            "id": "ef27859e",
+            "controlPoints": [
+              {
+                "x": 1128.884765625,
+                "y": 442.75
+              },
+              {
+                "x": 762.791015625,
+                "y": 362.15
+              }
+            ],
+            "sourceAnchor": 6,
+            "targetAnchor": 1
+          },
+          {
+            "shape": "erdRelation",
+            "relation": "0,n:1",
+            "source": "fef27aaf",
+            "target": "f2b66e78",
+            "id": "d8cedcf9",
+            "controlPoints": [
+              {
+                "x": 517.208984375,
+                "y": 382.23
+              },
+              {
+                "x": 555.208984375,
+                "y": 82.19736842105263
+              }
+            ],
+            "sourceAnchor": 2,
+            "targetAnchor": 0
+          },
+          {
+            "shape": "erdRelation",
+            "relation": "0,n:1",
+            "source": "6ebe57ec",
+            "target": "f2b66e78",
+            "id": "155372d0",
+            "controlPoints": [
+              {
+                "x": 271.115234375,
+                "y": 162.44230769230768
+              },
+              {
+                "x": 555.208984375,
+                "y": 82.19736842105263
+              }
+            ],
+            "sourceAnchor": 3,
+            "targetAnchor": 0
+          },
+          {
+            "shape": "erdRelation",
+            "relation": "0,n:1",
+            "source": "6ebe57ec",
+            "target": "fef27aaf",
+            "id": "da39f44b",
+            "controlPoints": [
+              {
+                "x": 271.115234375,
+                "y": 182.59615384615384
+              },
+              {
+                "x": 517.208984375,
+                "y": 362.15
+              }
+            ],
+            "sourceAnchor": 5,
+            "targetAnchor": 0
+          },
+          {
+            "shape": "erdRelation",
+            "relation": "0,n:1",
+            "source": "38a38ea6",
+            "target": "f2b66e78",
+            "id": "53ebf42c",
+            "controlPoints": [
+              {
+                "x": 281.115234375,
+                "y": 522.3833333333333
+              },
+              {
+                "x": 555.208984375,
+                "y": 82.19736842105263
+              }
+            ],
+            "sourceAnchor": 3,
+            "targetAnchor": 0
+          },
+          {
+            "shape": "erdRelation",
+            "relation": "0,n:1",
+            "source": "38a38ea6",
+            "target": "fef27aaf",
+            "id": "c13814fa",
+            "controlPoints": [
+              {
+                "x": 281.115234375,
+                "y": 542.5166666666667
+              },
+              {
+                "x": 517.208984375,
+                "y": 362.15
+              }
+            ],
+            "sourceAnchor": 5,
+            "targetAnchor": 0
+          },
+          {
+            "shape": "erdRelation",
+            "relation": "0,n:1",
+            "source": "38a38ea6",
+            "target": "ab2bb12a",
+            "id": "f6f6ed83",
+            "controlPoints": [
+              {
+                "x": 281.115234375,
+                "y": 562.65
+              },
+              {
+                "x": 927.208984375,
+                "y": 712.2205882352941
+              }
+            ],
+            "sourceAnchor": 7,
+            "targetAnchor": 0
+          },
+          {
+            "shape": "erdRelation",
+            "relation": "0,n:1",
+            "source": "e3db1c56",
+            "target": "fef27aaf",
+            "id": "342d62b6",
+            "controlPoints": [
+              {
+                "x": 341.115234375,
+                "y": 752.4423076923077
+              },
+              {
+                "x": 517.208984375,
+                "y": 362.15
+              }
+            ],
+            "sourceAnchor": 3,
+            "targetAnchor": 0
+          },
+          {
+            "shape": "erdRelation",
+            "relation": "0,n:1",
+            "source": "ab2bb12a",
+            "target": "f2b66e78",
+            "id": "2714a4c5",
+            "controlPoints": [
+              {
+                "x": 927.208984375,
+                "y": 732.3382352941177
+              },
+              {
+                "x": 824.791015625,
+                "y": 82.19736842105263
+              }
+            ],
+            "sourceAnchor": 2,
+            "targetAnchor": 1
+          },
+          {
+            "shape": "erdRelation",
+            "relation": "0,n:1",
+            "source": "ab2bb12a",
+            "target": "fef27aaf",
+            "id": "1f64e370",
+            "controlPoints": [
+              {
+                "x": 927.208984375,
+                "y": 752.4558823529412
+              },
+              {
+                "x": 762.791015625,
+                "y": 362.15
+              }
+            ],
+            "sourceAnchor": 4,
+            "targetAnchor": 1
+          }
+        ]
+      },
+      "associations": [
+        {
+          "relation": "0,n:1",
+          "from": {
+            "entity": "qa_comment",
+            "field": "q_id"
+          },
+          "to": {
+            "entity": "qa_question",
+            "field": "id"
+          }
+        },
+        {
+          "relation": "0,n:1",
+          "from": {
+            "entity": "qa_comment",
+            "field": "user_id"
+          },
+          "to": {
+            "entity": "accounts_user",
+            "field": "id"
+          }
+        },
+        {
+          "relation": "0,n:1",
+          "from": {
+            "entity": "qa_comment",
+            "field": "answer_id"
+          },
+          "to": {
+            "entity": "qa_answer",
+            "field": "q_id"
+          }
+        },
+        {
+          "relation": "0,n:1",
+          "from": {
+            "entity": "qa_answer_love",
+            "field": "user_id"
+          },
+          "to": {
+            "entity": "accounts_user",
+            "field": "id"
+          }
+        },
+        {
+          "relation": "0,n:1",
+          "from": {
+            "entity": "qa_answer_love",
+            "field": "answer_id"
+          },
+          "to": {
+            "entity": "qa_answer",
+            "field": "id"
+          }
+        },
+        {
+          "relation": "0,n:1",
+          "from": {
+            "entity": "qa_answer_love",
+            "field": "q_id"
+          },
+          "to": {
+            "entity": "qa_question",
+            "field": "id"
+          }
+        },
+        {
+          "relation": "0,n:1",
+          "from": {
+            "entity": "qa_question",
+            "field": "user_id"
+          },
+          "to": {
+            "entity": "accounts_user",
+            "field": "id"
+          }
+        },
+        {
+          "relation": "0,n:1",
+          "from": {
+            "entity": "qa_question_follow",
+            "field": "user_id"
+          },
+          "to": {
+            "entity": "accounts_user",
+            "field": "id"
+          }
+        },
+        {
+          "relation": "0,n:1",
+          "from": {
+            "entity": "qa_question_follow",
+            "field": "q_id"
+          },
+          "to": {
+            "entity": "qa_question",
+            "field": "id"
+          }
+        },
+        {
+          "relation": "0,n:1",
+          "from": {
+            "entity": "qa_answer_collect",
+            "field": "user_id"
+          },
+          "to": {
+            "entity": "accounts_user",
+            "field": "id"
+          }
+        },
+        {
+          "relation": "0,n:1",
+          "from": {
+            "entity": "qa_answer_collect",
+            "field": "q_id"
+          },
+          "to": {
+            "entity": "qa_question",
+            "field": "id"
+          }
+        },
+        {
+          "relation": "0,n:1",
+          "from": {
+            "entity": "qa_answer_collect",
+            "field": "answer_id"
+          },
+          "to": {
+            "entity": "qa_answer",
+            "field": "id"
+          }
+        },
+        {
+          "relation": "0,n:1",
+          "from": {
+            "entity": "qa_question_tags",
+            "field": "q_id"
+          },
+          "to": {
+            "entity": "qa_question",
+            "field": "id"
+          }
+        },
+        {
+          "relation": "0,n:1",
+          "from": {
+            "entity": "qa_answer",
+            "field": "user_id"
+          },
+          "to": {
+            "entity": "accounts_user",
+            "field": "id"
+          }
+        },
+        {
+          "relation": "0,n:1",
+          "from": {
+            "entity": "qa_answer",
+            "field": "q_id"
+          },
+          "to": {
+            "entity": "qa_question",
+            "field": "id"
+          }
+        }
+      ]
     }
   ],
   "dataTypeDomains": {
