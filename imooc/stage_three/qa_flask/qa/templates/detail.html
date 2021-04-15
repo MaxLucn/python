@@ -1,35 +1,33 @@
 {% extends 'base_layout.html' %}
-{% block title %}{{ super() }} - 文章详情 {% endblock %}
-{% block header -%}
-      <link rel="stylesheet" href="/assets/style/detail.css">
-    {%- endblock %}
+{% block title %}{{ super() }} - 文章详情{% endblock %}
+{% block header %}
+  <link rel="stylesheet" href="/assets/style/detail.css">
+  {% endblock %}
 {% block content %}
-
   <!-- 问题简述 -->
   <div class="layout-question">
     <div class="container">
       <div class="row">
         <div class="col-md-9">
           <!-- 问题标签 -->
+        {% if question.tags %}
           <ul class="que-tag-ls">
-            <li><a href="#">心理学</a></li>
-            <li><a href="#">经济学</a></li>
-            <li><a href="#">大数据</a></li>
-            <li><a href="#">大数据分析</a></li>
-            <li><a href="#">新型冠状病毒</a></li>
+            {% for tag in question.tags %}
+            <li><a href="#">{{ tag.tag_name }}</a></li>
+            {% endfor %}
           </ul>
+        {% endif %}
           <!-- // 问题标签 -->
           <h3>{{ question.title }}</h3>
           <div class="show-desc hidden">
-              {{ question.desc|d('暂无资料', True) }}
-              <span class="btn-show-more">显示全部<i class="glyphicon glyphicon-menu-down"></i></span>
+            {{ question.desc|d('暂无', True) }}…
+            <span class="btn-show-more">显示全部<i class="glyphicon glyphicon-menu-down"></i></span>
           </div>
           <div class="show-all ">
-              {% autoescape false -%}
-              {{ question.content|safe }}
-              {%- endautoescape %}
-              <span class="btn-show-less">收起<i class="glyphicon glyphicon-menu-up"></i></span>
-
+            {% autoescape false %}
+            {{ question.content|safe }}
+            {% endautoescape %}
+            <span class="btn-show-less">收起<i class="glyphicon glyphicon-menu-up"></i></span>
           </div>
           <!-- 菜单栏 -->
           <div class="qa-footer">
@@ -78,19 +76,19 @@
     <div class="container">
       <div class="row">
         <div class="col-md-9 left-content">
-        {% block link_more %}
+          {% block link_more %}
           <a class="link-more" href="#">查看全部 {{ question.answer_count|number_split }} 个回答</a>
-        {% endblock %}
+          {% endblock %}
           <!-- 回答内容区域 -->
-            {% if answer -%}
+          {% if answer %}
           <div class="answer-content box-wrap">
             <div class="user-info">
               <div class="avater">
-                  {% if answer.user.avatar -%}
-                      <img src="{{ answer.user.avatar }}" alt="用户头像">
-                  {% else -%}
-                    <img src="/assets/home/qa/user_head.jpg" alt="用户头像">
-                  {% endif -%}
+                {% if answer.user.avatar %}
+                  <img src="{{ answer.user.avatar }}" alt="用户头像">
+                {% else %}
+                  <img src="/assets/home/qa/user_head.jpg" alt="用户头像">
+                {% endif %}
               </div>
               <div class="desc">
                 <h4>{{ answer.user.nickname }}</h4>
@@ -99,15 +97,15 @@
             </div>
             <div class="answer-stats">5,550 人赞同了该回答</div>
             <div class="answer-txt">
-                {% autoescape false %}
-                {{ answer.content|safe }}
-                {% endautoescape %}
+              {% autoescape false %}
+              {{ answer.content|safe }}
+              {% endautoescape %}
             </div>
             <div class="answer-time">发布于{{ answer.created_at }}</div>
             <!-- 底部菜单 -->
             <div class="qa-footer">
               <div><button type="button" class="btn btn-info btn-sm">
-                  <i class="glyphicon glyphicon-thumbs-up"></i> 赞同{{ answer.love_count }}</button>
+                  <i class="glyphicon glyphicon-thumbs-up"></i> 赞同 {{ answer.love_count }}</button>
                 <button type="button" class="btn btn-info btn-sm"><i
                     class="glyphicon glyphicon-thumbs-down"></i></button>
               </div>
@@ -290,11 +288,13 @@
             </div>
             <!-- // 评论框 -->
           </div>
-                {% else %}
-            {{ self.link_more() }}
-            {%- endif %}
+          {% else %}
+            <div class="answer-content box-wrap">
+            暂无人回答该问题
+            </div>
+          {% endif %}
           <!-- // 回答内容区域 -->
-          <a class="link-more" href="#">查看全部 6,660 个回答</a>
+          {{ self.link_more() }}
         </div>
         <div class="col-md-3 right-content">
           <!-- 关于作者 -->
@@ -401,7 +401,6 @@
     </form>
   </div>
   <!-- // 写回答，对话框 -->
-
 {% endblock %}
 {% block js_inline %}
       // 点击，查看更多，把详细的那个p标签展示出来，把自己隐藏

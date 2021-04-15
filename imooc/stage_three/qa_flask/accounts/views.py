@@ -1,10 +1,10 @@
-from urllib import request
+import hashlib
 
-from flask import Blueprint, render_template, flash, redirect, url_for, session
+from flask import Blueprint, render_template, flash, redirect, url_for, session, request
 from flask_login import login_user, logout_user
 
 from accounts.forms import RegisterForm, LoginForm
-from models import User, UserLoginHistory, db
+from models import User, db, UserProfile, UserLoginHistory
 
 accounts = Blueprint('accounts', __name__,
                      template_folder='templates',
@@ -24,8 +24,8 @@ def login():
             return redirect(next_url)
         else:
             flash('登录失败，请稍后重试', 'danger')
-        # else:
-        #     print(form.errors)
+    # else:
+    #     print(form.errors)
     return render_template('login.html', form=form, next_url=next_url)
 
 
@@ -47,7 +47,7 @@ def register():
     if form.validate_on_submit():
         user_obj = form.register()
         if user_obj:
-            #  跳转到登录的页面
+            # 跳转到登录的页面
             flash('注册成功，请登录', 'success')
             return redirect(url_for('accounts.login'))
         else:
