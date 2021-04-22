@@ -77,6 +77,7 @@ class LoginForm(FlaskForm):
         password = self.password.data
         if result:
             # TODO 验证加密后的密码是否正确
+            password = hashlib.sha256(password.encode()).hexdigest()
             user = User.query.filter_by(username=username, password=password).first()
             if user is None:
                 result = False
@@ -93,6 +94,7 @@ class LoginForm(FlaskForm):
         try:
             # 1. 查找对应的用户
             # TODO 验证加密后的密码是否正确
+            password = hashlib.sha256(password.encode()).hexdigest()
             user = User.query.filter_by(username=username, password=password).first()
             # 2. 登录用户
             # session['user_id'] = user.id

@@ -16,4 +16,4 @@ def ajax_js():
 
 @app.route('/ajax/jq')
 def ajax_jq():
-    return render_template('ajaxjq.html')
+    return render_template('ajax_jq.html')
