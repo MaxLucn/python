@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% from 'macro/form_errors.html' import form_filed_errors %}
+{% from 'macro/form_errors.html' import form_field_errors %}
 {% block title %}{{ super() }}-注册{% endblock %}
 {% block header %}
     <link rel="stylesheet" href="./assets/style/login.css">
@@ -23,22 +23,22 @@
                         <label for="id-user-name">用户名</label>
                         {{ form.username }}
                     </div>
-                    {{ form_filed_errors(form.username.errors) }}
+                    {{ form_field_errors(form.username.errors) }}
                     <div class="form-group">
                         <label for="id-nick-name">昵称</label>
                         {{ form.nickname }}
                     </div>
-                    {{ form_filed_errors(form.nickname.errors) }}
+                    {{ form_field_errors(form.nickname.errors) }}
                     <div class="form-group">
                         <label for="id-password">密码</label>
                         {{ form.password }}
                     </div>
-                    {{ form_filed_errors(form.password.errors) }}
+                    {{ form_field_errors(form.password.errors) }}
                     <div class="form-group">
                         <label for="id-confirm-password">确认密码</label>
                         {{ form.confirm_password }}
                     </div>
-                    {{ form_filed_errors(form.confirm_password.errors) }}
+                    {{ form_field_errors(form.confirm_password.errors) }}
                     <div class="form-group">
                         <button type="submit" class="btn btn-info btn-block btn-lg">注册</button>
                     </div>

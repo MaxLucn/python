@@ -10,8 +10,7 @@ db = SQLAlchemy()
 class User(db.Model):
     """ 用户模型 """
     __tablename__ = 'accounts_user'
-    # 主键
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)  # 主键
     # 用户名，用于登录
     username = db.Column(db.String(64), unique=True, nullable=False)
     # 用户昵称
@@ -81,7 +80,6 @@ class UserProfile(db.Model):
 
 
 class UserLoginHistory(db.Model):
-    """ 用户登陆历史 """
     __tablename__ = 'accounts_login_history'
     id = db.Column(db.Integer, primary_key=True)  # 主键
     # 用户名，用于登录
@@ -128,27 +126,18 @@ class Question(db.Model):
     user = db.relationship('User', backref=db.backref('question_list', lazy='dynamic'))
 
     @property
-    def get_img_url(self):
-        return 'medias/' + self.img if self.img else ''
-
-    @property
     def comment_count(self):
         """ 评论数量 """
         return self.question_comment_list.filter_by(is_valid=True).count()
 
     @property
     def follow_count(self):
-        """ 关注的数量 """
-        return self.question_comment_list.filter_by(is_valid=True).count()
+        """ 关注数量 """
+        return self.question_follow_list.filter_by(is_valid=True).count()
 
     @property
     def answer_count(self):
         return self.answer_list.filter_by(is_valid=True).count()
-
-    @property
-    def tags(self):
-        """ 文章的标签 """
-        return self.tag_list.filter_by(is_valid=True)
 
 
 class QuestionTags(db.Model):

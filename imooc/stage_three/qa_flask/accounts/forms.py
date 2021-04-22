@@ -1,6 +1,6 @@
 import hashlib
-from urllib import request
 
+from flask import request
 from flask_login import login_user
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, ValidationError
@@ -30,24 +30,24 @@ class RegisterForm(FlaskForm):
         'class': 'form-control input-lg',
         'placeholder': '请输入确认密码'
     }, validators=[DataRequired('请输入确认密码'),
-                   EqualTo('password', message='密码不一致，请重新输入')])
+                   EqualTo('password', message='两次密码输入不一致')])
 
-    def validate_username(self, filed):
+    def validate_username(self, field):
         """ 检测用户名是否已经存在 """
-        user = User.query.filter_by(username=filed.data).first()
+        user = User.query.filter_by(username=field.data).first()
         if user:
             raise ValidationError('该用户名已经存在')
-        return filed
+        return field
 
     def register(self):
-        """ 自定义的用户注册方法 """
+        """ 自定义的用户注册函数 """
         # 1. 获取表单信息
         username = self.username.data
         password = self.password.data
         nickname = self.nickname.data
         # 2. 添加到db.session
         try:
-            # 加密密码
+            # 将密码加密存储
             password = hashlib.sha256(password.encode()).hexdigest()
             user_obj = User(username=username, password=password, nickname=nickname)
             db.session.add(user_obj)
@@ -61,7 +61,7 @@ class RegisterForm(FlaskForm):
 
 
 class LoginForm(FlaskForm):
-    """ 用户登陆 """
+    """ 用户登录 """
     username = StringField(label='用户名', render_kw={
         'class': 'form-control input-lg',
         'placeholder': '请输入用户名'
@@ -80,7 +80,7 @@ class LoginForm(FlaskForm):
             user = User.query.filter_by(username=username, password=password).first()
             if user is None:
                 result = False
-                self.username.errors = ['用户名或者密码错误']
+                self.username.errors = ['用户名或者是密码错误']
             elif user.status == constants.UserStatus.USER_IN_ACTIVE.value:
                 result = False
                 self.username.errors = ['用户已被禁用']

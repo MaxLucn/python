@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax-js的实现</title>
+</head>
+<body>
+    <p>ajax_js的实现</p>
+<script>
+    // 1、创建 XMLHttpRequest 对象
+    let xml_http = null;
+    if (window.XMLHttpRequest) {
+        xml_http = new XMLHttpRequest();
+    } else if (window.ActiveXObject) {
+        xml_http = new ActiveXObject('Microsoft.XMLHTTP');
+    } else {
+        alert('浏览器不支持')
+    }
+    // 2、注册回调函数
+    if (xml_http !== null) {
+        xml_http.onreadystatechange = callback
+
+    }
+    // 3、配置请求参数
+    let url = 'https://0.0.0.0:5000/ajax/js'
+    // 4、发送请求
+    xml_http.open('GET', url, true);
+    // 发送请求
+    xml_http.send(null);
+
+    // 5、回调处理
+    function callback() {
+        if (xml_http.readyState === 4) {
+            // http 状态码
+            console.log(xml_http.status)
+        }
+    }
+
+    // 跨域错误  同源策略：协议 地址 端口
+</script>
+</body>
+</html>
