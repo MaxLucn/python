@@ -145,8 +145,13 @@ class Question(db.Model):
 
     @property
     def tags(self):
-        """ 文章标签 """
+        """ 文章的标签 """
         return self.tag_list.filter_by(is_valid=True)
+
+    @property
+    def love_count(self):
+        """ 点赞的数量 """
+        return self.question_love_list.count()
 
 
 class QuestionTags(db.Model):
@@ -191,6 +196,15 @@ class Answer(db.Model):
     def love_count(self):
         """ 点赞的数量 """
         return self.answer_love_list.count()
+
+    def comment_list(self, reply_id=None):
+        """ 有效的评论列表 """
+        return self.answer_comment_list.filter_by(is_valid=True, reply_id=reply_id)
+
+    @property
+    def comment_count(self):
+        """ 评论的数量 """
+        return self.answer_comment_list.filter_by(is_valid=True).count()
 
 
 class AnswerComment(db.Model):

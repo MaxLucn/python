@@ -9,7 +9,7 @@ from wtforms import StringField, TextAreaField, FileField
 from wtforms.validators import DataRequired, Length
 from flask_ckeditor import CKEditorField
 
-from models import Question, db, QuestionTags
+from models import Question, db, QuestionTags, Answer, AnswerComment
 
 
 class WriteQuestionForm(FlaskForm):
@@ -67,3 +67,20 @@ class WriteQuestionForm(FlaskForm):
                 db.session.add(tag_obj)
         db.session.commit()
         return que_obj
+
+
+class WriteAnswerForm(FlaskForm):
+    """ 写回答 """
+    content = CKEditorField(label='回答内容', validators=[
+        DataRequired('回答内容不能为空'),
+        Length(min=5, message='回答内容至少5个字')
+    ])
+
+    def save(self, question):
+        """ 保存表单数据 """
+        content = self.content.data
+        user = current_user
+        answer_obj = Answer(content=content, user=user, question=question)
+        db.session.add(answer_obj)
+        db.session.commit()
+        return answer_obj
