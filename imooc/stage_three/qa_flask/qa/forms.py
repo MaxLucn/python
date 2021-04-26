@@ -13,7 +13,7 @@ from models import Question, db, QuestionTags, Answer, AnswerComment
 
 
 class WriteQuestionForm(FlaskForm):
-    """ 写文章\问题 """
+    """ 写文章、问题 """
     img = FileField(label='上传图片', render_kw={
         'accept': ".jpeg, .jpg, .png"
     }, validators=[
@@ -24,7 +24,7 @@ class WriteQuestionForm(FlaskForm):
         'placeholder': "请输入标题（最多50个字）"
     }, validators=[DataRequired('请输入标题'),
                    Length(min=5, max=50, message='标题长度为5-50字')])
-    tags = StringField(label='标签', render_kw={
+    tags = StringField(label='标签', render_kw={\
         'class': "form-control",
         'placeholder': "输入标签，用,分隔"
     })
