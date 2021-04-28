@@ -3,6 +3,9 @@ from django.shortcuts import render
 
 
 # Create your views here.
+from django.template.loader import render_to_string
+
+
 def hello_world(request):
     return HttpResponse('hello world')
 
@@ -50,3 +53,15 @@ def num_even(request, num):
         return HttpResponse('{}:是偶数'.format(num))
     else:
         return HttpResponse('{}:是奇数'.format(num))
+
+
+def render_str(request):
+    """ 演示从文件响应 HTML 内容(render_to_string 函数的使用) """
+    tem_name = 'index.html'
+    html = render_to_string(template_name=tem_name)
+    return HttpResponse(html)
+
+
+def render_html(request):
+    """ 演示从文件响应 HTML 内容(render 函数的使用) """
+    return render(request, 'index.html')
