@@ -1,6 +1,7 @@
 from django.urls import path, re_path
 
-from hello.views import hello_world, hello_china, hello_html, article_list, search, num_even, render_str, render_html
+from hello.views import hello_world, hello_china, hello_html, article_list, \
+    search, num_even, render_str, render_html, http_request, http_response
 
 urlpatterns = [
     path('world/', hello_world, name='hello_world'),
@@ -12,4 +13,6 @@ urlpatterns = [
     re_path(r'^even/(?P<num>[1-9][0-9]{0, 1}|100)/$', num_even, name='num_even'),
     path('render/str/', render_str, name='render_str'),
     path('render/html/', render_html, name='render_html'),
+    path('http/request', http_request, name='http_request'),
+    path('http/response', http_response, name='http_response'),
 ]
