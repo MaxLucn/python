@@ -1,15 +1,22 @@
-from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render
+from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
+from django.shortcuts import render, redirect
 
 # Create your views here.
 from django.template.loader import render_to_string
+from django.urls import reverse
+from django.views.generic import TemplateView
 
 
 def hello_world(request):
     return HttpResponse('hello world')
 
 
+def index(request):
+    return render(request, 'index.html')
+
+
 def hello_china(request):
+    raise
     return HttpResponse('hello china')
 
 
@@ -94,3 +101,27 @@ def http_response(request):
     }
 
     return JsonResponse(user_info)
+
+
+def no_data_404(request):
+    """ 404 页面 """
+    return HttpResponse('404')
+
+
+def article_detail(request, article_id):
+    """
+    文章详情，ID 是从 1000 开始的整数
+    :param request:
+    :param article_id:文章 ID
+    :return:
+    """
+    if article_id < 1000:
+        # return HttpResponseRedirect(reverse('no_data_404'))
+        return redirect('no_data_404')
+    return HttpResponse('文章{}内容'.format(article_id))
+
+
+
+class HomeView(TemplateView):
+    """ 使用 class 重写视图 """
+    template_name = 'home.html'
