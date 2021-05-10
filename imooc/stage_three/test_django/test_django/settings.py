@@ -51,6 +51,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'test_django.urls'
 
+# DTL 模版和 Jinja2 模版的配置
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -66,6 +67,9 @@ TEMPLATES = [
             ],
         },
     },
+    {'BACKEND': 'django.template.backends.jinja2.Jinja2',
+     'DIRS': [os.path.join(BASE_DIR, 'jinja2')]
+     },
 ]
 
 WSGI_APPLICATION = 'test_django.wsgi.application'

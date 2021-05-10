@@ -6,6 +6,17 @@
 </head>
 <body>
 <h1>演示从文件响应 HTML 内容</h1>
-
+<h2>DTL 模版</h2>
+<h3>模版变量的使用</h3>
+<p>用户名：{{ username }}</p>
+<p>年龄: {{ age }}</p>
+<img src="{{ img_url }}" alt="法拉利夺冠">
+<h3>猫和老鼠主演列表</h3>
+{% for user in list_user %}
+    <p>用户名: {{ user.name }}</p>
+    <p>年龄: {{ user.age }}</p>
+{% endfor %}
+<h3>猫的信息</h3>
+{{ cat.display }}
 </body>
 </html>

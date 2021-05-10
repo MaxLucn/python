@@ -7,12 +7,34 @@ from django.urls import reverse
 from django.views.generic import TemplateView
 
 
+class Cat(object):
+    def display(self):
+        return '猫喵'
+
+
 def hello_world(request):
     return HttpResponse('hello world')
 
 
 def index(request):
-    return render(request, 'index.html')
+    """ 模版变量的使用 """
+    username = 'Kimi'
+    age = 34
+    img_url = '/medias/images/my_img.jpg'
+
+    list_user = [
+        {'name': 'Tom', 'age': 21},
+        {'name': 'Jerry', 'age': 21},
+    ]
+
+    cat = Cat()
+    return render(request, 'index.html', {
+        'username': username,
+        'age': age,
+        'img_url': img_url,
+        'list_user': list_user,
+        'cat': cat,
+    })
 
 
 def hello_china(request):
@@ -22,13 +44,14 @@ def hello_china(request):
 
 def hello_html(request):
     """ 响应 html 内容 """
+    username = 'Tom'
     html = """
     <html>
     <body>
-    <h3 style="color:red">hello html</h3>
+    <h3 style="color:red">hello {{html}}</h3>
     </body>
     </html>
-    """
+    """.replace('{{html}}', username)
     return HttpResponse(html)
 
 
@@ -121,7 +144,19 @@ def article_detail(request, article_id):
     return HttpResponse('文章{}内容'.format(article_id))
 
 
-
 class HomeView(TemplateView):
     """ 使用 class 重写视图 """
     template_name = 'home.html'
+
+
+def tag(request):
+    """ DTL 模版中的标签练习 """
+    list_user = [
+        {'name': 'Tom', 'age': 21},
+        {'name': 'Jerry', 'age': 21},
+        {'name': 'Kimi', 'age': 42},
+        {'name': 'Max', 'age': 23},
+    ]
+    return render(request, 'tag.html', {
+        'list_user': list_user
+    })
