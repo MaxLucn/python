@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>过滤器的使用</title>
+</head>
+<body>
+<p>
+    {{ name }} ----> {{ name|upper }}
+</p>
+<p>
+    {{ user_list|default:'用户列表为空' }}
+</p>
+<p>
+    {{ user_info|default_if_none:'无' }}
+</p>
+<p>
+    {#  保留小数点后面三位  #}
+    {{ num }} ---> {{ num|floatformat:3 }}
+</p>
+<p>
+    {{ my_date|date:'Y-m-d' }}
+</p>
+<p>
+    {#  富文本内容转义显示  #}
+    {{ html|safe }}
+</p>
+<p>
+    {#  字符串的截取  #}
+    {{ html|truncatechars_html:4|safe }}
+</p>
+</body>
+</html>

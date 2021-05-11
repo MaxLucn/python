@@ -1,9 +1,10 @@
-from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
+import datetime
+
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 
 # Create your views here.
 from django.template.loader import render_to_string
-from django.urls import reverse
 from django.views.generic import TemplateView
 
 
@@ -159,4 +160,30 @@ def tag(request):
     ]
     return render(request, 'tag.html', {
         'list_user': list_user
+    })
+
+
+def test_filter(request):
+    """ 过滤器的使用 """
+    name = 'model'
+    user_list = []
+    user_info = None
+    num = 12.354463423698963
+    my_date = datetime.datetime(2021, 5, 16)
+    html = '<h3>我们都是好孩子</h3>'
+    return render(request, 'test_filter.html', {
+        'name': name,
+        'user_list': user_list,
+        'user_info': user_info,
+        'num': num,
+        'my_date': my_date,
+        'html': html,
+    })
+
+
+def mine_filter(request):
+    """ 自定义过滤器 """
+    username = '王大麻子'
+    return render(request, 'mine_filter.html', {
+        'username': username,
     })
