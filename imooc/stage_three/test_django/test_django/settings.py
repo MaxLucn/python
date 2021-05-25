@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'hello',
     'accounts',
     'trip',
+    'django_crud',
 ]
 
 MIDDLEWARE = [
@@ -86,7 +87,7 @@ DATABASES = {
     # }
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'test_django',
+        'NAME': 'test_user',
         'USER': 'root',
         'PASSWORD': '123456',
         'HOST': '127.0.0.1',
