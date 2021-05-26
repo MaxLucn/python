@@ -13,7 +13,6 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-
 from django.contrib import admin
 from django.urls import path, include, re_path
 from django.views.static import serve
@@ -31,8 +30,10 @@ handler500 = 'test_django.views.page_500'
 
 
 if settings.DEBUG:
+    import debug_toolbar
     urlpatterns += [
         re_path(r'^medias/(?P<path>.*)$', serve, {
             'document_root': settings.MEDIA_ROOT,
-        })
+        }),
+        path('__debug__/', include(debug_toolbar.urls)),
     ]
