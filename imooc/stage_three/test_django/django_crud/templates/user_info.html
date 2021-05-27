@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户详细信息</title>
+</head>
+<body>
+<h3>用户详细信息</h3>
+<p>{{ user.username }}</p>
+<h3>用户详细了列表</h3>
+{% for profile in profile_list %}
+    <p>{{ profile.user.username }}</p>
+{% endfor %}
+<h3>使用 SQL 查询</h3>
+{% for user in user_list %}
+    <p>{{ user.username }}</p>
+{% endfor %}
+</body>
+</html>

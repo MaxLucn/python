@@ -23,7 +23,9 @@ from test_django import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('hello/', hello_world
-    path('hello/', include('hello.urls'))
+    path('hello/', include('hello.urls')),
+    path('django_crud/', include('django_crud.urls')),
+    path('grade/', include('grade.urls')),
 ]
 
 handler500 = 'test_django.views.page_500'

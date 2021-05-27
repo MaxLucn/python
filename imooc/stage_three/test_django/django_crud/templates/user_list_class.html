@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用面向对象的方法分页</title>
+</head>
+<body>
+<h3>使用面向对象的方法分页</h3>
+<p>总计：总共 {{ page_obj.paginator.num_pages }} 页， 当前第 {{ page_obj.number }} 页</p>
+{% for user in object_list %}
+    <p>{{ user.id }} : {{ user.username }}</p>
+{% endfor %}
+
+</body>
+</html>
