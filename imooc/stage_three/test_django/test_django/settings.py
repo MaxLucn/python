@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django_crud',
     'debug_toolbar',
     'grade',
+    'weather',
 ]
 
 MIDDLEWARE = [

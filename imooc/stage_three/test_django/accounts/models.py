@@ -20,6 +20,8 @@ class User(CommonModel):
     ), default='1')
     age = models.PositiveIntegerField('年龄', default=0)
     username = models.CharField('用户名', max_length=64, unique=True)
+    nickname = models.CharField('用户昵称', max_length=256, null=True, blank=True)
+    avatar = models.ImageField('用户头像', upload_to='avatar', null=True, blank=True)
     password = models.CharField('密码', max_length=256)
     remark = models.CharField('备注', max_length=64, null=True, blank=True)
     email = models.EmailField('邮箱', max_length=64, null=True, blank=True)
@@ -49,9 +51,17 @@ class Manager(User):
 
 class Profile(CommonModel):
     """ 用户详细信息 """
-    user = models.OneToOneField('User', on_delete=models.CASCADE,
-                                related_name='profile', db_column='user')
-    nickname = models.CharField('昵称', max_length=64)
+    age = models.PositiveIntegerField('年龄', default=0)
+    username = models.CharField('用户名', max_length=64, unique=True)
+    nickname = models.CharField('用户昵称', max_length=256, null=True, blank=True)
+    avatar = models.ImageField('用户头像', upload_to='avatar/%Y%m', null=True, blank=True)
+    password = models.CharField('密码', max_length=256)
+    remark = models.CharField('备注', max_length=64, null=True, blank=True)
+    email = models.EmailField('邮箱', max_length=64, null=True, blank=True)
+
+    # user = models.OneToOneField('User', on_delete=models.CASCADE,
+    #                             related_name='profile', db_column='user')
+    # nickname = models.CharField('昵称', max_length=64)
 
 
 class Question(CommonModel):
@@ -70,6 +80,7 @@ class Classify(models.Model):
     """ 分类 (一对多)"""
     name = models.CharField('名称', max_length=64)
     parent = models.ForeignKey('self', related_name='children', on_delete=models.CASCADE)
+
 # class Student(models.Model):
 #     """ 自由编程：学生模型 """
 #     name = models.CharField(verbose_name='姓名', max_length=64)

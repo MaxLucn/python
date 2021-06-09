@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+    <style type="text/css">
+        .errorlist{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<form action="." method="post">
+{#    {{ form.as_p }}#}
+    <div>
+        <!-- 用户名 -->
+        {{ form.username.label }}
+        {{ form.username }}
+        {{ form.username.errors }}
+    </div>
+    <div>
+        <!-- 密码 -->
+        {{ form.password.label }}
+        {{ form.password }}
+        {{ form.password.errors }}
+    </div>
+    <div>
+        {{ form.non_field_errors.as_text }}
+    </div>
+    {% csrf_token %}
+    <br>
+    <input type="submit" value="登录">
+</form>
+
+</body>
+</html>

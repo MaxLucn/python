@@ -26,6 +26,8 @@ urlpatterns = [
     path('hello/', include('hello.urls')),
     path('django_crud/', include('django_crud.urls')),
     path('grade/', include('grade.urls')),
+    path('accounts/', include('accounts.urls')),
+    path('weather/', include('weather.urls')),
 ]
 
 handler500 = 'test_django.views.page_500'

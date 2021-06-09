@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>天气预报</title>
+        <meta charset="utf-8">
+        <style>
+            html,body{
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                text-shadow: 1px 0px 1px #333;
+                background-image: linear-gradient(rgb(13, 104, 188), rgb(114, 173, 224));
+                background-repeat: no-repeat;
+                text-align: center;
+                color: white;
+            }
+            .city{
+                margin-top:60px;
+                font-size: 14px;
+                line-height: 60px;
+            }
+            main .tempers{
+                font-size: 32px;
+                font-family: Arial;
+            }
+            main .weather{
+                font-size: 17px;
+            }
+            main .wind{
+                font-size: 13px;
+                line-height: 200%;
+            }
+            main .current{
+                font-size: 13px;
+            }
+        </style>
+    </head>
+    <body>
+    <form action="." method="post">
+        {% csrf_token %}
+        <div class="city">城市 {{ form.city }} <button type="submit">查询</button></div>
+
+    </form>
+
+        <main>
+            <div class="tempers">{{ dict_1.temp }}</div>
+            <div class="weather">{{ dict_1.weather }}</div>
+            <div class="wind">{{ dict_1.wind }}</div>
+            <div class="current">{{ dict_1.today }}</div>
+        </main>
+    </body>
+</html>
