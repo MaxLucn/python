@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 实现</title>
+    <script src='./js/vue.js'></script>
+
+</head>
+<body>
+    <div id="app">
+        <h3>表单操作</h3>
+        <input type="text" name='username' v-model='username'>
+        <input type="button" value="提交" @click='submit'>
+        {{ uname }}
+        <h3>刷新动态</h3>
+        <input type="button" value='刷新' @click='load'>
+        <ul>
+            <li v-for='item in datalist'>
+                {{ item }}
+            </li>
+        </ul>
+    </div> 
+    <script>
+        let app = new Vue({
+            // el: '#app',
+            // template: '<h1>test</h1>',
+            data:{
+                username: 'admin',
+                datalist: []
+            },
+            computed:{
+                uname(){
+                    return this.username[0] + '***'
+                }
+            },
+            methods: {
+                submit(){
+                    console.log('获取表单的值:', this.username)
+                },
+                load(){
+                    this.datalist = ['北京', '上海', '广州', '成都']
+                }
+            },
+            // 生命周期钩子函数（在某一个时间点 Vue 实例会自动执行的函数）
+            <!-- 改变数据才会触发beforeUpdate 和updated函数 -->
+            <!-- 生命周期函数的执行顺序书写顺序没有关系 -->
+            <!-- Vue实例被销毁时才会触发beforeDestroy和destroyed函数 -->
+            // 创建Vue实例调用的方法
+            beforeCreate(){
+                console.log('beforeCreate')
+            },
+            created(){
+                console.log('created')
+            },
+            // 组件挂载过程中调用的方法
+            beforeMount(){
+                console.log('beforeMount')
+            },
+            mounted(){
+                console.log('mounted')
+            },
+            // 关闭浏览器、销毁Vue实例调用的方法
+            beforeDestroy(){
+                console.log('beforeDestroy')
+            },
+            destroyed(){
+                console.log('destroyed')
+            },
+            // 数据变化时调用的方法
+            beforeUpdate(){
+                console.log('beforeUpdate')
+            },
+            updated(){
+                console.log('updated')
+            },
+        }).$mount('#app')
+    </script>
+</body>
+</html>
