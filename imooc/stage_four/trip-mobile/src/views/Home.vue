@@ -8,6 +8,10 @@
     <Banner/>
     <!-- 热门景点推荐 -->
     <Hot/>
+    <!-- 精选景点 -->
+    <Fine/>
+    <!-- 底部导航 -->
+    <TripFooter/>
   </div>
 </template>
 
@@ -22,6 +26,8 @@
 // banner图
 import Banner from '@/components/home/Banner'
 import Hot from '@/components/home/Hot'
+import Fine from '@/components/home/Fine'
+import TripFooter from '@/components/common/Footer'
 
 export default {
   name: 'Home',
@@ -33,7 +39,11 @@ export default {
     // banner 图
     Banner,
     // 热门景点推荐
-    Hot
+    Hot,
+    // 精选景点
+    Fine,
+    // 底部导航
+    TripFooter
   },
   created () {
     // ajax.get('http://django.t.mukewang.com/api/system/slider/list/?types=11').then(resp => {
