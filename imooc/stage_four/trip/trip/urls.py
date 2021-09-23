@@ -19,5 +19,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     # 系统模块
-    path('system/', include('system.urls'))
+    path('system/', include('system.urls')),
+    # 景点模块
+    path('sight/', include('sight.urls'))
 ]
