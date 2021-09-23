@@ -16,11 +16,11 @@
         :key="item.id">
         <div class="img">
           <span></span>
-          <img :src="item.img" alt="">
+          <img :src="item.main_img" alt="">
         </div>
         <h5 class="van-ellipsis">{{ item.name }}</h5>
         <div class="line-price">
-          <span class="price">￥{{ item.price }}</span>起
+          <span class="price">￥{{ item.min_price }}</span>起
         </div>
       </a>
     </div>
@@ -28,25 +28,43 @@
   </div>
 </template>
 <script>
+import { ajax } from '@/utils/ajax'
+import { SightApis } from '@/utils/apis'
 export default {
   data () {
     return {
       dataList: []
     }
   },
+  methods: {
+    /**
+     * 查询热门景点的数据
+     */
+    getDataList () {
+      ajax.get(SightApis.sightListUrl, {
+        params: {
+          is_hot: 1
+        }
+      }).then(({ data }) => {
+        this.dataList = data.objects
+      })
+    }
+  },
   created () {
-    this.dataList = [
-      { id: 1, img: '/static/home/hot/h1.jpg', name: '景点名称', price: 65 },
-      { id: 2, img: '/static/home/hot/h2.jpg', name: '景点名称景点名称', price: 65 },
-      { id: 3, img: '/static/home/hot/h3.jpg', name: '景点名称', price: 65 },
-      { id: 4, img: '/static/home/hot/h4.jpg', name: '景点名称', price: 65 },
-      { id: 5, img: '/static/home/hot/h5.jpg', name: '景点名称景点名称', price: 65 },
-      { id: 6, img: '/static/home/hot/h6.jpg', name: '景点名称', price: 65 },
-      { id: 7, img: '/static/home/hot/h7.jpg', name: '景点名称景点名称景点名称', price: 65 },
-      { id: 8, img: '/static/home/hot/h8.jpg', name: '景点名称', price: 65 },
-      { id: 9, img: '/static/home/hot/h9.jpg', name: '景点名称', price: 65 },
-      { id: 10, img: '/static/home/hot/h10.jpg', name: '景点名称', price: 65 }
-    ]
+    // 查询接口数据
+    this.getDataList()
+    // this.dataList = [
+    //   { id: 1, img: '/static/home/hot/h1.jpg', name: '景点名称', price: 65 },
+    //   { id: 2, img: '/static/home/hot/h2.jpg', name: '景点名称景点名称', price: 65 },
+    //   { id: 3, img: '/static/home/hot/h3.jpg', name: '景点名称', price: 65 },
+    //   { id: 4, img: '/static/home/hot/h4.jpg', name: '景点名称', price: 65 },
+    //   { id: 5, img: '/static/home/hot/h5.jpg', name: '景点名称景点名称', price: 65 },
+    //   { id: 6, img: '/static/home/hot/h6.jpg', name: '景点名称', price: 65 },
+    //   { id: 7, img: '/static/home/hot/h7.jpg', name: '景点名称景点名称景点名称', price: 65 },
+    //   { id: 8, img: '/static/home/hot/h8.jpg', name: '景点名称', price: 65 },
+    //   { id: 9, img: '/static/home/hot/h9.jpg', name: '景点名称', price: 65 },
+    //   { id: 10, img: '/static/home/hot/h10.jpg', name: '景点名称', price: 65 }
+    // ]
   }
 }
 </script>

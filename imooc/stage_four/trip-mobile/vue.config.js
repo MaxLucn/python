@@ -8,11 +8,11 @@ module.exports = {
   devServer: {
       proxy: {
           '/api': {
-              target: 'http://django.t.mukewang.com',
+              target: 'http://127.0.0.1:8000/',
               changeOrigin: true,
               pathRewrite: {
                 // 需要 rewrite 重写的 URL
-                // '/api': ''
+                '^/api': ''
               }
           }
       }
