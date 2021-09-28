@@ -1,5 +1,6 @@
 <template>
-  <a href="#" class="sight-item">
+  <router-link class="sight-item"
+    :to="{name: 'SightDetail', params: {id: item.id}}">
     <img :src="item.main_img" :alt="item.name">
     <div class="right">
       <h5>{{ item.name }}</h5>
@@ -8,7 +9,7 @@
       <div class="tips light">{{ item.province }} - {{ item.city }}</div>
       <div class="line-price">¥ {{ item.min_price }}起</div>
     </div>
-  </a>
+  </router-link>
 </template>
 <script>
 export default {

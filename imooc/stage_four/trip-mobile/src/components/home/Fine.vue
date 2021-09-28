@@ -7,7 +7,8 @@
         icon="location-o"
         is-link
         title-style="text-align:left"
-        value="更多" />
+        value="更多"
+        :to="{name: 'SightList', query: {name: '精选景点'}}" />
       <!-- // 顶上导航 -->
       <!-- 景点的列表 -->
       <div class="box-main">

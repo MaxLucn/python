@@ -7,13 +7,15 @@
       icon="/static/home/hot/fire.png"
       is-link
       title-style="text-align:left"
-      value="全部榜单" />
+      value="全部榜单"
+      :to="{name: 'SightList', query: {name: '热门推荐'}}" />
     <!-- // 顶上导航 -->
     <!-- 景点列表 -->
     <div class="box-main">
-      <a href="#" class="hot-item"
+      <router-link class="hot-item"
         v-for="item in dataList"
-        :key="item.id">
+        :key="item.id"
+        :to="{name: 'SightDetail', params: {id: item.id}}">
         <div class="img">
           <span></span>
           <img :src="item.main_img" alt="">
@@ -22,7 +24,7 @@
         <div class="line-price">
           <span class="price">￥{{ item.min_price }}</span>起
         </div>
-      </a>
+      </router-link>
     </div>
     <!-- //景点列表 -->
   </div>
