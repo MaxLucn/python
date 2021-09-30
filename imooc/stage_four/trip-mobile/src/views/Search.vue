@@ -61,7 +61,7 @@ export default {
   methods: {
     // 搜索框的实现
     onSearch () {
-      console.log('onsearch')
+      console.log('onSearch')
     },
     // 景点列表的数据
     getDataList () {
