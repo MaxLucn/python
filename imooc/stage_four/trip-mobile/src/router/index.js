@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import Search from '../views/Search.vue' 
+import Search from '../views/Search.vue'
 
 import SightList from '../views/sight/SightList.vue'
 import SightDetail from '../views/sight/SightDetail.vue'
@@ -26,31 +26,31 @@ const routes = [
   {
     path: '/sight/list',
     name: 'SightList',
-    commponent: SightList
+    component: SightList
   },
   // 景点详情
   {
     path: '/sight/detail/:id',
     name: 'SightDetail',
-    commponent: SightDetail
+    component: SightDetail
   },
   // 景点介绍
   {
     path: '/sight/info/:id',
     name: 'SightInfo',
-    commponent: SightInfo
+    component: SightInfo
   },
   // 景点页下的评论列表
   {
     path: '/sight/comment/:id',
     name: 'SightComment',
-    commponent: SightComment
+    component: SightComment
   },
   // 景点页下的图片
   {
     path: '/sight/image/:id',
     name: 'SightImage',
-    commponent: SightImage
+    component: SightImage
   }
 ]
 const router = new VueRouter({
