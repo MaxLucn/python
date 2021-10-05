@@ -83,15 +83,33 @@
     <!-- // 门票列表 -->
 
     <!-- 用户评价列表 -->
+    <div class="sight-comment">
+      <van-cell title="热门评论" icon="comment-o" title-style="text-align:left"/>
+      <comment-item/>
+      <router-link class="link-more" :to="{name: 'SightComment', params: {id: id}}">查看更多</router-link>
+    </div>
     <!-- // 用户评价列表 -->
   </div>
 </template>
 <script>
+import CommentItem from '../../components/sight/CommentItem'
+
 export default {
+  data () {
+    return {
+      id: ''
+    }
+  },
+  components: {
+    CommentItem
+  },
   methods: {
     goBack () {
       this.$router.go(-1)
     }
+  },
+  created () {
+    this.id = this.$route.params.id
   }
 }
 </script>
@@ -195,6 +213,19 @@ export default {
         }
       }
     }
+  }
+
+  // 用户评价列表
+  .sight-comment {
+    margin-top: 10px;
+    background-color: #fff;
+  }
+
+  // 查看更多
+  .link-more {
+    display: block;
+    color: #666;
+    padding: 10px;
   }
 }
 </style>
