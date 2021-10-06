@@ -92,7 +92,7 @@
   </div>
 </template>
 <script>
-import CommentItem from '../../components/sight/CommentItem'
+import CommentItem from '@/components/sight/CommentItem'
 
 export default {
   data () {

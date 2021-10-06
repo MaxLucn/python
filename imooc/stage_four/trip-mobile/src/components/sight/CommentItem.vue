@@ -19,11 +19,10 @@
         部分进入南海生态环境工程创新研究院、种子创新研究院和药物创新研究院的“率先行动计划”总目标。 </p>
     </div>
     <!-- 图片列表 -->
-    <div class="cmt-imgs" @click="show=true">
-      <van-image width="100" height="100" src="https://img.ycdn.cn/vant/cat.jpeg"/>
-      <van-image width="100" height="100" src="https://img.ycdn.cn/vant/cat.jpeg"/>
-      <van-image width="100" height="100" src="https://img.ycdn.cn/vant/cat.jpeg"/>
-      <van-image width="100" height="100" src="https://img.ycdn.cn/vant/cat.jpeg"/>
+    <div class="cmt-images" @click="show=true">
+      <van-image width="100" height="100" src="https://img.yzcdn.cn/vant/cat.jpeg"/>
+      <van-image width="100" height="100" src="https://img.yzcdn.cn/vant/cat.jpeg"/>
+      <van-image width="100" height="100" src="https://img.yzcdn.cn/vant/cat.jpeg"/>
     </div>
     <van-image-preview v-model="show" :images="images" @change="onChange">
       <template v-slot:index>第{{ index + 1 }}页</template>
@@ -39,7 +38,7 @@ export default {
       index: 0,
       images: [
         'https://img.yzcdn.cn/vant/apple-1.jpg',
-        'https://img.yzcdn.cn/vant/apple-2.jpg',
+        'https://img.yzcdn.cn/vant/apple-2.jpg'
       ],
       value: 4.5
     }
@@ -73,7 +72,7 @@ export default {
     line-height: 2.0;
   }
 
-  .cmt-imgs {
+  .cmt-images {
     padding: 5px;
     text-align: left;
     margin-right: 5px;

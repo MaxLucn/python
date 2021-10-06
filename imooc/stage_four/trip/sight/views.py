@@ -3,10 +3,13 @@ from django.db.models import Q
 from django.shortcuts import render
 from django.views.generic import ListView
 
+from sight import serializers
 from sight.models import Sight
+from utils.response import NotFoundJsonResponse
 
 
 class SightListView(ListView):
+    """ 景点列表 """
     # 分页处理，每页放 5 条数据
     paginate_by = 5
 
@@ -27,23 +30,29 @@ class SightListView(ListView):
 
     def render_to_response(self, context, **response_kwargs):
         page_obj = context['page_obj']
-        data = {
-            'meta': {
-                'total_count': page_obj.paginator.count,
-                'page_count': page_obj.paginator.num_pages,
-                'current_page': page_obj.number,
-            },
-            'objects': []
-        }
-        for item in page_obj.object_list:
-            data['objects'].append({
-                'id': item.id,
-                'name': item.name,
-                'main_img': item.main_img.url,
-                'score': item.score,
-                'province': item.province,
-                'min_price': item.min_price,
-                'city': item.city,
-                'comment_count': 0
-            })
-        return http.JsonResponse(data)
+        if page_obj is not None:
+            data = serializers.SightSerializer(page_obj).to_dict()
+            return http.JsonResponse(data)
+        else:
+            return NotFoundJsonResponse()
+        # data = {
+        #     'meta': {
+        #         'total_count': page_obj.paginator.count,
+        #         'page_count': page_obj.paginator.num_pages,
+        #         'current_page': page_obj.number,
+        #     },
+        #     'objects': []
+        # }
+        # for item in page_obj.object_list:
+        #     data['objects'].append({
+        #         'id': item.id,
+        #         'name': item.name,
+        #         'main_img': item.main_img.url,
+        #         'score': item.score,
+        #         'province': item.province,
+        #         'min_price': item.min_price,
+        #         'city': item.city,
+        #         # TODO 评论数量暂时无法获取
+        #         'comment_count': 0
+        #     })
+        # return http.JsonResponse(data)

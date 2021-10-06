@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     # 系统模块
     'system.apps.SystemConfig',
     # 景点模块
-    'sight.apps.SightConfig'
+    'sight.apps.SightConfig',
+    # 用户账户
+    'accounts.apps.AccountsConfig'
 ]
 
 MIDDLEWARE = [
