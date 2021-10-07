@@ -12,11 +12,9 @@ class MetaSerializer(object):
 
     def __init__(self, page, page_count, total_count, **kwargs):
         """
-
-        :param page:当前页
-        :param page_count:总页数
-        :param total_count: 总计录数
-        :param kwargs:
+        :param page: 当前页
+        :param page_count: 总页数
+        :param total_count: 总记录数
         """
         self.page = page
         self.page_count = page_count
@@ -30,22 +28,21 @@ class MetaSerializer(object):
         }
 
 
-class BaseListSerializer(object):
-    """ 分页类的封装 """
+class BaseListPageSerializer(object):
+    """ 分页类封装 """
 
     def __init__(self, page_obj, paginator=None, object_list=[]):
         """
-
-        :param page_obj:当前页面的对象
-        :param paginator:分页器的对象
-        :param object_list:当前页面的数据列表
+        :param page_obj: 当前页的对象
+        :param paginator: 分页器的对象
+        :param object_list: 当前页的数据列表
         """
-        self.page_obj = page_obj,
+        self.page_obj = page_obj
         self.paginator = paginator if paginator else page_obj.paginator
         self.object_list = object_list if object_list else page_obj.object_list
 
     def get_object(self, obj):
-        """ 对象内容，子类重写 """
+        """ 对象的内容，子类重写 """
         return {}
 
     def to_dict(self):
