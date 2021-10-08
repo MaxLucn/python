@@ -25,9 +25,17 @@ class SightListView(ListView):
         is_top = self.request.GET.get('is_top', None)
         if is_top:
             query = query & Q(is_top=True)
-        # TODO 3. 景点名称搜索
+        # 3. 景点名称搜索
+        name = self.request.GET.get('name', None)
+        if name:
+            query = query & Q(name__icontains=name)
         queryset = Sight.objects.filter(query)
         return queryset
+
+    def get_paginate_by(self, queryset):
+        """ 从前端控制每一页的分页大小 """
+        page_size = self.request.GET.get('limit', None)
+        return page_size or self.paginate_by
 
     def render_to_response(self, context, **response_kwargs):
         page_obj = context['page_obj']
