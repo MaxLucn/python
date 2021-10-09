@@ -14,8 +14,8 @@ class SightListSerializer(BaseListPageSerializer):
             'province': obj.province,
             'min_price': obj.min_price,
             'city': obj.city,
-            # TODO 评论数量暂时无法获取
-            'comment_count': 0
+            # 评论数量暂时无法获取
+            'comment_count': obj.comment_count
         }
 
 
@@ -36,8 +36,9 @@ class SightDetailSerializer(BaseSerializer):
             'city': obj.city,
             'area': obj.area,
             'town': obj.town,
-            # TODO 评论数量暂时无法获取
-            'comment_count': 0
+            # 评论数量暂时无法获取
+            'comment_count': obj.comment_count,
+            'image_count': obj.image_count
         }
 
 
@@ -75,6 +76,7 @@ class TicketListSerializer(BaseListPageSerializer):
             'desc': obj.desc,
             'types': obj.types,
             'price': obj.price,
+            'sell_price': obj.sell_price,
             'discount': obj.discount,
             'total_stock': obj.total_stock,
             'remain_stock': obj.remain_stock

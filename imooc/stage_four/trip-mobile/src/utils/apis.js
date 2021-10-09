@@ -4,7 +4,7 @@
 
 const apiHost = 'http://localhost:8080/api'
 /**
- *用户账户相关的接口
+ * 用户账户相关的接口
  */
 const AccountsApis = {
   loginUrl: '/',
@@ -20,11 +20,17 @@ const SystemApis = {
 }
 
 /**
- * 景点模块的接口
+ * 景点模块
  */
 const SightApis = {
   // 景点列表
-  sightListUrl: apiHost + '/sight/sight/list/'
+  sightListUrl: apiHost + '/sight/sight/list/',
+  // 景点详情
+  sightDetailUrl: apiHost + '/sight/sight/detail/#{id}/',
+  // 门票列表
+  sightTicketUrl: apiHost + '/sight/ticket/list/#{id}/',
+  // 评论列表
+  sightCommentUrl: apiHost + '/sight/comment/list/#{id}/'
 }
 
 export {

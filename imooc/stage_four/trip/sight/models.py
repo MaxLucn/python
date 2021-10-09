@@ -33,6 +33,16 @@ class Sight(CommonModel):
         db_table = 'sight'
         ordering = ['-updated_at']
 
+    @property
+    def comment_count(self):
+        """ 评论总数 """
+        return self.comments.filter(is_valid=True).count()
+
+    @property
+    def image_count(self):
+        """ 景点图片的数量 """
+        return self.images.filter(is_valid=True).count()
+
 
 class Info(models.Model):
     """ 景点详情 """
@@ -74,6 +84,11 @@ class Ticket(CommonModel):
 
     class Meta:
         db_table = 'sight_ticket'
+
+    @property
+    def sell_price(self):
+        """ 门票销售价 = 原价 x 折扣"""
+        return self.price * self.discount / 10
 
 
 class Comment(CommonModel):

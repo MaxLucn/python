@@ -3,67 +3,59 @@
   <div class="page-sight-detail">
     <!-- 页面头部 -->
     <van-nav-bar
-      left-text="返回"
-      left-arrow
-      fixed
-      @click-left="goBack"
+        left-text="返回"
+        left-arrow
+        fixed
+        @click-left="goBack"
     />
-    <!-- // 页面头部 -->
-
-    <!-- 景点大图 -->
+    <!-- 大图 -->
     <div class="sight-banner">
-      <van-image src="/static/home/hot/h1_max.jpg" width="100%" height="100%"/>
+      <van-image :src="sightDetail.img" width="100%" height="100%"/>
       <div class="tips">
-        <router-link class="pic-sts" :to="{name: 'SightImage', params: {id: 123}}">
+        <router-link class="pic-sts" :to="{name: 'SightImage', params: {id}}">
           <van-icon name="video-o"/>
-          <span>10 张图片</span>
+          <span>{{ sightDetail.image_count }} 图片</span>
         </router-link>
-        <div class="title">景点标题</div>
+        <div class="title">{{ sightDetail.name }}</div>
       </div>
     </div>
-    <!-- // 景点大图 -->
-
+    <!-- //大图 -->
     <!-- 评分、景点介绍 -->
     <div class="sight-info">
-      <div class="left">
+      <div class="left" @click="goPage()">
         <div class="info-title">
-          <strong>5 分</strong>
+          <strong>{{ sightDetail.score }}分</strong>
           <small>很棒</small>
         </div>
-        <div class="info-tips">30 条评论</div>
+        <div class="info-tips">{{ sightDetail.comment_count }} 评论</div>
         <van-icon name="arrow"/>
       </div>
       <div class="right">
         <div class="info-title">
           <span>景点介绍</span>
         </div>
-        <div class="info-tips">开放时间</div>
+        <div class="info-tips">开放时间、贴士</div>
         <van-icon name="arrow"/>
       </div>
     </div>
-    <!-- // 评分、景点介绍 -->
-
+    <!-- //评分、景点介绍 -->
     <!-- 地址信息 -->
-    <van-cell title="广东省广州市番禺区番禺大道" icon="location-o"
+    <van-cell :title="fullArea" icon="location-o"
               is-link
-              :title-style="{'text-align': 'left'}"
-    >
+              :title-style="{'text-align': 'left'}">
       <template #right-icon>
-        <van-icon name="search" class="search-icon"/>
         <van-icon name="arrow"/>
       </template>
     </van-cell>
-    <!-- // 地址信息 -->
-
     <!-- 门票列表 -->
     <div class="sight-ticket">
       <van-cell title="门票" icon="bookmark-o" title-style="text-align:left"/>
-      <div class="ticket-item" v-for="i in 5" :key="i">
+      <div class="ticket-item" v-for="item in ticketList" :key="item.pk">
         <div class="left">
-          <div class="title">成人票</div>
+          <div class="title">{{ item.name }}</div>
           <div class="tips">
             <van-icon name="clock-o"/>
-            <span>7 点之前可以预定</span>
+            <span>{{ item.desc }}</span>
           </div>
           <div class="tags">
             <van-tag mark type="primary">标签1</van-tag>
@@ -71,8 +63,8 @@
         </div>
         <div class="right">
           <div class="price">
-            <span>¥</span>
-            <strong>69</strong>
+            <span>￥</span>
+            <strong>{{ item.sell_price }}</strong>
           </div>
           <router-link to="#">
             <van-button type="warning" size="small">预定</van-button>
@@ -80,36 +72,109 @@
         </div>
       </div>
     </div>
-    <!-- // 门票列表 -->
-
-    <!-- 用户评价列表 -->
+    <!-- //门票列表 -->
+    <!-- 用户评价 -->
     <div class="sight-comment">
       <van-cell title="热门评论" icon="comment-o" title-style="text-align:left"/>
-      <comment-item/>
-      <router-link class="link-more" :to="{name: 'SightComment', params: {id: id}}">查看更多</router-link>
+      <comment-item v-for="item in commentList" :key="item.pk" :item="item"/>
+      <router-link class="link-more" :to="{name: 'SightComment', params: {id}}">查看更多</router-link>
     </div>
-    <!-- // 用户评价列表 -->
+    <!-- //用户评价 -->
   </div>
 </template>
 <script>
+import {ajax} from '@/utils/ajax'
+import {SightApis} from '@/utils/apis'
+// 评论项组件
 import CommentItem from '@/components/sight/CommentItem'
 
 export default {
   data () {
     return {
-      id: ''
+      id: '',
+      // 景点详细信息
+      sightDetail: {},
+      // 门票列表
+      ticketList: [],
+      // 评论列表
+      commentList: []
     }
   },
   components: {
     CommentItem
   },
+  computed: {
+    /**
+     * 地址的全部信息
+     */
+    fullArea () {
+      let area = this.sightDetail.province + this.sightDetail.city
+      if (this.sightDetail.area) {
+        area += this.sightDetail.area
+      }
+      if (this.sightDetail.town) {
+        area += this.sightDetail.town
+      }
+      return area
+    }
+  },
+  watch: {
+    $route () {
+      this.loadData()
+    }
+  },
   methods: {
+    /**
+     * 跳转到评论列表
+     */
+    goPage () {
+      this.$router.push({
+        name: 'SightComment',
+        params: {id: this.id}
+      })
+    },
+    loadData () {
+      this.id = this.$route.params.id
+      // 获取景点详细信息
+      this.getSightDetail()
+      // 门票列表
+      this.getTicketList()
+      // 评论列表
+      this.getCommentList()
+    },
     goBack () {
       this.$router.go(-1)
+    },
+    /**
+     * 获取景点详细信息
+     */
+    getSightDetail () {
+      const url = SightApis.sightDetailUrl.replace('#{id}', this.id)
+      ajax.get(url).then(({data}) => {
+        this.sightDetail = data
+      })
+    },
+    /**
+     * 门票列表
+     */
+    getTicketList () {
+      const url = SightApis.sightTicketUrl.replace('#{id}', this.id)
+      ajax.get(url).then(({data: {objects}}) => {
+        this.ticketList = objects
+      })
+    },
+    /**
+     * 评论列表
+     */
+    getCommentList () {
+      const url = SightApis.sightCommentUrl.replace('#{id}', this.id)
+      ajax.get(url).then(({data: {objects}}) => {
+        this.commentList = objects
+      })
     }
   },
   created () {
-    this.id = this.$route.params.id
+    this.loadData()
   }
 }
 </script>
@@ -173,7 +238,7 @@ export default {
     .van-icon {
       position: absolute;
       right: 5px;
-      top: 5px;
+      top: 5px
     }
   }
 
@@ -215,7 +280,7 @@ export default {
     }
   }
 
-  // 用户评价列表
+  // 评论列表
   .sight-comment {
     margin-top: 10px;
     background-color: #fff;

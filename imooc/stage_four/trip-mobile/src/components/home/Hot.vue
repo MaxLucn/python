@@ -8,7 +8,7 @@
       is-link
       title-style="text-align:left"
       value="全部榜单"
-      :to="{name: 'SightList', query: {name: '热门推荐'}}" />
+      :to="{name: 'Search', query: {isHot: 1}}" />
     <!-- // 顶上导航 -->
     <!-- 景点列表 -->
     <div class="box-main">

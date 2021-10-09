@@ -37,3 +37,4 @@ class ImageRelated(CommonModel):
 
     class Meta:
         db_table = 'system_image_related'
+

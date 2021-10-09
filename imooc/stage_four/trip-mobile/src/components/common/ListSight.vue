@@ -1,6 +1,6 @@
 <template>
   <router-link class="sight-item"
-    :to="{name: 'SightDetail', params: {id: item.id}}">
+               :to="{name: 'SightDetail', params: {id: item.id}}">
     <img :src="item.main_img" :alt="item.name">
     <div class="right">
       <h5>{{ item.name }}</h5>
@@ -20,20 +20,24 @@ export default {
 </script>
 <style lang="less">
 // 景点列表
-.sight-item{
+.sight-item {
   display: flex;
-  margin-top: 10px;
+  padding-top: 10px;
   border-bottom: 1px solid #f6f6f6;
+  background-color: #ffffff;
+
   img {
     width: 100px;
     height: 100px;
-    }
+  }
+
   h5 {
     color: #212121;
     font-size: 14px;
     padding: 5px 0;
     margin: 0;
   }
+
   .right {
     // text-align: left;
     flex-grow: 1;
@@ -42,6 +46,7 @@ export default {
     padding-left: 5px;
     position: relative;
   }
+
   .line-price {
     position: absolute;
     right: 10px;
@@ -51,9 +56,11 @@ export default {
     font-size: 16px;
     font-weight: bold;
   }
+
   .tips {
     font-size: 12px;
     color: #666;
+
     &.light {
       color: #999;
     }
