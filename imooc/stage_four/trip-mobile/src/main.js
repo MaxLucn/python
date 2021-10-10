@@ -15,7 +15,7 @@ Vue.config.productionTip = false
 // 注册过滤器
 Object.keys(filters).forEach(k => Vue.filter(k, filters[k]))
 
-new Vue({
+window.app = new Vue({
   router,
   store,
   render: h => h(App)
