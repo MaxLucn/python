@@ -119,3 +119,8 @@ class Comment(CommonModel):
     class Meta:
         db_table = 'sight_comment'
         ordering = ['-love_count', '-created_at']
+
+    @property
+    def image_count(self):
+        """ 景点图片的数量 """
+        return self.images.filter(is_valid=True).count()

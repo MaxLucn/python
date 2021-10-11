@@ -1,5 +1,5 @@
 from system.serializers import BaseImageSerializer
-from utils.serializers import BaseListPageSerializer, BaseSerializer
+from utils.serializers import BaseListPageSerializer, BaseSerializer, MetaSerializer
 
 
 class SightListSerializer(BaseListPageSerializer):
@@ -94,4 +94,16 @@ class SightInfoSerializer(BaseSerializer):
             'play_way': obj.play_way,
             'tips': obj.tips,
             'traffic': obj.traffic,
+        }
+
+
+class SightImageSerializer(MetaSerializer):
+    """ 景点图片 """
+
+    def to_dict(self):
+        obj = self.obj
+        return {
+            'pk': obj.images.pk,
+            'img': obj.img,
+            'current_page': obj.current_page
         }

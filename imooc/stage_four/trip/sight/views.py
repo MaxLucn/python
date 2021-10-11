@@ -146,3 +146,19 @@ class SightInfoDetailView(DetailView):
             data = serializers.SightInfoSerializer(page_obj).to_dict()
             return http.JsonResponse(data)
         return NotFoundJsonResponse()
+
+
+class SightImageListView(ListView):
+    """ 2、6 景点图片 """
+    def get_queryset(self):
+        return Images.objects.all()
+
+    def render_to_response(self, context, **response_kwargs):
+        """ 重写响应的返回 """
+        page_obj = context['object']
+        if page_obj is not None:
+            data = serializers.SightImageSerializer(page_obj).to_dict()
+            return http.JsonResponse(data)
+        return NotFoundJsonResponse()
+
+
