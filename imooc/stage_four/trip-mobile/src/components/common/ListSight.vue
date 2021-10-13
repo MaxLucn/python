@@ -7,15 +7,13 @@
       <van-rate v-model="item.score" readonly/>
       <div class="tips">{{ item.comment_count }}人点评 | 100%满意</div>
       <div class="tips light">{{ item.province }} - {{ item.city }}</div>
-      <div class="line-price">¥ {{ item.min_price }}起</div>
+      <div class="line-price">￥ {{ item.min_price }} 起</div>
     </div>
   </router-link>
 </template>
 <script>
 export default {
-  props: [
-    'item'
-  ]
+  props: ['item']
 }
 </script>
 <style lang="less">
@@ -24,11 +22,20 @@ export default {
   display: flex;
   padding-top: 10px;
   border-bottom: 1px solid #f6f6f6;
-  background-color: #ffffff;
+  background-color: #fff;
 
   img {
     width: 100px;
     height: 100px;
+  }
+
+  .right {
+    text-align: left;
+    flex-grow: 1;
+    text-align: left;
+    justify-content: left;
+    padding-left: 5px;
+    position: relative;
   }
 
   h5 {
@@ -36,15 +43,6 @@ export default {
     font-size: 14px;
     padding: 5px 0;
     margin: 0;
-  }
-
-  .right {
-    // text-align: left;
-    flex-grow: 1;
-    text-align: left;
-    justify-content: left;
-    padding-left: 5px;
-    position: relative;
   }
 
   .line-price {

@@ -1,18 +1,17 @@
 <template>
-    <!-- 首页的轮播图 -->
-    <div class="home-banner-box">
-      <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
-        <van-swipe-item v-for='item in bannerList' :key='item.id'>
-          <!-- <img v-bind:src="item.img_url" alt=""> -->
-          <!-- v-bind 用法的另一种写法，常用下面这种 -->
-          <img :src="item.img_url" alt="">
-        </van-swipe-item>
-      </van-swipe>
-    </div>
+  <!-- 首页的轮播图 -->
+  <div class="home-banner-box">
+    <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
+      <van-swipe-item v-for="item in bannerList"
+                      :key="item.id">
+        <img :src="item.img_url" alt="">
+      </van-swipe-item>
+    </van-swipe>
+  </div>
 </template>
 <script>
-import { ajax } from '@/utils/ajax'
-import { SystemApis } from '@/utils/apis'
+import {ajax} from '@/utils/ajax'
+import {SystemApis} from '@/utils/apis'
 
 export default {
   data () {
@@ -22,8 +21,8 @@ export default {
   },
   methods: {
     /**
-    * 获取轮播图的数据
-    */
+     * 获取轮播图的数据
+     */
     getDataList () {
       ajax.get(SystemApis.sliderListUrl).then(res => {
         console.log('res:', res)

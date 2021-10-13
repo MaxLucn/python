@@ -30,7 +30,9 @@ const SightApis = {
   // 门票列表
   sightTicketUrl: apiHost + '/sight/ticket/list/#{id}/',
   // 评论列表
-  sightCommentUrl: apiHost + '/sight/comment/list/#{id}/'
+  sightCommentUrl: apiHost + '/sight/comment/list/#{id}/',
+  // 图片列表
+  sightImageUrl: apiHost + '/sight/image/list/#{id}/'
 }
 
 export {

@@ -6,6 +6,8 @@ from django.views.generic import ListView, DetailView
 from sight import serializers
 from sight.models import Sight, Comment, Ticket, Info
 
+from system.models import ImageRelated
+
 from utils.response import NotFoundJsonResponse
 
 
@@ -148,17 +150,41 @@ class SightInfoDetailView(DetailView):
         return NotFoundJsonResponse()
 
 
-class SightImageListView(ListView):
-    """ 2、6 景点图片 """
+class ImageListView(ListView):
+    """ 景点大图 """
+    # 每页放 10 个数据
+    paginate_by = 10
+    SightModelId = 8
+
     def get_queryset(self):
-        return Images.objects.all()
+        object_id = self.kwargs.get('pk', None)
+
+        if object_id:
+            queryset = ImageRelated.objects.filter(object_id=object_id,
+                                                   content_type_id=self.SightModelId,
+                                                   is_valid=True)
+            return queryset
+        return ImageRelated.objects.none()
 
     def render_to_response(self, context, **response_kwargs):
-        """ 重写响应的返回 """
-        page_obj = context['object']
-        if page_obj is not None:
-            data = serializers.SightImageSerializer(page_obj).to_dict()
+        page_obj = context['page_obj']
+        if page_obj:
+            data = {
+                'meta': {
+                    'total_count': page_obj.paginator.count,
+                    'page_count': page_obj.paginator.num_pages,
+                    'current_page': page_obj.number
+                },
+                'objects': [
+
+                ]
+            }
+
+            for item in page_obj.object_list:
+                data['objects'].append({
+                    'img': item.img.url,
+                    'summery': item.summary
+                })
+
             return http.JsonResponse(data)
         return NotFoundJsonResponse()
-
-

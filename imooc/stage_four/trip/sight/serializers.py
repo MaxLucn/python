@@ -95,15 +95,3 @@ class SightInfoSerializer(BaseSerializer):
             'tips': obj.tips,
             'traffic': obj.traffic,
         }
-
-
-class SightImageSerializer(MetaSerializer):
-    """ 景点图片 """
-
-    def to_dict(self):
-        obj = self.obj
-        return {
-            'pk': obj.images.pk,
-            'img': obj.img,
-            'current_page': obj.current_page
-        }

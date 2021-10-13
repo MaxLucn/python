@@ -8,12 +8,14 @@ from system.models import Slider
 def slider_list(request):
     """ 轮播图接口
     {
-    "meta": {},
-    "objects": []
+        "meta": {},
+        "objects": []
     }
     """
     data = {
-        'meta': {},
+        'meta': {
+
+        },
         'objects': []
     }
     queryset = Slider.objects.filter(is_valid=True)
