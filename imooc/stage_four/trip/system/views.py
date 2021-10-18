@@ -1,4 +1,5 @@
 from django import http
+from django.core.cache import cache
 from django.http import HttpResponse
 from django.shortcuts import render
 
@@ -28,3 +29,17 @@ def slider_list(request):
         })
     # return HttpResponse(data)
     return http.JsonResponse(data)
+
+
+def cache_set(request):
+    """ 写缓存 """
+    cache.set('username', 'lisi')
+    #  4 秒之后自动删除
+    cache.set('password', '123', timeout=4)
+    return HttpResponse('ok')
+
+
+def cache_get(request):
+    """ 读缓存 """
+    value = cache.get('username')
+    return HttpResponse(value)
