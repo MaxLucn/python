@@ -1,9 +1,10 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 from utils.models import CommonModel
 
 
-class User(CommonModel):
+class User(AbstractUser):
     """ 用户模型 """
     username = models.CharField('用户名', max_length=32, unique=True)
     password = models.CharField('密码', max_length=256)

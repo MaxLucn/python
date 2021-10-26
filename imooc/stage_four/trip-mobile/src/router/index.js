@@ -2,11 +2,14 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Search from '../views/Search.vue'
+import Mine from '../views/Mine.vue'
 import SightList from '../views/sight/SightList.vue'
 import SightDetail from '../views/sight/SightDetail.vue'
 import SightInfo from '../views/sight/SightInfo.vue'
 import SightComment from '../views/sight/SightComment.vue'
 import SightImage from '../views/sight/SightImage.vue'
+import AccountLogin from '../views/accounts/Login.vue'
+import AccountRegister from '../views/accounts/Register.vue'
 
 Vue.use(VueRouter)
 
@@ -20,6 +23,12 @@ const routes = [
     path: '/search',
     name: 'Search',
     component: Search
+  },
+  // 个人中心
+  {
+    path: '/mine',
+    name: 'Mine',
+    component: Mine
   },
   // 景点列表
   {
@@ -50,6 +59,18 @@ const routes = [
     path: '/sight/image/:id',
     name: 'SightImage',
     component: SightImage
+  },
+  // 用户登录
+  {
+    path: '/account/login',
+    name: 'AccountLogin',
+    component: AccountLogin
+  },
+  // 用户注册
+  {
+    path: '/account/register',
+    name: 'AccountRegister',
+    component: AccountRegister
   }
 ]
 
