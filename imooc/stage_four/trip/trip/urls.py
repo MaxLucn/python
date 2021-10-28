@@ -21,5 +21,7 @@ urlpatterns = [
     # 系统模块
     path('system/', include('system.urls')),
     # 景点模块
-    path('sight/', include('sight.urls'))
+    path('sight/', include('sight.urls')),
+    path('accounts/', include('accounts.urls')),
+
 ]
