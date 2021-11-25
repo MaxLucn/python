@@ -47,3 +47,14 @@ class UnauthorizedJsonResponse(JsonResponse):
             "error_msg": "请登录",
         }
         super().__init__(data, *args, **kwargs)
+
+
+class ServerErrorJsonResponse(JsonResponse):
+    status_code = 500
+
+    def __init__(self, *args, **kwargs):
+        data = {
+            "error_code": "500000",
+            "error_msg": "服务器正忙，请稍后重试",
+        }
+        super().__init__(data, *args, **kwargs)

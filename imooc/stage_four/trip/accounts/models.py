@@ -12,6 +12,14 @@ class User(AbstractUser):
     class Meta:
         db_table = 'account_user'
 
+    @property
+    def avatar_url(self):
+        return self.avatar.url if self.avatar else ''
+
+    def add_login_record(self, **kwargs):
+        """ 保存登录历史 """
+        self.login_records.create(**kwargs)
+
 
 class Profile(models.Model):
     """ 用户详细信息 """

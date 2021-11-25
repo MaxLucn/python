@@ -2,9 +2,13 @@ import re
 
 from django import forms
 from django.contrib.auth import authenticate, login
+from django.core.cache import cache
 from django.utils.timezone import now
+from django.db import transaction
 
-from accounts.models import User
+
+from accounts.models import User, Profile
+from utils import constants
 
 
 class LoginForm(forms.Form):
@@ -29,7 +33,7 @@ class LoginForm(forms.Form):
         if not re.search(pattern, username):
             raise forms.ValidationError('手机号%s输入不正确',
                                         code='invalid_phone',
-                                        params=(username, ))
+                                        params=(username,))
         return username
 
     def clean(self):
@@ -59,3 +63,87 @@ class LoginForm(forms.Form):
         user.save()
         # TODO 保存登录历史
         return user
+
+
+class RegisterForm(forms.Form):
+    """ 用户注册 """
+    username = forms.CharField(label='手机号码', max_length=16, required=True, error_messages={
+        'required': '请输入手机号码'
+    })
+    password = forms.CharField(label='密码', max_length=128, required=True, error_messages={
+        'required': '请输入密码'
+    })
+    nickname = forms.CharField(label='昵称', max_length=16, required=True, error_messages={
+        'required': '请输入昵称'
+    })
+    sms_code = forms.CharField(label='验证码', max_length=6, required=True, error_messages={
+        'required': '请输入验证码'
+    })
+
+    def clean_username(self):
+        """ 验证用户名 hook 钩子函数 """
+        username = self.cleaned_data['username']
+        pattern = r'^1[0-9]{10}$'
+        if not re.search(pattern, username):
+            raise forms.ValidationError('手机号%s输入不正确',
+                                        code='invalid_phone',
+                                        params=(username,))
+        if User.objects.filter(username=username).exists():
+            raise forms.ValidationError('手机号已经被使用')
+        return username
+
+    def clean_nickname(self):
+        """ 昵称验证 """
+        nickname = self.cleaned_data['nickname']
+        if User.objects.filter(nickname=nickname).exists():
+            raise forms.ValidationError('昵称已经被使用')
+        return nickname
+
+    def clean(self):
+        data = super().clean()
+        if self.errors:
+            return
+        phone_num = self.cleaned_data.get('username', None)
+        sms_code = self.cleaned_data.get('sms_code', None)
+
+        # redis 中的验证码key
+        key = '{}{}'.format(constants.REGISTER_MSM_CODE_KEY, phone_num)
+        code = cache.get(key)
+        # code 已失效
+        if code is None:
+            raise forms.ValidationError('验证码已经失效')
+        if str(code) != sms_code:
+            raise forms.ValidationError('验证码输入不正确')
+        return data
+
+    @transaction.atomic
+    def do_register(self, request):
+        """ 执行注册 """
+        data = self.cleaned_data
+        version = request.headers.get('version', '')
+        source = request.headers.get('source', '')
+        try:
+            # 1. 创建基础信息表
+            user = User.objects.create_user(
+                username=data.get('username', None),
+                password=data.get('password', None),
+                nickname=data.get('nickname', None)
+            )
+            # 2. 创建详细表
+            profile = Profile.objects.create(
+                user=user,
+                username=user.username,
+                version=version,
+                source=source
+            )
+            # 3. 执行登录
+            login(request, user)
+            # 4. 记录登录日志
+            user.last_login = now()
+            user.save()
+            ip = request.META.get('REMOTE_ADDR', '')
+            user.add_login_record(username=user.username, ip=ip, source=source, version=version)
+            return user, profile
+        except Exception as e:
+            print(e)
+            return None
