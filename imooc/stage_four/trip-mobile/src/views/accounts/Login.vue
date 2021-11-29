@@ -45,6 +45,8 @@
   </div>
 </template>
 <script>
+import { AccountsApis } from '@/utils/apis'
+import { ajax } from '@/utils/ajax'
 import Copyright from '@/components/common/Copyright'
 
 export default {
@@ -67,7 +69,20 @@ export default {
   },
   methods: {
     onSubmit () {
-      // 提交表单
+      // 1. 调用接口
+      ajax.post(AccountsApis.loginUrl, {
+        username: this.username,
+        password: this.password
+      }).then(({ data }) => {
+        // 2. 拿到用户信息，存储到vuex
+        this.$store.commit('updateUserInfo', data)
+        this.$toast('登录成功')
+        this.$router.replace({name: 'Mine'})
+      }).catch(({ response: { data } }) => {
+        // 3. 如果出现了异常，需要给用户提示异常信息
+        console.log(data)
+        this.$toast(`${data.error_code},${data.error_msg}`)
+      })
     },
     goBack () {
       this.$router.go(-1)
