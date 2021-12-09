@@ -10,6 +10,9 @@ import SightComment from '../views/sight/SightComment.vue'
 import SightImage from '../views/sight/SightImage.vue'
 import AccountLogin from '../views/accounts/Login.vue'
 import AccountRegister from '../views/accounts/Register.vue'
+import OrderSubmit from '../views/order/Submit.vue'
+import OrderPay from '../views/order/Pay.vue'
+import OrderList from '../views/order/List.vue'
 
 Vue.use(VueRouter)
 
@@ -71,6 +74,24 @@ const routes = [
     path: '/account/register',
     name: 'AccountRegister',
     component: AccountRegister
+  },
+  // 提交订单
+  {
+    path: '/order/submit/:id',
+    name: 'OrderSubmit',
+    component: OrderSubmit
+  },
+  // 确认订单并支付
+  {
+    path: '/order/pay/:sn',
+    name: 'OrderPay',
+    component: OrderPay
+  },
+  // 我的订单列表
+  {
+    path: '/order/list/:status',
+    name: 'OrderList',
+    component: OrderList
   }
 ]
 
