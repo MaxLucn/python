@@ -7,4 +7,6 @@ urlpatterns = [
     path('ticket/submit/', views.TicketOrderSubmitView.as_view(), name="ticket_submit"),
     # 3.2 订单详情
     path('order/detail/<int:sn>/', views.OrderDetail.as_view(), name="order_detail"),
+    # 3.3 我的订单列表
+    path('order/list/', views.OrderListView.as_view(), name="order_list"),
 ]

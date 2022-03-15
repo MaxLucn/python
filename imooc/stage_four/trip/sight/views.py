@@ -188,3 +188,17 @@ class ImageListView(ListView):
 
             return http.JsonResponse(data)
         return NotFoundJsonResponse()
+
+
+class TicketDetailView(DetailView):
+    """ 2.7 门票详情 """
+
+    def get_queryset(self):
+        return Ticket.objects.filter(is_valid=True)
+
+    def render_to_response(self, context, **response_kwargs):
+        page_obj = context['object']
+        if page_obj is not None:
+            data = serializers.TicketDetailSerializer(page_obj).to_dict()
+            return http.JsonResponse(data)
+        return NotFoundJsonResponse()

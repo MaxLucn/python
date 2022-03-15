@@ -14,4 +14,6 @@ urlpatterns = [
     path('sight/info/<int:pk>/', views.SightInfoDetailView.as_view(), name="sight_info"),
     # 2、6 景点图片
     path('image/list/<int:pk>/', views.ImageListView.as_view(), name="sight_image_list"),
+    # 2.7 门票详情
+    path('ticket/detail/<int:pk>/', views.TicketDetailView.as_view(), name="ticket_detail"),
 ]
