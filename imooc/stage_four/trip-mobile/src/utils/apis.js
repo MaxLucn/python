@@ -37,11 +37,21 @@ const SightApis = {
   // 门票列表
   sightTicketUrl: apiHost + '/sight/ticket/list/#{id}/',
   // 评论列表
-  sightCommentUrl: apiHost + '/sight/comment/list/#{id}/'
+  sightCommentUrl: apiHost + '/sight/comment/list/#{id}/',
+  // 门票详情
+  ticketDetailUrl: apiHost + '/sight/ticket/detail/#{id}/'
 }
 
+const OrderApis = {
+  // 订单列表
+  // 订单详情、订单支付、订单删除、订单取消
+  orderDetailUrl: apiHost + '/order/order/detail/#{sn}/',
+  // 提交订单
+  ticketSubmitUrl: apiHost + '/order/ticket/submit/'
+}
 export {
   AccountsApis,
   SystemApis,
-  SightApis
+  SightApis,
+  OrderApis
 }

@@ -7,6 +7,7 @@ class UserSerializer(BaseSerializer):
     def to_dict(self):
         user = self.obj
         return {
+            'username': user.username,
             'nickname': user.nickname,
             'avatar': user.avatar_url
         }
