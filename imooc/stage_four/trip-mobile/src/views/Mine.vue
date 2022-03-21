@@ -19,25 +19,25 @@
     <!-- 订单的菜单列表 -->
     <van-row class="user-links">
       <van-col span="6">
-        <router-link to="/">
+        <router-link :to="{name: 'OrderList', params: {status: constants.ORDER_STATUS_ALL}}">
           <van-icon name="records"/>
           <span>全部订单</span>
         </router-link>
       </van-col>
       <van-col span="6">
-        <router-link to="/">
+        <router-link :to="{name: 'OrderList', params: {status: constants.ORDER_STATUS_PAY}}">
           <van-icon name="pending-payment"/>
           <span>待支付</span>
         </router-link>
       </van-col>
       <van-col span="6">
-        <router-link to="/">
+        <router-link :to="{name: 'OrderList', params: {status: constants.ORDER_STATUS_DONE}}">
           <van-icon name="tosend"/>
           <span>已完成</span>
         </router-link>
       </van-col>
       <van-col span="6">
-        <router-link to="/">
+        <router-link :to="{name: 'OrderList', params: {status: constants.ORDER_STATUS_CANCEL}}">
           <van-icon name="logistics"/>
           <span>已取消</span>
         </router-link>
@@ -52,10 +52,16 @@ import {mapState} from 'vuex'
 import {AccountsApis} from '@/utils/apis'
 import {ajax} from '@/utils/ajax'
 import TripFooter from '@/components/common/Footer'
+import * as constants from '@/utils/constants'
 
 export default {
   components: {
     TripFooter
+  },
+  data () {
+    return {
+      constants
+    }
   },
   methods: {
     /**

@@ -74,7 +74,10 @@ export default {
             message: '支付成功, 已为您跳转到订单列表'
           })
           // 跳转到我的订单列表
-          this.$router.replace({ name: 'OrderList', params: { status: constants.ORDER_STATUS_ALL}})
+          this.$router.replace({
+            name: 'OrderList',
+            params: {status: constants.ORDER_STATUS_ALL}
+          })
         })
       })
     },
@@ -98,8 +101,24 @@ export default {
         title: '温馨提示',
         message: '确认取消该订单？'
       }).then(() => {
-        // TODO 调用接口on confirm
-        this.$router.go(-1)
+        const url = OrderApis.orderDetailUrl.replace('#{sn}', this.sn)
+        // put方式调用接口
+        ajax.put(url).then(res => {
+          console.log(res)
+          // 给用户提示
+          if (res.status === 201) {
+            this.$notify({
+              type: 'success',
+              message: '订单已成功取消'
+            })
+          } else if (res.status === 200) {
+            this.$notify({
+              type: 'warning',
+              message: '订单已被取消，请勿重复操作'
+            })
+          }
+          this.$router.go(-1)
+        })
       })
     }
   },
@@ -117,10 +136,12 @@ export default {
     .van-cell__title {
       text-align: left;
     }
+
     .van-cell__value {
       flex: 3;
     }
   }
+
   // 订单信息
   .order-info {
     display: flex;
