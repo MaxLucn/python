@@ -33,7 +33,7 @@ class Profile(models.Model):
         (0, '女'),
     )
     username = models.CharField('用户名', max_length=64, unique=True, editable=False)
-    user = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE)
+    user = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE, editable=False)
     real_name = models.CharField('真实姓名', max_length=32)
     email = models.CharField('电子邮箱', max_length=128, null=True, blank=True)
     is_email_valid = models.BooleanField('邮箱是否已经验证', default=False)
@@ -49,6 +49,11 @@ class Profile(models.Model):
 
     class Meta:
         db_table = 'accounts_user_profile'
+        verbose_name = '用户详细信息'
+        verbose_name_plural = '用户详细信息'
+
+    def __str__(self):
+        return self.username
 
 
 class LoginRecord(models.Model):
