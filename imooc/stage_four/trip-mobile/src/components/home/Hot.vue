@@ -44,7 +44,7 @@ export default {
      * 查热门景点
      */
     getDataList () {
-      ajax.get(SightApis.sightListUrl, {
+      ajax.get(SightApis.sightListCacheUrl, {
         params: {
           is_hot: 1
         }

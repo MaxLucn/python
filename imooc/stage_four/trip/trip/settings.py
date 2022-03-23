@@ -35,6 +35,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 富文本编辑器
+    'ckeditor',
+    'ckeditor_uploader',
     # 系统模块
     'system.apps.SystemConfig',
     # 景点模块
@@ -130,7 +133,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# 富文本编辑器文件上传的位置
+CKEDITOR_UPLOAD_PATH = "uploads/"
+
 MEDIA_URL = 'http://localhost:8080/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'medias')
 
 CACHES = {
     "default": {

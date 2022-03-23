@@ -38,7 +38,7 @@ export default {
      * 查精选景点
      */
     getDataList () {
-      ajax.get(SightApis.sightListUrl, {
+      ajax.get(SightApis.sightListCacheUrl, {
         params: {
           is_top: 1
         }
