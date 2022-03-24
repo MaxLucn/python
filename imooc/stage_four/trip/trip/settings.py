@@ -45,7 +45,9 @@ INSTALLED_APPS = [
     # 用户账户
     'accounts.apps.AccountsConfig',
     # 订单模块
-    'order.apps.OrderConfig'
+    'order.apps.OrderConfig',
+    # 统计报表
+    'master.apps.MasterConfig'
 ]
 
 MIDDLEWARE = [
@@ -133,7 +135,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#  静态文件访问
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+
 # 富文本编辑器文件上传的位置
 CKEDITOR_UPLOAD_PATH = "uploads/"
 

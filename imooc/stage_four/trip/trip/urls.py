@@ -16,6 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+#  静态文件访问
+# from django.views.static import serve
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     # 系统模块
@@ -27,5 +30,7 @@ urlpatterns = [
     # 订单模块
     path('order/', include('order.urls')),
     # 富文本相关的配置
-    path('ckeditor/', include('ckeditor_uploader.urls'))
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+    # 统计报表
+    path('master/', include('master.urls'))
 ]
