@@ -25,6 +25,10 @@ def slider_list(request):
         'objects': []
     }
     queryset = Slider.objects.filter(is_valid=True)
+    # 根据类型查询
+    types = request.GET.get('types', None)
+    if types:
+        queryset = queryset.filter(types=types)
     for item in queryset:
         data['objects'].append({
             'id': item.id,
