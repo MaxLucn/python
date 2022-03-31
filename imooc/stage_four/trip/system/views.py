@@ -3,8 +3,9 @@ import json
 from django import http
 from django.core.cache import cache
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import FormView
+from django.db import connection
 
 from system.forms import SendSmsCodeForm
 from system.models import Slider
@@ -111,3 +112,49 @@ class SmsCodeView(FormView):
         """ 表单没有通过验证 """
         err_list = json.loads(form.errors.as_json())
         return BadRequestJsonResponse(err_list)
+
+
+def danger_sql(request):
+    """ 危险的SQL注入
+    正常输入：
+    http://127.0.0.1:8000/system/danger/sql/?types=10
+    异常输入：
+    http://127.0.0.1:8000/system/danger/sql/?types=10' UNION select version(), database() -- ';
+    """
+    types = request.GET.get('types', '')
+    # 1. 危险的写法
+    # sql = "SELECT `name`, `img` FROM system_slider WHERE `types` ='{}';".format(types)
+    # # sql = "SELECT `name`, `img` FROM system_slider WHERE `types` ='10' UNION select version(), database() -- ';';"
+    # with connection.cursor() as c:
+    #     c.execute(sql)
+    #     data_list = c.fetchall()
+
+    # 2. 安全的写法
+    sql = "SELECT `name`, `img` FROM system_slider WHERE `types` =%s;"
+    with connection.cursor() as c:
+        c.execute(sql, (types,))
+        data_list = c.fetchall()
+    return render(request, 'danger_sql.html', {
+        'data_list': data_list
+    })
+
+
+def danger_xss(request):
+    """ 跨站点脚本攻击
+    输入测试：
+    <script>window.alert('你好');window.location.href='http://www.imooc.com';</script>
+    """
+    if request.method == 'POST':
+        name = request.POST.get('name', '')
+        desc = request.POST.get('desc', '')
+        Slider.objects.create(name=name, desc=desc, img='test.jpg')
+        return redirect('.')
+    else:
+        types = 10
+        sql = "SELECT `name`, `img`, `desc` FROM system_slider WHERE `types` =%s;"
+        with connection.cursor() as c:
+            c.execute(sql, (types,))
+            data_list = c.fetchall()
+    return render(request, 'danger_xss.html', {
+        'data_list': data_list
+    })
