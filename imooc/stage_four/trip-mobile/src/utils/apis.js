@@ -2,7 +2,8 @@
  * 存放项目中所有的接口地址
  */
 
-const apiHost = 'http://localhost:8080/api'
+// const apiHost = 'http://localhost:8080/api'
+const apiHost = '/api'
 /**
  * 用户账户相关的接口
  */

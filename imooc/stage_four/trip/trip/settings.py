@@ -24,7 +24,7 @@ SECRET_KEY = '7*e8dc+#vb^7@&!v$!h$&4o!gnob6s2qzs%1)na#^-)*5526z4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['137.184.177.140', '127.0.0.1']
 
 # Application definition
 
@@ -161,3 +161,6 @@ CACHES = {
 # 指定自定义的用户模型
 AUTH_USER_MODEL = 'accounts.User'
 LOGIN_URL = '/accounts/user/login/'
+
+# CSRF_TRUSTED_ORIGINS CSRF 信任源
+CSRF_TRUSTED_ORIGINS = ['http://137.184.177.140']

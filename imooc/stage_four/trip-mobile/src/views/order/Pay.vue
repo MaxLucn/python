@@ -44,7 +44,7 @@ export default {
       // 订单的流水号
       sn: '',
       // 订单的信息
-      orderDetail: {},
+      orderDetail: {}
     }
   },
   methods: {
