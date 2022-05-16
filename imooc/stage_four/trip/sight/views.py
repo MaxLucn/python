@@ -8,6 +8,7 @@ from django.views.generic import ListView, DetailView
 
 from sight import serializers
 from sight.models import Sight, Comment, Ticket, Info
+from system.models import ImageRelated
 from utils import constants
 from utils.response import NotFoundJsonResponse
 

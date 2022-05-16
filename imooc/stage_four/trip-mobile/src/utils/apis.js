@@ -42,7 +42,9 @@ const SightApis = {
   // 评论列表
   sightCommentUrl: apiHost + '/sight/comment/list/#{id}/',
   // 门票详情
-  ticketDetailUrl: apiHost + '/sight/ticket/detail/#{id}/'
+  ticketDetailUrl: apiHost + '/sight/ticket/detail/#{id}/',
+  // 景点图片
+  sightImageUrl: apiHost + '/sight/image/list/#{id}/'
 }
 
 const OrderApis = {
