@@ -1,0 +1,55 @@
+一、说明：
+    1、这是一个创建个人博客的练习项目
+    2、这是一个功能很少、很简单的博客
+    3、主要分两部分：主页和后台
+
+二、博客主页功能：
+    1、分两个模块：文章模块和个人主页模块
+        文章模块：
+            文章展示页：
+                评论、点赞、转发、收藏、分类、
+            文章编辑页：
+                富文本编辑
+        个人主页模块：
+            登录、注册
+三、后台：
+    1、对文章模块可以增删改查
+
+四、数据库 max_blog 的创建：
+    1、文章表 article 的创建：
+        需要的字段：id     ID
+                  title  文章的标题
+                  content  文章的内容
+                  blog_types   关联到分类表的字段
+                  author   作者
+                  img    可能会上传的图片
+                  types  文章的分类
+                  created_at  创建的时间
+                  updated_at  修改的时间
+        分类表：BlogTypes：
+                type_name    分类名称
+    2、个人主页表 login & register 的创建：
+        login 表需要的字段：id  ID
+                          username    用户名称
+                          sex         用户性别
+                          password    密码
+                          email
+                          reg_id      关联到 register 表
+                          created_at  创建的时间
+                          updated_at  修改的时间
+        register 表需要的字段：id  ID
+                             username   名称
+                             password   密码
+                             email
+                             created_at  创建的时间
+                             updated_at  修改的时间
+
+五、准备阶段
+    1、环境：python3.8
+    2、框架：Django
+
+六、优化：
+    可以成功注册、登录、发表文章之后就可以考虑实现各种功能（评论、点赞、转发、收藏、分类、），之后可以添加更多的功能
+
+
+
