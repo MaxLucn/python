@@ -1,0 +1,14 @@
+2022-6-27:
+已经处理的问题：1、误删 migrations 文件
+                处理方法：1. 先 python manage.py makemigrations --empty your_appname
+                        生成一个空的initial.py
+                        2. 再 python manage.py makemigrations
+                        生成原先的model对应的migration file
+                        3. 最后 python3 manage.py migrate 再次执行
+
+             2、 执行 python3 manage.py migrate 时报 django.db.utils.OperationalError: (无法连接数库的错)，
+                处理方法：修改 setting.py 文件中的 Database 项，让他连接到数据库
+
+未处理的问题
+            1、处理完上述问题之后之前创建的超级管理员无法登录
+            2、之前在后台创建的测试文章无法在页面展示
