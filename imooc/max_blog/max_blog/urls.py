@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from blog.views import BlogView
+# from blog.views import BlogView
+from blog.views import blog_list
 
 urlpatterns = [
-    path('', BlogView.as_view(), name='blog'),
+    # path('', BlogView.as_view(), name='blog'),
+    path('', blog_list, name='blog'),
     path('admin/', admin.site.urls),
     path('blog/', include('blog.urls')),
 ]

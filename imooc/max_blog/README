@@ -20,29 +20,22 @@
         需要的字段：id     ID
                   title  文章的标题
                   content  文章的内容
-                  blog_types   关联到分类表的字段
                   author   作者
-                  img    可能会上传的图片
-                  types  文章的分类
+                  blog_category_id  关联到分类表的字段
                   created_at  创建的时间
                   updated_at  修改的时间
-        分类表：BlogTypes：
-                type_name    分类名称
-    2、个人主页表 login & register 的创建：
-        login 表需要的字段：id  ID
+        分类表：BlogCategory：
+                id    ID
+                blog_category   分类名称
+    2、登录注册表 （User）的创建：
+        User 表需要的字段： id  ID
                           username    用户名称
                           sex         用户性别
                           password    密码
                           email
-                          reg_id      关联到 register 表
                           created_at  创建的时间
                           updated_at  修改的时间
-        register 表需要的字段：id  ID
-                             username   名称
-                             password   密码
-                             email
-                             created_at  创建的时间
-                             updated_at  修改的时间
+
 
 五、准备阶段
     1、环境：python3.8
