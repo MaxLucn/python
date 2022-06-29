@@ -6,10 +6,14 @@
 </head>
 <body>
 {#<p>这是用于调试的一句</p>#}
-{% for blog in my_blogs %}
-    <h3>{{ blog.title }}</h3>
-    <p>{{ blog.content }}</p>
-{% endfor %}
+<ul>
+    {% for blog in my_blogs %}
+    <li>
+        <h3>{{ blog.title }}---  {{ blog.author }}</h3>
+        <p>{{ blog.content }}</p>
+    </li>
+{% endfor %}</ul>
+
 
 </body>
 </html>
