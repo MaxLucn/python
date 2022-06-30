@@ -5,15 +5,28 @@
     <title>max_lu 的博客</title>
 </head>
 <body>
-{#<p>这是用于调试的一句</p>#}
 <ul>
-    {% for blog in my_blogs %}
-    <li>
-        <h3>{{ blog.title }}---  {{ blog.author }}</h3>
-        <p>{{ blog.content }}</p>
-    </li>
-{% endfor %}</ul>
+    {% if object_list %}
+        {% for blog in object_list %}
+            <li>
+                <h3><a href={% url 'detail' blog.id %}>{{ blog.title }}</a>--- {{ blog.author }}</h3>
+                <p>{{ blog.content }}</p>
+            </li>
+        {% endfor %}
+    {% else %}
+        <span>没有数据 ～</span>
+    {% endif %}
+</ul>
 
-
+    <div>
+        <van-pagination v-model="currentPage" :page-count="12" mode="simple" />
+    </div>
 </body>
 </html>
+
+
+export default {
+    data () {
+
+}
+}
