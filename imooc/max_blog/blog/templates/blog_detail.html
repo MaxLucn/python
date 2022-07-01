@@ -5,7 +5,13 @@
     <title>{{ blog.title }}</title>
 </head>
 <body>
-<h3>{{ blog.title }}  ---  {{ blog.author }}</h3>
+<h3>{{ blog.title }}  </h3>
+<small>作者:{{ blog.author }}</small><br/>
+<hr>
+
 <p>{{ blog.content }}</p>
+<br/>
+{# 返回博客列表#}
+<a href="{% url 'blog' %}">返回</a>
 </body>
 </html>

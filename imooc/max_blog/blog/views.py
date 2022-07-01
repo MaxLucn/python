@@ -16,15 +16,12 @@ from .models import Blog
 
 
 class BlogView(ListView):
-    paginate_by = 3
+    """ 博客列表 """
     model = Blog
     template_name = 'blog_list.html'
 
-    def get_paginate_by(self, queryset):
-        page_size = self.request.Get.get('blog', None)
-        return page_size or self.paginate_by
-
 
 class ArticleDetailView(DetailView):
+    """ 博客内容 """
     model = Blog
     template_name = 'blog_detail.html'

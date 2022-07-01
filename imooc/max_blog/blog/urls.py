@@ -7,6 +7,8 @@ urlpatterns = [
     # path('<int:blog_pk>', views.blog_list, name="blog_list"),
     # path('blog/<int:blog_pk>', views.blog_detail, name='blog_detail')
 
+    # 博客列表
     path('', views.BlogView.as_view(), name='blog'),
+    # 博客内容
     path('<int:pk>', views.ArticleDetailView.as_view(), name='detail'),
 ]
