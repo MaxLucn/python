@@ -1,17 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ blog.title }}</title>
-</head>
-<body>
-<h3>{{ blog.title }}  </h3>
-<small>作者:{{ blog.author }}</small><br/>
-<hr>
+{% extends 'base.html' %}
+{% block title %}
+    {#  把后台定义的博客的标签用作页面的标题 #}
+    {{ blog.title_tag }}
+{% endblock %}
+{% block content %}
+    <h3>{{ blog.title }}</h3>
+    <small>作者:{{ blog.author }}</small><br/>
+    <hr>
 
-<p>{{ blog.content }}</p>
-<br/>
-{# 返回博客列表#}
-<a href="{% url 'blog' %}">返回</a>
-</body>
-</html>
+    <p>{{ blog.content }}</p>
+    <br/>
+    {# 返回博客列表#}
+    <button>
+        <a href="{% url 'blog' %}" type="button" class="btn btn-secondary">返回</a>
+    </button>
+{% endblock %}

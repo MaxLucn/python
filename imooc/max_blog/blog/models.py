@@ -20,6 +20,7 @@ class Blog(models.Model):
     """ 博客模型 """
     id = models.PositiveIntegerField('ID', primary_key=True)
     title = models.CharField('文章标题', max_length=64)
+    title_tag = models.CharField('在后台编辑博客的时候可以定义博客的标签', max_length=255, default="It's Max_blog")
     content = models.TextField('文章内容')
     # 作者
     # author = models.ForeignKey(User, on_delete=models.DO_NOTHING)

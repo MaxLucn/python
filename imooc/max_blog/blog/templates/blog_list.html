@@ -1,25 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>max_lu 的博客</title>
-</head>
-<body>
-<ul>
-    {% if object_list %}
-        {% for blog in object_list %}
-            <li>
-                <h3><a href={% url 'detail' blog.id %}>{{ blog.title }}</a>--- {{ blog.author }}</h3>
-                <p>{{ blog.content }}</p>
-            </li>
-        {% endfor %}
-    {% else %}
-        <span>没有数据 ～</span>
-    {% endif %}
-</ul>
-
-
-</body>
-</html>
-
-{#<a href={% url 'blog_detail'  blog.pk%}>{{ blog.title }}</a>#}
+{% extends 'base.html' %}
+{% block content %}
+    <ul>
+        {% if object_list %}
+            {% for blog in object_list %}
+                <li>
+                    <h3><a href={% url 'detail' blog.id %}>{{ blog.title }}</a>--- {{ blog.author }}</h3>
+                    <p>{{ blog.content }}</p>
+                </li>
+            {% endfor %}
+        {% else %}
+            <span>没有数据 ～</span>
+        {% endif %}
+    </ul>
+{% endblock %}
