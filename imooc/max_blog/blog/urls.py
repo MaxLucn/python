@@ -11,4 +11,6 @@ urlpatterns = [
     path('', views.BlogView.as_view(), name='blog'),
     # 博客内容
     path('<int:pk>', views.ArticleDetailView.as_view(), name='detail'),
+    # 添加博客
+    path('add_blog/', views.AddBlogView.as_view(), name='add_blog'),
 ]
