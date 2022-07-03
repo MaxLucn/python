@@ -6,8 +6,11 @@
     <h1>Add Blog</h1>
     <br>
     <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button class="'btn btn-secondary">提交</button>
+        <div class="form-group">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="'btn btn-secondary">提交</button>
+        </div>
     </form>
+
 {% endblock %}

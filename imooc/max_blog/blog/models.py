@@ -25,8 +25,8 @@ class Blog(models.Model):
     title_tag = models.CharField('在后台编辑博客的时候可以定义博客的标签', max_length=255)
     content = models.TextField('文章内容')
     # 作者
-    # author = models.ForeignKey(User, on_delete=models.DO_NOTHING)
-    author = models.PositiveIntegerField('管理员 ID，关联到管理员表的 ID')
+    author = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    # author = models.PositiveIntegerField('管理员 ID，关联到管理员表的 ID')
     # 关联到 BlogCategory 类的字段
     # blog_category_id = models.ForeignKey(BlogCategory, on_delete=models.DO_NOTHING)
     category_id = models.PositiveSmallIntegerField('文章分类 ID，关联到分类表的 ID', default=False)

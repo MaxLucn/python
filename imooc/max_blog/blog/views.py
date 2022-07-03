@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView
 from .models import Blog
+from .forms import BlogForm
 
 
 # def blog_list(request):
@@ -30,6 +31,10 @@ class ArticleDetailView(DetailView):
 class AddBlogView(CreateView):
     """ 添加博客 """
     model = Blog
+    form_class = BlogForm
     template_name = 'add_blog.html'
+
     # 在添加博客页面把 model 中的字段拿过来
-    fields = '__all__'
+    # fields = '__all__'
+    # 因为创建了 BlogForm ，已经把需要的都编辑好了，所以这个就可以不要了
+
