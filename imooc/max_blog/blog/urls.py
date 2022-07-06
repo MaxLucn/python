@@ -13,4 +13,9 @@ urlpatterns = [
     path('<int:pk>', views.ArticleDetailView.as_view(), name='detail'),
     # 添加博客
     path('add_blog/', views.AddBlogView.as_view(), name='add_blog'),
+    # 更新和编辑博客
+    path('blog/edit/<int:pk>', views.UpdateBlogView.as_view(), name='update_blog'),
+    # 删除博客
+    path('blog/<int:pk>/remove', views.DeleteBlogView.as_view(), name='delete_blog'),
+
 ]

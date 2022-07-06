@@ -5,7 +5,12 @@
 {% endblock %}
 {% block content %}
     <h3>{{ blog.title }}</h3>
-    <small>作者:{{ blog.author }}</small><br/>
+    <small>
+        作者:{{ blog.author }}
+        <a href="{% url 'update_blog' blog.id %}">（更新）</a>
+        <a href="{% url 'delete_blog' blog.id %}">（删除）</a>
+    </small>
+    <br/>
     <hr>
 
     <p>{{ blog.content }}</p>

@@ -1,11 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>Blog List</h1>
+    <h1>博客列表</h1>
     <ul>
         {% if object_list %}
             {% for blog in object_list %}
                 <li>
-                    <h3><a href={% url 'detail' blog.id %}>{{ blog.title }}</a>--- {{ blog.author }}</h3>
+                    <h3>
+                        <a href={% url 'detail' blog.id %}>{{ blog.title }}</a>
+                        --- {{ blog.author }} <br>
+                        <small>
+                            <a href="{% url 'update_blog' blog.id %}">（更新）</a>
+                            <a href="{% url 'delete_blog' blog.id %}">（删除）</a>
+                        </small>
+                    </h3>
                     <p>{{ blog.content }}</p>
                 </li>
             {% endfor %}
