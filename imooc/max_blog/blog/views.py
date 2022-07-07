@@ -50,8 +50,8 @@ class UpdateBlogView(UpdateView):
     # fields = ['id', 'title', 'title_tag', 'content', 'author', 'category_id']
 
 
-class DeleteBlogView(DetailView):
+class DeleteBlogView(DeleteView):
     """ 删除博客 """
     model = Blog
     template_name = 'delete_blog.html'
-    success_url = reverse_lazy('http://127.0.0.1:8000/blog/')
+    success_url = reverse_lazy('blog')
