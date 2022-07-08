@@ -23,6 +23,8 @@ class BlogView(ListView):
     template_name = 'blog_list.html'
     # 在列表页面将新添加的博客显示在最上面
     # ordering = ['-id']
+    # 按创建日前先后排序
+    ordering = ['-created_at']
 
 
 class ArticleDetailView(DetailView):

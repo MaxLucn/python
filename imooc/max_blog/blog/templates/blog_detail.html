@@ -4,11 +4,18 @@
     {{ blog.title_tag }}
 {% endblock %}
 {% block content %}
-    <h3>{{ blog.title }}</h3>
+    <h2>博客详情</h2>
+    <h4>{{ blog.title }}</h4>
     <small>
-        作者:{{ blog.author }}
-        <a href="{% url 'update_blog' blog.id %}">（更新）</a>
-        <a href="{% url 'delete_blog' blog.id %}">（删除）</a>
+        作者:{{ blog.author }}<br>
+        创建日期:{{ blog.created_at }}<br>
+        <button>
+            <a href="{% url 'update_blog' blog.id %}">更新</a>
+        </button>
+        <button>
+            <a href="{% url 'delete_blog' blog.id %}">删除</a>
+        </button>
+
     </small>
     <br/>
     <hr>
