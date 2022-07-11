@@ -9,12 +9,14 @@
     <small>
         作者:{{ blog.author }}<br>
         创建日期:{{ blog.created_at }}<br>
-        <button>
-            <a href="{% url 'update_blog' blog.id %}">更新</a>
-        </button>
-        <button>
-            <a href="{% url 'delete_blog' blog.id %}">删除</a>
-        </button>
+        {% if user.is_authenticated %}
+            <button>
+                <a href="{% url 'update_blog' blog.id %}">更新</a>
+            </button>
+            <button>
+                <a href="{% url 'delete_blog' blog.id %}">删除</a>
+            </button>
+        {% endif %}
 
     </small>
     <br/>

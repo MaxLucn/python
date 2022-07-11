@@ -3,16 +3,20 @@
     更新和编辑博客
 {% endblock %}
 {% block content %}
-    <h1>更新博客</h1>
-    <br>
-    <div class="form-group">
-        <form method="post">
-            {% csrf_token %}
-            {{ form.media}}
-            {{ form.as_p }}
-            <button class="'btn btn-secondary">更新</button>
-        </form>
-    </div>
+    {% if user.is_authenticated %}
+        <h1>更新博客</h1>
+        <br>
+        <div class="form-group">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.media }}
+                {{ form.as_p }}
+                <button class="'btn btn-secondary">更新</button>
+            </form>
+        </div>
+    {% else %}
+        请登录后再使用该功能
+    {% endif %}
 {% endblock %}
 
 

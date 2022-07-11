@@ -24,5 +24,10 @@ urlpatterns = [
     # path('blog/<int:blog_pk>', ArticleDetailView.as_view(), name='blog_detail'),
     # path('', blog_list, name='blog'),
     path('admin/', admin.site.urls),
-    path('blog/', include('blog.urls')),
+    path('', include('blog.urls')),
+    # 从后台取已经注册成功的用户来登录
+    path('members/', include('django.contrib.auth.urls')),
+    # 把注册用户展示在页面
+    path('members/', include('members.urls')),
+
 ]
