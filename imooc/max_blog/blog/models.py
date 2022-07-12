@@ -34,8 +34,8 @@ class Blog(models.Model):
     # blog_category_id = models.ForeignKey(BlogCategory, on_delete=models.DO_NOTHING)
     category_id = models.PositiveSmallIntegerField('文章分类 ID，关联到分类表的 ID', default=False)
 
-    created_at = models.DateTimeField('文章创建时间', auto_now_add=True)
-    update_at = models.DateTimeField('文章修改时间', auto_now=True)
+    created_at = models.DateTimeField('创建时间', auto_now_add=True)
+    update_at = models.DateTimeField('修改时间', auto_now=True)
 
     def __str__(self):
         # return "<Blog: %s>" % self.title
