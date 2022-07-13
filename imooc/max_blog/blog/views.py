@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Blog
+from .models import Blog, BlogCategory
 from .forms import BlogForm
 
 
@@ -39,8 +39,15 @@ class AddBlogView(CreateView):
     form_class = BlogForm
     template_name = 'add_blog.html'
 
+
+class AddCategoryView(CreateView):
+    """ 添加分类 """
+    model = BlogCategory
+    # form_class = BlogForm
+    template_name = 'add_category.html'
+
     # 在添加博客页面把 model 中的字段拿过来
-    # fields = '__all__'
+    fields = '__all__'
     # 因为创建了 BlogForm ，已经把需要的都编辑好了，所以这个就可以不要了
 
 
