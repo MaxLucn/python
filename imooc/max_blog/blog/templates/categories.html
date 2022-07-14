@@ -1,14 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h2>博客列表</h2>
-    <ul>
-        {% if object_list %}
-            {% for blog in object_list %}
+    {% if category_blogs %}
+        <h2> 分类为：{{ cats }} 的博客</h2>
+        <ul>
+            {% for blog in category_blogs %}
                 <li>
                     <h4><a href={% url 'detail' blog.id %}>{{ blog.title }}</a></h4>
-                    作者:{{ blog.author }}--
-                    <a href="{% url 'category' blog.category%}" style="color: #0f0f0f">类别:{{ blog.category }}</a> --
-                    创建日期:{{ blog.created_at }}<br>
+                    作者:{{ blog.author }}-- 创建日期:{{ blog.created_at }}<br>
                     {% if user.is_authenticated %}
                         <!-- 用来控制只用已经登录的用户才可以更新或者删除博客 -->
                         <small>
@@ -23,9 +21,12 @@
                     <p>{{ blog.content|slice:'100'|safe }}</p>
                     <!-- 控制再博客列表展示的内容量 -->
                 </li>
+
             {% endfor %}
-        {% else %}
-            <span>没有数据 ～</span>
-        {% endif %}
-    </ul>
+        </ul>
+    {% else %}
+        <h2>抱歉，该页面不存在</h2>
+    {% endif %}
+
+
 {% endblock %}

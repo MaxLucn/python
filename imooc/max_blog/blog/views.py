@@ -64,3 +64,9 @@ class DeleteBlogView(DeleteView):
     model = Blog
     template_name = 'delete_blog.html'
     success_url = reverse_lazy('blog')
+
+
+def CategoryView(request, cats):
+    """ 添加同一分类的博客的页面 """
+    category_blogs = Blog.objects.filter(category=cats)
+    return render(request, 'categories.html', {'cats': cats, 'category_blogs':category_blogs})
