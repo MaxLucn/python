@@ -68,5 +68,6 @@ class DeleteBlogView(DeleteView):
 
 def CategoryView(request, cats):
     """ 添加同一分类的博客的页面 """
-    category_blogs = Blog.objects.filter(category=cats)
-    return render(request, 'categories.html', {'cats': cats, 'category_blogs':category_blogs})
+    category_blogs = Blog.objects.filter(category=cats.replace('-', ' '))
+    # .replace('-', ' ') 当添加的分类名称里有空格的时候在 URL 中用 - 代替空格
+    return render(request, 'categories.html', {'cats': cats.replace('-', ' '), 'category_blogs':category_blogs})
