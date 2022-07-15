@@ -26,11 +26,25 @@ class BlogView(ListView):
     # 按创建日前先后排序
     ordering = ['-created_at']
 
+    def get_context_data(self, *args, **kwargs):
+        """ 把所用分类添加到分类导航栏 """
+        cat_menu = BlogCategory.objects.all()
+        context = super(BlogView, self).get_context_data(*args, **kwargs)
+        context['cat_menu'] = cat_menu
+        return context
+
 
 class ArticleDetailView(DetailView):
     """ 博客内容 """
     model = Blog
     template_name = 'blog_detail.html'
+
+    def get_context_data(self, *args, **kwargs):
+        """ 把所用分类添加到分类导航栏 """
+        cat_menu = BlogCategory.objects.all()
+        context = super(ArticleDetailView, self).get_context_data(*args, **kwargs)
+        context['cat_menu'] = cat_menu
+        return context
 
 
 class AddBlogView(CreateView):
@@ -66,8 +80,14 @@ class DeleteBlogView(DeleteView):
     success_url = reverse_lazy('blog')
 
 
+def CategoryListView(request):
+    """ 添加博客分类列表的页面 """
+    cat_menu_list = BlogCategory.objects.all()
+    return render(request, 'category_list.html', {'cat_menu_list': cat_menu_list})
+
+
 def CategoryView(request, cats):
     """ 添加同一分类的博客的页面 """
     category_blogs = Blog.objects.filter(category=cats.replace('-', ' '))
     # .replace('-', ' ') 当添加的分类名称里有空格的时候在 URL 中用 - 代替空格
-    return render(request, 'categories.html', {'cats': cats.replace('-', ' '), 'category_blogs':category_blogs})
+    return render(request, 'categories.html', {'cats': cats.replace('-', ' '), 'category_blogs': category_blogs})

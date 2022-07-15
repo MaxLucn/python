@@ -7,7 +7,11 @@
                 <li>
                     <h4><a href={% url 'detail' blog.id %}>{{ blog.title }}</a></h4>
                     作者:{{ blog.author }}--
-                    <a href="{% url 'category' blog.category|slugify %}" style="color: #0f0f0f">类别:{{ blog.category }}</a> --
+                    <a href="{% url 'category' blog.category %}">类别:{{ blog.category }}</a> --
+                    <!--
+                        TODO 添加了 sligify 之后运行会报错，报错信息：Reverse for 'category' with arguments '('',)' not found. 1 pattern(s) tried: ['category/(?P<cats>[^/]+)/\\Z']
+                    -->
+                    {# <a href="{% url 'category' blog.category|slugify %}">类别:{{ blog.category }}</a> --#}
                     创建日期:{{ blog.created_at }}<br>
                     {% if user.is_authenticated %}
                         <!-- 用来控制只用已经登录的用户才可以更新或者删除博客 -->
@@ -28,4 +32,5 @@
             <span>没有数据 ～</span>
         {% endif %}
     </ul>
+
 {% endblock %}

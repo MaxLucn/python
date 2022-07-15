@@ -20,7 +20,9 @@ urlpatterns = [
     # 删除博客
     path('blog/<int:pk>/remove', views.DeleteBlogView.as_view(), name='delete_blog'),
     # 添加同一分类的博客的页面
-    path('category/<str:cats>/', views.CategoryView, name='category')
+    path('category/<str:cats>/', views.CategoryView, name='category'),
+    # 添加博客分类列表的页面
+    path('category-list/', views.CategoryListView, name='category-list'),
 
 
 ]

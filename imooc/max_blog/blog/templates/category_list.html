@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}
+    博客的分类
+{% endblock %}
+{% block content %}
+    <h2>博客的分类</h2>
+    {% for item in cat_menu_list %}
+        <!--
+        TODO 添加了 sligify 之后运行会报错，报错信息：Reverse for 'category' with arguments '('',)' not found. 1 pattern(s) tried: ['category/(?P<cats>[^/]+)/\\Z']
+        -->
+        {# <a class="dropdown-item" href="{% url 'category' item|slugify %}">{{ item }}</a> #}
+
+        <a class="dropdown-item" href="{% url 'category' item %}">{{ item }}</a>
+    {% endfor %}
+{% endblock %}

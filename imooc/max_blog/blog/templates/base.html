@@ -25,6 +25,31 @@
         <a class="navbar-brand" href="{% url 'blog' %}" style="color: #000033">回到 It's Max_blog</a>
     </button>
 
+    <!-- 添加分类列表到导航栏 -->
+    {% if cat_menu %}
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+                分类列表
+            </a>
+
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                {% for item in cat_menu %}
+                    <!--
+                    TODO 添加了 sligify 之后运行会报错，报错信息：Reverse for 'category' with arguments '('',)' not found. 1 pattern(s) tried: ['category/(?P<cats>[^/]+)/\\Z']
+                    -->
+                    {# <a class="dropdown-item" href="{% url 'category' item|slugify %}">{{ item }}</a> #}
+
+                    <a class="dropdown-item" href="{% url 'category' item %}">{{ item }}</a>
+                {% endfor %}
+            </div>
+        </li>
+    {% else %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'category-list' %}">分类列表</a>
+        </li>
+    {% endif %}
+
     {% if user.is_authenticated %}
         <!-- 用来控制用户权限，只有已经登录的用户才可以添加博客 -->
         <li class="nav-item">
