@@ -9,13 +9,18 @@
     <small>
         作者:{{ blog.author }}<br>
         创建日期:{{ blog.created_at }}<br>
+{#        当前用户ID: {{ user.id }}<br>#}
+{#        作者ID：{{ blog.author.id }}<br>#}
         {% if user.is_authenticated %}
-            <button>
-                <a href="{% url 'update_blog' blog.id %}">更新</a>
-            </button>
-            <button>
-                <a href="{% url 'delete_blog' blog.id %}">删除</a>
-            </button>
+            {% if user.id == blog.author.id %}
+                {# 如果当前登录的用户跟创建博客的用户 id 一致才可以进行以下操作 #}
+                <button>
+                    <a href="{% url 'update_blog' blog.id %}">更新</a>
+                </button>
+                <button>
+                    <a href="{% url 'delete_blog' blog.id %}">删除</a>
+                </button>
+            {% endif %}
         {% endif %}
 
     </small>

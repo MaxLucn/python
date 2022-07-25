@@ -15,14 +15,19 @@
                     创建日期:{{ blog.created_at }}<br>
                     {% if user.is_authenticated %}
                         <!-- 用来控制只用已经登录的用户才可以更新或者删除博客 -->
-                        <small>
-                            <button>
-                                <a href="{% url 'update_blog' blog.id %}" style="color: #0f0f0f">更新</a>
-                            </button>
-                            <button>
-                                <a href="{% url 'delete_blog' blog.id %}" style="color: #0f0f0f">删除</a>
-                            </button>
-                        </small>
+                        {% if user.id == blog.author.id %}
+                            {# 如果当前登录的用户跟创建博客的用户 id 一致才可以展示以下按钮并可以进行以下操作 #}
+                            <small>
+                                <button>
+                                    <a href="{% url 'update_blog' blog.id %}" style="color: #0f0f0f">更新</a>
+                                </button>
+                                <button>
+                                    <a href="{% url 'delete_blog' blog.id %}" style="color: #0f0f0f">删除</a>
+                                </button>
+                            </small>
+{#                        {% else %}#}
+{#                            只有作者在登录状态下才可以执行该操作#}
+                        {% endif %}
                     {% endif %}
                     <p>{{ blog.content|slice:'100'|safe }}</p>
                     <!-- 控制再博客列表展示的内容量 -->

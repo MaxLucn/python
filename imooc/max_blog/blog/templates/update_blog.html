@@ -4,16 +4,21 @@
 {% endblock %}
 {% block content %}
     {% if user.is_authenticated %}
-        <h1>更新博客</h1>
-        <br>
-        <div class="form-group">
-            <form method="post">
-                {% csrf_token %}
-                {{ form.media }}
-                {{ form.as_p }}
-                <button class="'btn btn-secondary">更新</button>
-            </form>
-        </div>
+        {% if user.id == blog.author.id %}
+            {# 如果当前登录的用户跟创建博客的用户 id 一致才可以进行以下操作 #}
+            <h2>更新博客</h2>
+            <br>
+            <div class="form-group">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.media }}
+                    {{ form.as_p }}
+                    <button class="'btn btn-secondary">更新</button>
+                </form>
+            </div>
+        {% else %}
+            只有作者在登录状态下才可以执行该操作
+        {% endif %}
     {% else %}
         请登录后再使用该功能
     {% endif %}

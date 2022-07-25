@@ -4,20 +4,25 @@
 {% endblock %}
 {% block content %}
     {% if user.is_authenticated %}
-        <h2>删除博客</h2>
-        <br>
-        <h3>删除: {{ blog.title }}</h3>
-        <div class="form-group">
-            <form method="post">
+        {% if user.id == blog.author.id %}
+            {# 如果当前登录的用户跟创建博客的用户 id 一致才可以展示以下按钮并可以进行以下操作 #}
+            <h2>删除博客</h2>
+            <br>
+            <h3>删除: {{ blog.title }}</h3>
+            <div class="form-group">
+                <form method="post">
 
-                {% csrf_token %}
-                <p>
-                    <small style="color: #c3c322">你确定要删除这篇博客吗？？</small><br>
-                    <button class="btn btn-danger">删除</button>
-                </p>
+                    {% csrf_token %}
+                    <p>
+                        <small style="color: #c3c322">你确定要删除这篇博客吗？？</small><br>
+                        <button class="btn btn-danger">删除</button>
+                    </p>
 
-            </form>
-        </div>
+                </form>
+            </div>
+        {% else %}
+            只有作者在登录状态下才可以执行该操作
+        {% endif %}
     {% else %}
         请登录后再使用该功能
     {% endif %}
