@@ -16,6 +16,11 @@
 
             </form>
         </div>
+        <script>
+            let name = "{{ user.id }}";
+            document.getElementById("elder").value=name;
+            {#  从 forms.py 中获取 author 的 ID 以确认当前登录的用户 #}
+        </script>
     {% else %}
         请登录后再使用该功能
     {% endif %}
