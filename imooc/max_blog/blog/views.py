@@ -1,9 +1,9 @@
 from django.shortcuts import render, get_object_or_404
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Blog, BlogCategory
 from .forms import BlogForm
-
+from django.http import HttpResponseRedirect
 
 # def blog_list(request):
 #     my_blogs = Blog.objects.all()
@@ -43,7 +43,12 @@ class ArticleDetailView(DetailView):
         """ 把所用分类添加到分类导航栏 """
         cat_menu = BlogCategory.objects.all()
         context = super(ArticleDetailView, self).get_context_data(*args, **kwargs)
+
+        stuff = get_object_or_404(Blog, id=self.kwargs['pk'])
+        total_likes = stuff.total_likes()
+
         context['cat_menu'] = cat_menu
+        context['total_likes'] = total_likes
         return context
 
 
@@ -91,3 +96,11 @@ def CategoryView(request, cats):
     category_blogs = Blog.objects.filter(category=cats.replace('-', ' '))
     # .replace('-', ' ') 当添加的分类名称里有空格的时候在 URL 中用 - 代替空格
     return render(request, 'categories.html', {'cats': cats.replace('-', ' '), 'category_blogs': category_blogs})
+
+
+def LikeView(request, pk):
+    """ 实现点赞 """
+    blog = get_object_or_404(Blog, id=request.POST.get('blog_id'))
+    blog.likes.add(request.user)
+    # 'detail' 来自 urls.py 中博客内容的名称
+    return HttpResponseRedirect(reverse('detail', args=[str(pk)]))

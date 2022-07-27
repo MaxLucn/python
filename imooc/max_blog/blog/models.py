@@ -38,6 +38,7 @@ class Blog(models.Model):
     # 关联到 BlogCategory 类的字段
     category = models.CharField('博客分类', max_length=255, default='coding')
     # category_id = models.PositiveSmallIntegerField('文章分类 ID，关联到分类表的 ID', default=False)
+    likes = models.ManyToManyField(User, related_name='blog_posts',)
 
     created_at = models.DateTimeField('创建时间', auto_now_add=True)
     update_at = models.DateTimeField('修改时间', auto_now=True)
@@ -53,4 +54,6 @@ class Blog(models.Model):
         # 新博客添加完成之后跳转到博客列表页面
         return reverse('blog')
 
+    def total_likes(self):
+        return self.likes.count()
 

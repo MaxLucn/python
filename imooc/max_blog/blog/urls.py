@@ -23,6 +23,8 @@ urlpatterns = [
     path('category/<str:cats>/', views.CategoryView, name='category'),
     # 添加博客分类列表的页面
     path('category-list/', views.CategoryListView, name='category-list'),
+    # 实现点赞
+    path('like/<int:pk>', views.LikeView, name="like_blog"),
 
 
 ]
