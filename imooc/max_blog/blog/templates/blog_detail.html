@@ -35,7 +35,20 @@
     </button><br>
     <form action="{% url 'like_blog' blog.pk %}" method="post">
         {% csrf_token %}
-        <button type="submit" name="blog_id" value="{{ blog.id }}"
-                class="btn btn-primary btn-sm">点赞</button> -{{ total_likes }} 个赞
+        {% if user.is_authenticated %}
+
+            {% if liked %}
+                <button type="submit" name="blog_id" value="{{ blog.id }}"
+                        class="btn btn-danger btn-sm">不喜欢
+                </button>
+            {% else %}
+                <button type="submit" name="blog_id" value="{{ blog.id }}"
+                        class="btn btn-primary btn-sm">点赞
+                </button>
+            {% endif %}
+        {% else %}
+            <small>必须<a href="{% url 'login' %}">登录</a>才能点赞</small>
+        {% endif %}
+        -{{ total_likes }} 个赞
     </form>
 {% endblock %}
