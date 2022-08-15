@@ -29,7 +29,8 @@
 {#                            只有作者在登录状态下才可以执行该操作#}
                         {% endif %}
                     {% endif %}
-                    <p>{{ blog.content|slice:'100'|safe }}</p>
+                    <p>{{ blog.snippet }}</p>
+{#                    <p>{{ blog.content|slice:'100'|safe }}</p>#}
                     <!-- 控制再博客列表展示的内容量 -->
                 </li>
             {% endfor %}

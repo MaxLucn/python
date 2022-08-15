@@ -37,6 +37,7 @@ class Blog(models.Model):
     # author = models.PositiveIntegerField('管理员 ID，关联到管理员表的 ID')
     # 关联到 BlogCategory 类的字段
     category = models.CharField('博客分类', max_length=255, default='coding')
+    snippet = models.CharField('博客段落', max_length=255, default='点击上面的链接阅读该博客')
     # category_id = models.PositiveSmallIntegerField('文章分类 ID，关联到分类表的 ID', default=False)
     likes = models.ManyToManyField(User, related_name='blog_posts',)
 

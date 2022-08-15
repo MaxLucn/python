@@ -16,13 +16,14 @@ class BlogForm(forms.ModelForm):
     class Meta:
         model = Blog
         # fields = ('id', 'title', 'title_tag', 'content', 'author', 'category_id')
-        fields = ('title', 'title_tag', 'content', 'author', 'category')
+        fields = ('title', 'title_tag', 'content', 'author', 'category', 'snippet')
 
         widgets = {
             # 'id': forms.TextInput(attrs={'class': 'form-control'}),
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'title_tag': forms.TextInput(attrs={'class': 'form-control'}),
             'content': forms.Textarea(attrs={'class': 'form-control'}),
+            'snippet': forms.Textarea(attrs={'class': 'form-control'}),
             # 'author': forms.Select(attrs={'class': 'form-control'}),
             # 作者需要输入（谁登录输入谁），不再是选择，为了限制谁可以发表博客
             'author': forms.TextInput(attrs=
