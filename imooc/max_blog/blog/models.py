@@ -29,6 +29,7 @@ class Blog(models.Model):
     # id = models.PositiveIntegerField('ID', primary_key=True)
     title = models.CharField('文章标题', max_length=64)
     title_tag = models.CharField('在后台编辑博客的时候可以定义博客的标签', max_length=255)
+    image = models.ImageField('图片', null=True, blank=True, upload_to='images/')
     # 实现富文本编辑
     content = RichTextField('文章内容', blank=True, null=True)
     # content = models.TextField('文章内容')

@@ -26,7 +26,10 @@
     </small>
     <br/>
     <hr>
-
+    {# 把上传的本体图片展示在页面中 #}
+    {% if blog.image %}
+        <img src="{{ blog.image.url }}"><br>
+    {% endif %}
     <p>{{ blog.content|safe }}</p>
     <br/>
     {# 返回博客列表#}
