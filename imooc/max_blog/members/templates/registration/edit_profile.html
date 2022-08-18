@@ -5,6 +5,9 @@
 {% block content %}
     <h2>编辑个人信息</h2>
     <br>
+    {# 自定义用户配置文件模型 #}
+    {{ user.profile.bio }}
+    <br>
     <div class="form-group">
         <form method="post">
 

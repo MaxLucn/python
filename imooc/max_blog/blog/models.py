@@ -59,3 +59,10 @@ class Blog(models.Model):
     def total_likes(self):
         return self.likes.count()
 
+class Profile(models.Model):
+    """ 自定义用户配置文件模型 """
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    bio = models.TextField()
+
+    def __str__(self):
+        return str(self.user)
