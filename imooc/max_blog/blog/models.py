@@ -61,8 +61,16 @@ class Blog(models.Model):
 
 class Profile(models.Model):
     """ 自定义用户配置文件模型 """
+    # 确定登录的用户
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    # 编辑个人信息页面的简介
     bio = models.TextField()
+    # 个人信息的图片
+    profile_pic = models.ImageField('头像', null=True, blank=True, upload_to='images/profile/')
+    # 社交媒体链接
+    website_url = models.CharField('个人网站地址', max_length=255, null=True, blank=True)
+    bili_url = models.CharField('哔哩哔哩地址', max_length=255, null=True, blank=True)
+    tiktok_url = models.CharField('抖音地址', max_length=255, null=True, blank=True)
 
     def __str__(self):
         return str(self.user)
