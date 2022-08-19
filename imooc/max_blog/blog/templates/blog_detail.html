@@ -56,23 +56,23 @@
     </form>
     <br>
     <div class="card mb-3">
-  <div class="row no-gutters">
-    <div class="col-md-2">
-      <img src="{{ blog.author.profile.profile_pic.url }}" class="card-img">
+        <div class="row no-gutters">
+            <div class="col-md-2">
+                <img src="{{ blog.author.profile.profile_pic.url }}" class="card-img">
+            </div>
+            <div class="col-md-10">
+                <div class="card-body">
+                    <h5 class="card-title">{{ blog.author }}</h5>
+                    <p class="small text-muted">
+                        <a href="{{ blog.author.profile.website_url }}">个人网站</a> |
+                        <a href="{{ blog.author.profile.bili_url }}">哔哩哔哩</a> |
+                        <a href="{{ blog.author.profile.tiktok_url }}">抖音</a>
+                    </p>
+                    <p class="card-text">{{ blog.author.profile.bio }}</p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-10">
-      <div class="card-body">
-        <h5 class="card-title">{{ blog.author }}</h5>
-          <p class="small text-muted">
-              <a href="{{ blog.author.profile.website_url }}">个人网站</a> |
-              <a href="{{ blog.author.profile.bili_url }}">哔哩哔哩</a> |
-              <a href="{{ blog.author.profile.tiktok_url }}">抖音</a>
-          </p>
-        <p class="card-text">{{ blog.author.profile.bio }}</p>
-      </div>
-    </div>
-  </div>
-</div>
 
 
 
