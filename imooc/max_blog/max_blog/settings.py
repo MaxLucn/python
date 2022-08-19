@@ -126,6 +126,10 @@ USE_TZ = True
 # 在 Django 上传本地图片的时候如果没有目录自己创建一个目录
 STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
+#
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static')
+# ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 

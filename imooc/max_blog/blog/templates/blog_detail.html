@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}
     {#  把后台定义的博客的标签用作页面的标题 #}
     {{ blog.title_tag }}
@@ -55,18 +56,31 @@
         -{{ total_likes }} 个赞
     </form>
     <br>
+    {# 添加个人资料图片和社交媒体 #}
     <div class="card mb-3">
         <div class="row no-gutters">
             <div class="col-md-2">
-                <img src="{{ blog.author.profile.profile_pic.url }}" class="card-img">
+                {% if blog.author.profile.profile_pic %}
+                    <img src="{{ blog.author.profile.profile_pic.url }}" class="card-img">
+                {% else %}
+                    <img src="{% static 'max_blog/images/default_profile_pic.png' %}" class="card-img">
+                {% endif %}
             </div>
             <div class="col-md-10">
                 <div class="card-body">
                     <h5 class="card-title">{{ blog.author }}</h5>
                     <p class="small text-muted">
-                        <a href="{{ blog.author.profile.website_url }}">个人网站</a> |
-                        <a href="{{ blog.author.profile.bili_url }}">哔哩哔哩</a> |
-                        <a href="{{ blog.author.profile.tiktok_url }}">抖音</a>
+                        {% if blog.author.profile.website_url %}
+                            <a href="{{ blog.author.profile.website_url }}">个人网站</a> |
+                        {% endif %}
+
+                        {% if blog.author.profile.website_url %}
+                            <a href="{{ blog.author.profile.bili_url }}">哔哩哔哩</a> |
+                        {% endif %}
+
+                        {% if blog.author.profile.website_url %}
+                            <a href="{{ blog.author.profile.tiktok_url }}">抖音</a>
+                        {% endif %}
                     </p>
                     <p class="card-text">{{ blog.author.profile.bio }}</p>
                 </div>
