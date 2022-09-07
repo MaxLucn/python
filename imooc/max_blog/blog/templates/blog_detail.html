@@ -70,6 +70,10 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ blog.author }}</h5>
                     <p class="small text-muted">
+{#                        {% if blog.author.profile.website_url %}#}
+                            <a href="{% url 'show_profile_page' blog.author.profile.id %}">个人资料</a> |
+{#                        {% endif %}#}
+
                         {% if blog.author.profile.website_url %}
                             <a href="{{ blog.author.profile.website_url }}">个人网站</a> |
                         {% endif %}

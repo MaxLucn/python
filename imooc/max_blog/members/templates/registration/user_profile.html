@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <h2>个人资料</h2><br>
+
+    <div class="card mb-3">
+        <div class="row no-gutters">
+            <div class="col-md-2">
+                {% if page_user.profile_pic %}
+                    <img src="{{ page_user.profile_pic.url }}" class="card-img">
+                {% else %}
+                    <img src="{% static 'max_blog/images/default_profile_pic.png' %}" class="card-img">
+                {% endif %}
+            </div>
+            <div class="col-md-10">
+                <div class="card-body">
+                    <h5 class="card-title">{{ blog.author }}</h5>
+                    <p class="small text-muted">
+                        {#                        {% if blog.author.profile.website_url %}#}
+                        {#                            <a href="{% url 'show_profile_page' blog.author.profile.id %}">个人资料</a> |#}
+                        {#                        {% endif %}#}
+
+                        {% if page_user.website_url %}
+                            <a href="{{ page_user.website_url }}">个人网站</a> |
+                        {% endif %}
+
+                        {% if page_user.website_url %}
+                            <a href="{{ page_user.bili_url }}">哔哩哔哩</a> |
+                        {% endif %}
+
+                        {% if page_user.website_url %}
+                            <a href="{{ page_user.tiktok_url }}">抖音</a>
+                        {% endif %}
+                    </p>
+                    <p class="card-text">{{ page_user.bio }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -9,5 +9,6 @@ urlpatterns = [
     # 更改用户密码
     path('password/', views.PasswordsChangeView.as_view()),
     # 密码修改成功跳转到这里
-    path('password_success', views.password_success, name='password_success')
+    path('password_success', views.password_success, name='password_success'),
+    path('<int:pk>/profile/', views.ShowProfilePageView.as_view(), name='show_profile_page')
 ]
